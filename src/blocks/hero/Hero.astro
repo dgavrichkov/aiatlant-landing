@@ -1,0 +1,12 @@
+---
+import content from '../../content/atlant.json';
+
+const {hero} = content;
+---
+<section id={hero.id}>
+  <h2>{hero.title}</h2>
+  <p>{hero.text}</p>
+  <div>
+    <a href={hero.button.href}>{hero.button.label}</>
+  </div>
+</section>

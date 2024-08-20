@@ -1,0 +1,48 @@
+---
+import content from '../../content/atlant.json';
+
+const {games} = content;
+const VERTICAL_GAP = '43px';
+---
+<section id={games.id}>
+  <h2>{games.title}</h2>
+  <div class="search">
+    <input type="text">
+  </div>
+  <ul class="list">
+    {games.list.map((game) => (
+      <li data-gameid={game.id}>
+        <article class="gameCard">
+          {game.isConcept && <i>{games.strings.concept}</i>}
+          <picture>
+            {/* todo sources */}
+            <img width="200" src={`/${game.pic}-1x.png`} alt="TODO alttext">
+          </picture>
+          <b>{game.title}</b>
+          {game.description.map((item) => (
+            <p>{item}</p>
+          ))}
+          <p class="traits">
+            {games.strings.traits}:<br>
+            {game.traits}
+          </p>
+          <div>
+            <button>{games.strings.moar}</button>
+            <a href={game.link.href}>
+              {games.statuses[game.status]}
+            </a>
+          </div>
+        </article>
+        {/* TODO - Modal */}
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style define:vars={{VERTICAL_GAP}}>
+  .list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--VERTICAL_GAP) var(--gap-xl);
+  }
+</style>

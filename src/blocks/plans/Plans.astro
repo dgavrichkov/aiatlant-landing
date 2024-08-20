@@ -1,0 +1,21 @@
+---
+import content from '../../content/atlant.json';
+
+const {plans} = content;
+---
+<section id={plans.id}>
+  <h2>{plans.title}</h2>
+  <div class="content">
+    <ol>
+      {plans.list.map((item) => (
+        <li>
+          <p>{item.title}</p>
+          <p>{item.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+  <figure>
+    <img width="500" src="/heroes-3x.png" alt="dnd characters" />
+  </figure>
+</section>

@@ -1,0 +1,38 @@
+:root {
+  --primary-1: #201d30;
+  --secondary-1: #251d35;
+  --primary-2: #622cbc;
+  --secondary-2: #6d2ae9;
+  --accent-1-primary: #007aff;
+  --accent-1-secondary: #69bcff;
+  --accent-2-primary: #dfdd3f;
+  --accent-2-secondary: #dbfc54;
+  --text: #ffffff;
+  --error: #ff2775;
+  --success: #69d467;
+
+  --logo-weight: 400;
+  --h1-weight: 900;
+  --h1-size: 90px;
+  --h2-weight: 900;
+  --h2-size: 56px;
+  --h3-weight: bold;
+  --h3-size: 32px;
+  --h4-weight: 400;
+  --h4-size: 32px;
+  --text-regular-weight: 400;
+  --text-bold-weight: 700;
+  --text-size: 16px;
+  --button-weight: semibold;
+  --button-size: 16px;
+
+  /* gaps */
+  --gap-xxl: 32px;
+  --gap-xl: 16px;
+  --gap-l: 8px;
+}
+
+/* TODO */
+.visually-hidden {
+  display: none;
+}

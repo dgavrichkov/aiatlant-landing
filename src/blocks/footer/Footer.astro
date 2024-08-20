@@ -1,0 +1,54 @@
+---
+import content from '../../content/atlant.json';
+import IconInsta from '../../ui/IconInsta.astro';
+import IconTg from '../../ui/IconTg.astro';
+
+const {copyright, footerLinks, menu, socials} = content;
+
+const date = '2024'
+---
+<footer>
+  <div>
+    <p class="logo">AI Atlant</p>
+    <p>(c) {copyright} | {date}</p>
+  </div>
+
+  <div>
+    <nav class="navigation">
+      {menu.map((item) => (
+        <a href={item.href}>{item.title}</a>
+      ))}
+    </nav>
+  </div>
+
+  <div>
+    <nav class="sources">
+      {footerLinks.map((item) => (
+        <a href={item.href}>{item.title}</a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="socials">
+    <a href={socials.Instagram.href}>
+      <IconInsta />
+    </a>
+    <a href={socials.Telegram.href}>
+      <span class="visually-hidden">{socials.Telegram.label}</span>
+      <IconTg />
+    </a>
+  </div>
+</footer>
+
+<style>
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: var(--gap-l);
+  }
+
+  .socials {
+    display: flex;
+    gap: var(--gap-xxl);
+  }
+</style>

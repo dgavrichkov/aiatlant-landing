@@ -1,0 +1,39 @@
+---
+import content from '../../content/atlant.json';
+
+const {info} = content;
+const {heroCard, infoCard, tgInvite, testInvite} = info;
+---
+<section id={info.id}>
+  <h2 class="visually-hidden">{info.title}</h2>
+  <article class="herocard">
+    <b class="herocard-logo">AI Atlant</b>
+    <b class="herocard-title">{heroCard.title}</b>
+    <p class="herocard-text">{heroCard.text}</p>
+  </article>
+  <article class="infocard">
+    {infoCard.text.map((textItem) => (
+      <p>{textItem}</p>
+    ))}
+  </article>
+  <a class="tgInvite" href={tgInvite.href}>
+    <article class="tgInvite__wrap">
+      <b>{tgInvite.title}</b>
+      <p>{tgInvite.text}</p>
+    </article>
+  </a>
+  <a class="testInvite" href={testInvite.href}>
+    <article class="testInvite__wrap">
+      <b>{testInvite.text}</b>
+    </article>
+  </a>
+  
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: var(--gap-l);
+  }
+</style>
