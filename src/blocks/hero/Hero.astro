@@ -1,12 +1,51 @@
 ---
 import content from '../../content/atlant.json';
+import Button from '../../ui/Button.astro';
 
 const {hero} = content;
 ---
 <section id={hero.id}>
   <h2>{hero.title}</h2>
-  <p>{hero.text}</p>
-  <div>
-    <a href={hero.button.href}>{hero.button.label}</>
+  <p class="hero-text">{hero.text}</p>
+  <div class="hero-btn-wrap">
+    <Button tag="a" href={hero.button.href} class="hero-action">{hero.button.label}</Button>
   </div>
 </section>
+
+<style>
+  section {
+    margin-top: var(--gap-l);
+    border-radius: var(--radius-m);
+    padding: 60px 48px;
+
+    box-shadow: 1px 1px 10px #D9D9D9;
+
+    color: var(--text);
+
+    position: relative;
+  }
+
+  h2 {
+    font-size: 90px;
+    line-height: 86px;
+    margin-bottom: 57px;
+    max-width: 70%;
+  }
+
+  .hero-text {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .hero-btn-wrap {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  .hero-action {
+    display: inline-block;
+    font-size: 47px;
+    font-weight: bold;
+    padding: 38px 50px;
+  }
+</style>

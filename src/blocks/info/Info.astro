@@ -32,8 +32,30 @@ const {heroCard, infoCard, tgInvite, testInvite} = info;
 
 <style>
   section {
+    margin-top: var(--gap-l);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: var(--gap-l);
+    grid-template-areas:
+      'hero hero info info'
+      'hero hero tg test';
+  }
+  .herocard {
+    grid-area: hero;
+    padding: 60px 48px 56px;
+    background-image: url('/images/card-hero.jpg');
+    background-size: contain;
+    color: var(--text);
+  }
+  .infocard {
+    grid-area: info;
+    padding: 48px 41px;
+    background-color: var(--secondary-2);
+  }
+  .tgInvite {
+    grid-area: tg;
+  }
+  .testInvite {
+    grid-area: test;
   }
 </style>

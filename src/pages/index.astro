@@ -6,6 +6,7 @@ import Hero from '../blocks/hero/Hero.astro';
 import Info from '../blocks/info/Info.astro';
 import Plans from '../blocks/plans/Plans.astro';
 import '../styles/reset.css';
+import '../styles/fonts.css';
 import '../styles/main.css';
 
 const TITLE = 'Ai Atlant';
@@ -29,3 +30,11 @@ const LANG = 'en';
     <Footer />
 	</body>
 </html>
+
+<style>
+	body {
+		padding: var(--gap-xl);
+		background: var(--primary-1);
+		font-family: "Jost";
+	}
+</style>

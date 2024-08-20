@@ -25,11 +25,20 @@
   --text-size: 16px;
   --button-weight: semibold;
   --button-size: 16px;
+  --size-xl: 32px;
+  --size-l: 24px;
+  --size-m: 16px;
+  --size-s: 10px;
 
   /* gaps */
   --gap-xxl: 32px;
   --gap-xl: 16px;
   --gap-l: 8px;
+
+  /* radius */
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --radius-xl: 32px;
 }
 
 /* TODO */
