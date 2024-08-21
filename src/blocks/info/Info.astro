@@ -24,7 +24,7 @@ const {heroCard, infoCard, tgInvite, testInvite} = info;
   </a>
   <a class="testInvite" href={testInvite.href}>
     <article class="testInvite__wrap">
-      <b>{testInvite.text}</b>
+      <b class="testInvite__text">{testInvite.text}</b>
     </article>
   </a>
   
@@ -32,6 +32,8 @@ const {heroCard, infoCard, tgInvite, testInvite} = info;
 
 <style>
   section {
+    position: relative;
+    z-index: 2;
     margin-top: var(--gap-l);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -39,6 +41,9 @@ const {heroCard, infoCard, tgInvite, testInvite} = info;
     grid-template-areas:
       'hero hero info info'
       'hero hero tg test';
+  }
+  article {
+    border-radius: var(--radius-l);
   }
   .herocard {
     grid-area: hero;
@@ -55,7 +60,23 @@ const {heroCard, infoCard, tgInvite, testInvite} = info;
   .tgInvite {
     grid-area: tg;
   }
+  .tgInvite__wrap {
+    background-color: var(--accent-1-primary);
+    height: 208px;
+  }
   .testInvite {
     grid-area: test;
+    color: initial;
+    text-decoration: none;
+  }
+  .testInvite__wrap {
+    background-color: var(--accent-2-secondary);
+    height: 208px;
+  }
+  .testInvite__text {
+    color: var(--primary);
+    font-size: var(--h3-size);
+    line-height: var(--h3-lh);
+    font-weight: 800;
   }
 </style>

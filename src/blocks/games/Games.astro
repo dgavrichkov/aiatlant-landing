@@ -5,10 +5,13 @@ const {games} = content;
 const VERTICAL_GAP = '43px';
 ---
 <section id={games.id}>
-  <h2>{games.title}</h2>
-  <div class="search">
-    <input type="text">
-  </div>
+  <header>
+    <h2>{games.title}</h2>
+    <div class="search">
+      <label for="game-search">Найти</label>
+      <input type="text" id="game-search">
+    </div>
+  </header>
   <ul class="list">
     {games.list.map((game) => (
       <li data-gameid={game.id}>
@@ -40,6 +43,26 @@ const VERTICAL_GAP = '43px';
 </section>
 
 <style define:vars={{VERTICAL_GAP}}>
+  section {
+    position: relative;
+    z-index: 2;
+    margin-top: var(--gap-l);
+    border-radius: var(--radius-xl);
+    padding: 68px 48px 0;
+    background-color: var(--primary-1);
+    outline: 1px solid #eee;
+    color: var(--text);
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  h2 {
+    font-size: 80px;
+    line-height: 86px;
+    color: var(--text);
+  }
   .list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

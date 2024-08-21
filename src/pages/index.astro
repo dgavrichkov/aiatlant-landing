@@ -8,6 +8,7 @@ import Plans from '../blocks/plans/Plans.astro';
 import '../styles/reset.css';
 import '../styles/fonts.css';
 import '../styles/main.css';
+import Ellipses from '../components/Ellipses.astro';
 
 const TITLE = 'Ai Atlant';
 const LANG = 'en';
@@ -28,6 +29,7 @@ const LANG = 'en';
     <Games />
     <Plans />
     <Footer />
+		<Ellipses />
 	</body>
 </html>
 
@@ -36,5 +38,7 @@ const LANG = 'en';
 		padding: var(--gap-xl);
 		background: var(--primary-1);
 		font-family: "Jost";
+
+		position: relative;
 	}
 </style>

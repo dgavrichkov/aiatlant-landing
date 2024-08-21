@@ -21,6 +21,8 @@ const {menu, headerButtons} = content;
 
 <style>
   header {
+    position: relative;
+    z-index: 2;
     border-radius: var(--radius-l);
     background: var(--primary-1);
     padding: 12px var(--gap-xl);
@@ -30,6 +32,10 @@ const {menu, headerButtons} = content;
 
   .logo {
     color: var(--text);
+    font-family: "Jomhuria", sans-serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 56px;
   }
 
   .navigation {
@@ -59,7 +65,9 @@ const {menu, headerButtons} = content;
   .action-item {
     font-size: var(--size-m);
     font-weight: 600;
-    font-weight: bold;
-    padding: 22px 24px;
+    padding: 12px 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
   }
 </style>

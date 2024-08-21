@@ -10,13 +10,13 @@ const date = '2024'
 <footer>
   <div>
     <p class="logo">AI Atlant</p>
-    <p>(c) {copyright} | {date}</p>
+    <p class="copyright">(c) {copyright} | {date}</p>
   </div>
 
   <div>
     <nav class="navigation">
       {menu.map((item) => (
-        <a href={item.href}>{item.title}</a>
+        <a href={item.href} class="navigation__item">{item.title}</a>
       ))}
     </nav>
   </div>
@@ -24,7 +24,7 @@ const date = '2024'
   <div>
     <nav class="sources">
       {footerLinks.map((item) => (
-        <a href={item.href}>{item.title}</a>
+        <a href={item.href} class="sources__item">{item.title}</a>
       ))}
     </nav>
   </div>
@@ -42,13 +42,60 @@ const date = '2024'
 
 <style>
   footer {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: var(--gap-l);
+    color: var(--text);
+    padding: 48px;
+    padding-right: 65px;
+  }
+
+  .logo {
+    color: var(--accent-2-secondary);
+    margin-bottom: 24px;
+    font-family: "Jomhuria", sans-serif;
+    font-size: 56px;
+    line-height: 56px;
+    font-weight: 400;
+  }
+
+  .copyright {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .navigation__item {
+    color: var(--text);
+    font-size: 24px;
+    line-height: 35px;
+    text-decoration: none;
+  }
+
+  .sources {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .sources__item {
+    color: var(--text);
+    font-size: 24px;
+    line-height: 35px;
+    color: var(--accent-2-secondary);
+    text-decoration: none;
   }
 
   .socials {
     display: flex;
     gap: var(--gap-xxl);
+    justify-self: end;
   }
 </style>
