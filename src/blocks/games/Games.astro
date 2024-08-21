@@ -1,5 +1,6 @@
 ---
 import content from '../../content/atlant.json';
+import Card from './Card.astro';
 
 const {games} = content;
 const VERTICAL_GAP = '43px';
@@ -15,27 +16,7 @@ const VERTICAL_GAP = '43px';
   <ul class="list">
     {games.list.map((game) => (
       <li data-gameid={game.id}>
-        <article class="gameCard">
-          {game.isConcept && <i>{games.strings.concept}</i>}
-          <picture>
-            {/* todo sources */}
-            <img width="200" src={`images/${game.pic}-1x.png`} alt="TODO alttext">
-          </picture>
-          <b>{game.title}</b>
-          {game.description.map((item) => (
-            <p>{item}</p>
-          ))}
-          <p class="traits">
-            {games.strings.traits}:<br>
-            {game.traits}
-          </p>
-          <div>
-            <button>{games.strings.moar}</button>
-            <a href={game.link.href}>
-              {games.statuses[game.status]}
-            </a>
-          </div>
-        </article>
+        <Card game={game} />
         {/* TODO - Modal */}
       </li>
     ))}
@@ -57,6 +38,7 @@ const VERTICAL_GAP = '43px';
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 64px;
   }
   h2 {
     font-size: 80px;
@@ -67,5 +49,7 @@ const VERTICAL_GAP = '43px';
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--VERTICAL_GAP) var(--gap-xl);
+    list-style: none;
+    padding: 0;
   }
 </style>

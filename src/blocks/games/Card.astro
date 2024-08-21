@@ -1,0 +1,99 @@
+---
+import content from '../../content/atlant.json';
+import Button from '../../ui/Button.astro';
+
+const {game} = Astro.props;
+const {games} = content;
+
+---
+<article class="game">
+  {game.isConcept && <div class="game__badge">{games.strings.concept}</div>}
+  <picture class="game__pic">
+    {/* todo sources */}
+    <img width="200" src={`images/${game.pic}-1x.png`} alt="TODO alttext">
+  </picture>
+  <h3 class="game__title">{game.title}</h3>
+  <div class="game__text">
+    {game.description.map((item) => (
+      <p class="game__textItem">{item}</p>
+    ))}
+    <br>
+    <p class="traits game__textItem">
+      {games.strings.traits}:<br>
+      {game.traits}
+    </p>
+  </div>
+  <div class="game__actions">
+    <Button tag="button" view="secondary" class="game__button game__moar">{games.strings.moar}</Button>
+    <Button tag="a" href={game.link.href} class="game__button game__link">
+      {games.statuses[game.status]}
+    </Button>
+  </div>
+</article>
+
+<style>
+  .game {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xxl);
+    color: var(--text);
+    background-color: var(--primary-2);
+    border-radius: 24px;
+    position: relative;
+    height: 100%;
+    padding: 16px;
+  }
+
+  .game__badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 12px 14px 12px 14px;
+    border-radius: 42px;
+    background-color: var(--accent-1-primary);
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: 21px;
+    font-weight: 900;
+  }
+
+  .game__pic {
+    max-width: initial;
+    height: 213px;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-top: -16px;
+  }
+
+  .game__pic img {
+    display: block;
+    max-width: initial;
+    width: 120%;
+    object-fit: cover;
+    object-position: 0 -85px;
+  }
+
+  .game__title {
+    font-size: 40px;
+    line-height: 34px;
+    font-weight: 900;
+  }
+
+  .game__textItem {
+    line-height: 21px;
+  }
+
+  .game__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: auto;
+  }
+
+  .game__button {
+    padding: 0 24px;
+    height: 64px;
+  }
+</style>

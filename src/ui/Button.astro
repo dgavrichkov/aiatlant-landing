@@ -1,21 +1,23 @@
 ---
-const {tag, class: className, size, ...rest} = Astro.props;
+const {tag, class: className, view, size, ...rest} = Astro.props;
 
 
 const sizes={
   m: 'm',
   l: 'l'
 }
+
+const buttonClassName = `${className} ${view}`
 ---
 
 {tag === 'a' && (
-  <a class={className} {...rest}>
+  <a class={buttonClassName} {...rest}>
     <slot />
   </a>
 )}
 
 {tag === 'button' && (
-  <button class={className} {...rest}>
+  <button class={buttonClassName} {...rest}>
     <slot />
   </button>
 )}
@@ -27,5 +29,14 @@ const sizes={
     background: var(--accent-2-secondary);
     color: var(--primary-1);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .secondary {
+    background-color: transparent;
+    border: 2px solid var(--accent-2-secondary);
+    color: var(--accent-2-secondary);
   }
 </style>
