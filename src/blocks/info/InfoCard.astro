@@ -1,0 +1,40 @@
+---
+import content from '../../content/atlant.json';
+const {info: {infoCard}} = content;
+// TODO - parse text to transform symbols to tag. Or build another method to 
+---
+<article class="infocard">
+  {infoCard.text.map((textItem) => (
+    <p>{textItem}</p>
+  ))}
+</article>
+
+<style>
+  .infocard {
+    grid-area: info;
+    border-radius: var(--radius-l);
+    padding: 48px 41px;
+    background-color: var(--secondary-2);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    background-image: url('/images/logo-3x.png');
+    background-size: auto 481px;
+    background-repeat: no-repeat;
+    background-position: center right -20%;
+  }
+
+  p {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+
+    width: 70%;
+  }
+
+  p b {
+    font-weight: 900;
+  }
+</style>

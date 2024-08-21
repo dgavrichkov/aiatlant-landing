@@ -1,0 +1,68 @@
+---
+import content from '../../content/atlant.json';
+const {info: {tgInvite}} = content;
+---
+<a class="tgInvite" href={tgInvite.href}>
+  <article class="tgInvite__wrap">
+    <b>{tgInvite.title}</b>
+    <p>{tgInvite.text}</p>
+  </article>
+</a>
+
+<style>
+  .tgInvite {
+    grid-area: tg;
+    height: 100%;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .tgInvite__wrap {
+    border-radius: var(--radius-l);
+    background-color: var(--accent-1-primary);
+    min-height: 208px;
+    height: 100%;
+    position: relative;
+    padding-left: 150px;
+    overflow: hidden;
+    container-name: tgInvite;
+  }
+
+  .tgInvite__wrap::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100%;
+    width: 100cqh;
+    background-image: url('/images/gnomes.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .tgInvite__wrap::after {
+    content: '';
+    display: block;
+    bottom: 0;
+    right: 0;
+    width: 69px;
+    height: 20px;
+    background-image: url('/arrow.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  b {
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 47px;
+    margin-bottom: 23px;
+  }
+
+  p {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 34px;
+  }
+</style>

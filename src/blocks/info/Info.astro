@@ -1,33 +1,19 @@
 ---
 import content from '../../content/atlant.json';
+import HeroCard from './HeroCard.astro';
+import InfoCard from './InfoCard.astro';
+import TgInvite from './TgInvite.astro';
+import TestInvite from './TestInvite.astro';
 
 const {info} = content;
-const {heroCard, infoCard, tgInvite, testInvite} = info;
+
 ---
 <section id={info.id}>
   <h2 class="visually-hidden">{info.title}</h2>
-  <article class="herocard">
-    <b class="herocard-logo">AI Atlant</b>
-    <b class="herocard-title">{heroCard.title}</b>
-    <p class="herocard-text">{heroCard.text}</p>
-  </article>
-  <article class="infocard">
-    {infoCard.text.map((textItem) => (
-      <p>{textItem}</p>
-    ))}
-  </article>
-  <a class="tgInvite" href={tgInvite.href}>
-    <article class="tgInvite__wrap">
-      <b>{tgInvite.title}</b>
-      <p>{tgInvite.text}</p>
-    </article>
-  </a>
-  <a class="testInvite" href={testInvite.href}>
-    <article class="testInvite__wrap">
-      <b class="testInvite__text">{testInvite.text}</b>
-    </article>
-  </a>
-  
+  <HeroCard />
+  <InfoCard />
+  <TgInvite />
+  <TestInvite />
 </section>
 
 <style>
@@ -42,41 +28,8 @@ const {heroCard, infoCard, tgInvite, testInvite} = info;
       'hero hero info info'
       'hero hero tg test';
   }
-  article {
-    border-radius: var(--radius-l);
-  }
-  .herocard {
-    grid-area: hero;
-    padding: 60px 48px 56px;
-    background-image: url('/images/card-hero.jpg');
-    background-size: contain;
-    color: var(--text);
-  }
-  .infocard {
-    grid-area: info;
-    padding: 48px 41px;
-    background-color: var(--secondary-2);
-  }
-  .tgInvite {
-    grid-area: tg;
-  }
-  .tgInvite__wrap {
-    background-color: var(--accent-1-primary);
-    height: 208px;
-  }
-  .testInvite {
-    grid-area: test;
-    color: initial;
-    text-decoration: none;
-  }
-  .testInvite__wrap {
-    background-color: var(--accent-2-secondary);
-    height: 208px;
-  }
-  .testInvite__text {
-    color: var(--primary);
-    font-size: var(--h3-size);
-    line-height: var(--h3-lh);
-    font-weight: 800;
+
+  section > * {
+    height: 100%;
   }
 </style>

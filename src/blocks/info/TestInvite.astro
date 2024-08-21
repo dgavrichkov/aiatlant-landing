@@ -1,0 +1,44 @@
+---
+import content from '../../content/atlant.json';
+const {info: {testInvite}} = content;
+---
+
+<a class="testInvite" href={testInvite.href}>
+  <article class="testInvite__wrap">
+    <b class="testInvite__text">{testInvite.text}</b>
+  </article>
+</a>
+
+<style>
+  .testInvite {
+    grid-area: test;
+    color: initial;
+    text-decoration: none;
+    height: 100%;
+  }
+  .testInvite__wrap {
+    border-radius: var(--radius-l);
+    background-color: var(--accent-2-secondary);
+    min-height: 208px;
+    height: 100%;
+    position: relative;
+  }
+  .testInvite__wrap::after {
+    content: '';
+    display: block;
+    bottom: 0;
+    right: 0;
+    width: 69px;
+    height: 20px;
+    background-image: url('/arrow.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg);
+  }
+  .testInvite__text {
+    color: var(--primary);
+    font-size: var(--h3-size);
+    line-height: var(--h3-lh);
+    font-weight: 800;
+  }
+</style>

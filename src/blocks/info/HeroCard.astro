@@ -1,0 +1,64 @@
+---
+import content from '../../content/atlant.json';
+const {info: {heroCard}} = content;
+---
+<article class="herocard">
+  <div class="herocard__logo">AI Atlant</div>
+  <div class="herocard__title">{heroCard.title}</div>
+  <div class="herocard__text">{heroCard.text}</div>
+</article>
+
+<style>
+  .herocard {
+    grid-area: hero;
+    padding: 60px 48px 56px;
+    border-radius: var(--radius-l);
+    background-image: url('/images/card-hero.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .herocard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #00000091;
+    z-index: 1;
+  }
+
+  .herocard > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .herocard__logo {
+    color: var(--text);
+    font-family: "Jomhuria", sans-serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 56px;
+
+    margin-bottom: 103px;
+  }
+
+  .herocard__title {
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 65px;
+    margin-bottom: 41px;
+  }
+
+  .herocard__text {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+</style>
