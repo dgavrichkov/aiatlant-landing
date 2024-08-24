@@ -1,16 +1,14 @@
 ---
 import content from '../../content/atlant.json';
 import Card from './Card.astro';
+import Search from './Search.astro';
 
 const {games} = content;
 ---
 <section id={games.id}>
   <header>
     <h2>{games.title}</h2>
-    <div class="search">
-      <input class="search__input" type="text" id="game-search">
-      <label class="search__label" for="game-search">Найти</label>
-    </div>
+    <Search />
   </header>
   <ul class="list">
     {games.list.map((game) => (
@@ -53,57 +51,5 @@ const {games} = content;
     gap: 42px var(--gap-xl);
     list-style: none;
     padding: 0;
-  }
-
-  .search {
-    position: relative;
-    height: 68px;
-    min-width: 300px;
-    border-radius: 37px;
-    background-color: #622CBC42;
-    display: flex;
-    align-items: center;
-    padding: 0 32px;
-    gap: 16px;
-  }
-
-  .search:focus-within {
-    outline: 1px solid var(--accent-2-secondary);
-  }
-
-  .search:after {
-    content: '';
-    width: 32px;
-    height: 32px;
-    background-image: url('/search.svg');
-    background-repeat: no-repeat;
-    background-size: calc(100% - 2px);
-  }
-
-  .search__label {
-    position: absolute;
-    left: 32px;
-    color: rgba(255, 255, 255, 0.5);
-    top: 50%;
-    translate: 0 -50%;
-    z-index: 2;
-    transition: all 0.3s ease;
-    pointer-events: none;
-  }
-
-  .search__input {
-    border: none;
-    background: transparent;
-    caret-color: currentcolor;
-    color: var(--text);
-  }
-
-  .search__input:focus {
-    outline: none;
-  }
-
-  .search__input:focus + .search__label {
-    top: 10px;
-    opacity: 0;
   }
 </style>
