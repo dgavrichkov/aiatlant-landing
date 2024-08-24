@@ -1,11 +1,19 @@
 :root {
+  /* violet dark */
   --primary-1: #201d30;
+  /* violet dark second */
   --secondary-1: #251d35;
+  /* violet light */
   --primary-2: #622cbc;
+  /* violet light second */
   --secondary-2: #6d2ae9;
+  /* blue */
   --accent-1-primary: #007aff;
+  /* blue light */
   --accent-1-secondary: #69bcff;
+  /* yellow */
   --accent-2-primary: #dfdd3f;
+  /* lemon */
   --accent-2-secondary: #dbfc54;
   --text: #ffffff;
   --error: #ff2775;
