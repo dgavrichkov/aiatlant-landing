@@ -2,6 +2,7 @@
 import content from '../../content/atlant.json';
 import IconInsta from '../../ui/IconInsta.astro';
 import IconTg from '../../ui/IconTg.astro';
+import Link from '../../ui/Link.astro';
 
 const {copyright, footerLinks, menu, socials} = content;
 
@@ -16,7 +17,7 @@ const date = '2024'
   <div>
     <nav class="navigation">
       {menu.map((item) => (
-        <a href={item.href} class="navigation__item">{item.title}</a>
+        <Link href={item.href} class="navigation__item" >{item.title}</Link>
       ))}
     </nav>
   </div>
@@ -24,7 +25,7 @@ const date = '2024'
   <div>
     <nav class="sources">
       {footerLinks.map((item) => (
-        <a href={item.href} class="sources__item">{item.title}</a>
+        <Link view="accent" href={item.href} class="sources__item" data-disabled={item.isDisabled}>{item.title}</Link>
       ))}
     </nav>
   </div>
@@ -72,12 +73,7 @@ const date = '2024'
     gap: 32px;
   }
 
-  .navigation__item {
-    color: var(--text);
-    font-size: 24px;
-    line-height: 35px;
-    text-decoration: none;
-  }
+  .navigation__item {}
 
   .sources {
     display: flex;
@@ -86,11 +82,11 @@ const date = '2024'
   }
 
   .sources__item {
-    color: var(--text);
-    font-size: 24px;
-    line-height: 35px;
-    color: var(--accent-2-secondary);
-    text-decoration: none;
+    /* color: var(--text); */
+    /* font-size: 24px; */
+    /* line-height: 35px; */
+    /* color: var(--accent-2-secondary); */
+    /* text-decoration: none; */
   }
 
   .socials {

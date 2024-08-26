@@ -37,7 +37,8 @@
     {
       "id": 1,
       "title": "Играть",
-      "href": "/play"
+      "href": "/play",
+      "isDisabled": true
     },
     {
       "id": 2,
