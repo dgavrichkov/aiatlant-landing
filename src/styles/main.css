@@ -54,3 +54,18 @@
 .visually-hidden {
   display: none;
 }
+
+.scroll-container::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.16); /* Цвет ползунка */
+  border-radius: 37px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background-color: rgba(98, 44, 188, 0.43);
+  border-radius: 37px;
+}

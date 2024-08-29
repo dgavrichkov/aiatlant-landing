@@ -128,7 +128,8 @@
         "status": "ready",
         "link": {
           "href": "/game"
-        }
+        },
+        "fullDescription": "Вы конкурирующие колдуны и колдуньи. К вам приходят самые разные клиенты, от Брэда Питта до Гарри Поттера, со своими проблемами. Придумывайте лучшие решения, боритесь за клиентов и их деньги!\n\n Вы конкурирующие колдуны и колдуньи. К вам приходят самые разные клиенты, от Брэда Питта до Гарри Поттера, со своими проблемами. Придумывайте лучшие решения, боритесь за клиентов и их деньги!\n\nВы конкурирующие колдуны и колдуньи. К вам приходят самые разные клиенты, от Брэда Питта до Гарри Поттера, со своими проблемами. Придумывайте лучшие решения, боритесь за клиентов и их деньги!\n\n**Особенности:**  \n Смешные и неординарные задачи. Веселое соревнование за самое оригинальное, смешное и логичное решение.\n\nСмешные и неординарные задачи. Веселое соревнование за самое оригинальное, смешное и логичное решение.\n\nСмешные и неординарные задачи. Веселое соревнование за самое оригинальное, смешное и логичное решение.\n\nСмешные и неординарные задачи. Веселое соревнование за самое оригинальное, смешное и логичное решение.\n\nСмешные и неординарные задачи. Веселое соревнование за самое оригинальное, смешное и логичное решение."
       },
       {
         "id": "game-2",
@@ -142,7 +143,8 @@
         "status": "ready",
         "link": {
           "href": "/game"
-        }
+        },
+        "fullDescription": "**First paragraph:** This gaming mouse features an ergonomic design for long gaming sessions.\n\n**Second paragraph:** It includes RGB lighting with multiple effects.\n\n**Особенности:**\n\n- Customizable buttons\n- High-precision sensor\n- Ergonomic design"
       },
       {
         "id": "game-3",
@@ -156,7 +158,8 @@
         "status": "ready",
         "link": {
           "href": "/game"
-        }
+        },
+        "fullDescription": "**First paragraph:** This gaming mouse features an ergonomic design for long gaming sessions.\n\n**Second paragraph:** It includes RGB lighting with multiple effects.\n\n**Особенности:**\n\n- Customizable buttons\n- High-precision sensor\n- Ergonomic design"
       },
       {
         "id": "game-4",
@@ -170,7 +173,8 @@
         "status": "dev",
         "link": {
           "href": "/game"
-        }
+        },
+        "fullDescription": "**First paragraph:** This gaming mouse features an ergonomic design for long gaming sessions.\n\n**Second paragraph:** It includes RGB lighting with multiple effects.\n\n**Особенности:**\n\n- Customizable buttons\n- High-precision sensor\n- Ergonomic design"
       },
       {
         "id": "game-5",
@@ -185,7 +189,8 @@
         "status": "ready",
         "link": {
           "href": "/game"
-        }
+        },
+        "fullDescription": "**First paragraph:** This gaming mouse features an ergonomic design for long gaming sessions.\n\n**Second paragraph:** It includes RGB lighting with multiple effects.\n\n**Особенности:**\n\n- Customizable buttons\n- High-precision sensor\n- Ergonomic design"
       },
       {
         "id": "game-6",
@@ -199,7 +204,8 @@
         "status": "ready",
         "link": {
           "href": "/game"
-        }
+        },
+        "fullDescription": "**First paragraph:** This gaming mouse features an ergonomic design for long gaming sessions.\n\n**Second paragraph:** It includes RGB lighting with multiple effects.\n\n**Особенности:**\n\n- Customizable buttons\n- High-precision sensor\n- Ergonomic design"
       },
       {
         "id": "game-7",
@@ -213,7 +219,8 @@
         "status": "rework",
         "link": {
           "href": "/game"
-        }
+        },
+        "fullDescription": "**First paragraph:** This gaming mouse features an ergonomic design for long gaming sessions.\n\n**Second paragraph:** It includes RGB lighting with multiple effects.\n\n**Особенности:**\n\n- Customizable buttons\n- High-precision sensor\n- Ergonomic design"
       }
     ]
   },
