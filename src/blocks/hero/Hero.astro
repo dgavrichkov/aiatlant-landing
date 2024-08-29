@@ -4,52 +4,59 @@ import Button from '../../ui/Button.astro';
 
 const {hero} = content;
 ---
-<section id={hero.id}>
-  <h2>{hero.title}</h2>
-  <p class="hero-text">{hero.text}</p>
-  <div class="hero-btn-wrap">
-    <Button tag="a" href={hero.button.href} class="hero-action">{hero.button.label}</Button>
+<section class="hero" id={hero.id}>
+  <h2 class="hero__title">{hero.title}</h2>
+  <p class="hero__text">{hero.text}</p>
+  <div class="hero__btn-wrap">
+    <Button tag="a" href={hero.button.href} class="hero__action">{hero.button.label}</Button>
   </div>
 </section>
 
 <style>
-  section {
+  .hero {
     position: relative;
     z-index: 2;
     margin-top: var(--gap-l);
     border-radius: var(--radius-m);
     padding: 60px 48px;
     background-color: var(--secondary-1);
-    /* box-shadow: inset 1px 1px 10px ##D9D9D9; */
 
     box-shadow: 0px 1px 3px 1px rgba(217,217,217,0.75) inset;
--webkit-box-shadow: 0px 1px 3px 1px rgba(217,217,217,0.75) inset;
--moz-box-shadow: 0px 1px 3px 1px rgba(217,217,217,0.75) inset;
+                -webkit-box-shadow: 0px 1px 3px 1px rgba(217,217,217,0.75) inset;
+                -moz-box-shadow: 0px 1px 3px 1px rgba(217,217,217,0.75) inset;
 
     color: var(--text);
   }
 
-  h2 {
+  .hero__title {
     font-size: 90px;
     line-height: 86px;
     margin-bottom: 57px;
     max-width: 70%;
   }
 
-  .hero-text {
+  .hero__text {
     font-size: 32px;
     line-height: 40px;
   }
 
-  .hero-btn-wrap {
+  .hero__btn-wrap {
     position: absolute;
     right: 0;
     bottom: 0;
   }
-  .hero-action {
+  .hero__action {
     display: inline-block;
     font-size: 47px;
     font-weight: bold;
     padding: 38px 50px;
+  }
+
+  @media (max-width: 425px) {
+    .hero__title {
+      font-size: 40px;
+      line-height: 45px;
+      max-width: 100%;
+    }
   }
 </style>

@@ -8,29 +8,25 @@ const {copyright, footerLinks, menu, socials} = content;
 
 const date = '2024'
 ---
-<footer>
-  <div>
+<footer class="footer">
+  <div class="footer__meta">
     <p class="logo">AI Atlant</p>
     <p class="copyright">(c) {copyright} | {date}</p>
   </div>
 
-  <div>
-    <nav class="navigation">
-      {menu.map((item) => (
-        <Link href={item.href} class="navigation__item" >{item.title}</Link>
-      ))}
-    </nav>
-  </div>
+  <nav class="footer__nav navigation">
+    {menu.map((item) => (
+      <Link href={item.href} class="navigation__item" >{item.title}</Link>
+    ))}
+  </nav>
 
-  <div>
-    <nav class="sources">
-      {footerLinks.map((item) => (
-        <Link view="accent" href={item.href} class="sources__item" data-disabled={item.isDisabled}>{item.title}</Link>
-      ))}
-    </nav>
-  </div>
+  <nav class="footer__menu sources">
+    {footerLinks.map((item) => (
+      <Link view="accent" href={item.href} class="sources__item" data-disabled={item.isDisabled}>{item.title}</Link>
+    ))}
+  </nav>
 
-  <div class="socials">
+  <div class="footer__soc socials">
     <a href={socials.Instagram.href}>
       <IconInsta />
     </a>
@@ -42,15 +38,33 @@ const date = '2024'
 </footer>
 
 <style>
-  footer {
+  .footer {
     position: relative;
     z-index: 2;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 'meta navi menu soc';
     gap: var(--gap-l);
     color: var(--text);
     padding: 48px;
     padding-right: 65px;
+    background-color: var(--primary-1);
+  }
+
+  .footer__meta {
+    grid-area: meta;
+  }
+
+  .footer__nav {
+    grid-area: navi;
+  }
+
+  .footer__menu {
+    grid-area: menu;
+  }
+
+  .footer__soc {
+    grid-area: soc;
   }
 
   .logo {
@@ -81,17 +95,33 @@ const date = '2024'
     gap: 32px;
   }
 
-  .sources__item {
-    /* color: var(--text); */
-    /* font-size: 24px; */
-    /* line-height: 35px; */
-    /* color: var(--accent-2-secondary); */
-    /* text-decoration: none; */
-  }
-
   .socials {
     display: flex;
     gap: var(--gap-xxl);
     justify-self: end;
+  }
+
+  @media (max-width: 425px) {
+    .footer {
+      grid-template-columns: 1fr;
+      padding: 48px 32px 56px;
+      grid-template-areas:
+        'meta'
+        'soc'
+        'navi'
+        'menu';
+      gap: 48px;
+      margin: 0;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+    }
+
+    .footer__soc {
+      justify-self: start;
+    }
+
+    .logo {
+      margin-bottom: 8px;
+    }
   }
 </style>

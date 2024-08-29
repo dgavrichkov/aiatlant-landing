@@ -7,14 +7,14 @@ import Search from './Search.astro';
 const { games } = content;
 ---
 <section class="games" id={games.id}>
-  <header>
-    <h2>{games.title}</h2>
+  <header class="games__header">
+    <h2 class="games__title">{games.title}</h2>
     <Search />
   </header>
   <div class="games__container scroll-container">
-    <ul class="gamelist">
+    <ul class="gamelist carousel">
       {games.list.map((game) => (
-        <li class="gamelist__item" data-name={game.title}>
+        <li class="gamelist__item carousel__item" data-name={game.title}>
           <Card game={game} />
           <Modal game={game} />
         </li>
@@ -24,7 +24,7 @@ const { games } = content;
 </section>
 
 <style>
-  section {
+  .games {
     position: relative;
     z-index: 3;
     margin-top: var(--gap-l);
@@ -35,14 +35,14 @@ const { games } = content;
     overflow: hidden;
   }
 
-  header {
+  .games__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 64px;
   }
 
-  h2 {
+  .games__title {
     font-size: 80px;
     line-height: 86px;
     color: var(--text);
@@ -56,9 +56,11 @@ const { games } = content;
   }
 
   .gamelist {
+    --columns: 4;
+    --colgap: var(--gap-xl);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 42px var(--gap-xl);
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 42px var(--colgap);
     list-style: none;
     padding: 0;
     position: relative;
@@ -66,7 +68,7 @@ const { games } = content;
     padding-bottom: 50px;
   }
 
-  section:after {
+  .games:after {
     content: '';
     pointer-events: none;
     position: absolute;
@@ -82,10 +84,135 @@ const { games } = content;
     transition-property: opacity, transform;
   }
 
-  li.hidden {
+  .gamelist__item.hidden {
     opacity: 0;
     translate: 0 -100%;
     order: 1000;
+  }
+
+  @media (max-width: 1440px) {
+    .gamelist {
+      --columns: 3;
+      --colgap: 74px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .gamelist {
+      --columns: 2;
+      --colgap: 72px;
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .gamelist {
+      --colgap: 32px;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+
+  /* tablet vertical - games slider */
+  @media (max-width: 834px) {
+    .games {
+      max-height: initial;
+      overflow: initial;
+      padding-top: 48px;
+      padding-bottom: 64px;
+      background-color: var(--primary-1);
+    }
+    .games:after {
+      display: none;
+    }
+
+    .games__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 56px;
+    }
+
+    .games__container {
+      margin: 0 calc(-48px - 16px);
+      padding: 0;
+    }
+
+    .gamelist {
+      --colgap: 32px;
+      padding: 0;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel__item {
+      flex: 0 0 70%;
+      scroll-snap-align: center;
+    }
+
+    .carousel__item:first-child {
+      margin-left: 48px;
+    }
+
+    .carousel__item:last-child {
+      margin-right: 48px;
+    }
+  }
+
+  @media (max-width: 667px) {
+    .games {
+      padding-bottom: 48px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .games {
+      padding: 32px 16px 40px;
+    }
+
+    .games__header {
+      gap: 24px;
+    }
+
+    .games__title {
+      font-size: 51px;
+      line-height: 86px;
+    }
+
+    .games__container {
+      margin: 0;
+    }
+    .gamelist {
+      --colgap: 16px;
+    }
+
+    .gamelist__item.hidden {
+      display: none;
+    }
+
+    .carousel__item {
+      flex-basis: 85%;
+    }
+
+    .carousel__item:first-child {
+      margin-left: var(--colgap);
+    }
+
+    .carousel__item:last-child {
+      margin-right: var(--colgap);
+    }
   }
 </style>
 

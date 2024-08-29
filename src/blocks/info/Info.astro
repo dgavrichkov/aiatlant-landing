@@ -8,7 +8,7 @@ import TestInvite from './TestInvite.astro';
 const {info} = content;
 
 ---
-<section id={info.id}>
+<section class="info" id={info.id}>
   <h2 class="visually-hidden">{info.title}</h2>
   <HeroCard />
   <InfoCard />
@@ -17,7 +17,7 @@ const {info} = content;
 </section>
 
 <style>
-  section {
+  .info {
     position: relative;
     z-index: 2;
     margin-top: var(--gap-l);
@@ -29,7 +29,27 @@ const {info} = content;
       'hero hero tg test';
   }
 
-  section > * {
+  .info > * {
     height: 100%;
+  }
+
+  @media (max-width: 1024px) {
+    .info {
+      grid-template-areas:
+      'hero hero hero hero'
+      'info info info info'
+      'tg tg test test';
+    }
+  }
+
+  @media (max-width: 425px) {
+    .info {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      'hero'
+      'info'
+      'tg'
+      'test';
+    }
   }
 </style>

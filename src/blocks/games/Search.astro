@@ -14,6 +14,7 @@
     background-color: #622CBC42;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 32px;
     gap: 16px;
   }
@@ -47,6 +48,7 @@
     background: transparent;
     caret-color: currentcolor;
     color: var(--text);
+    width: calc(100% - 16px - 32px);
   }
 
   .search__input:focus {
@@ -78,5 +80,11 @@
 
   .search:has(input:disabled) .search__label {
     color: var(--accent-1-primary);
+  }
+
+  @media (max-width: 834px) {
+    .search {
+      width: 100%;
+    }
   }
 </style>

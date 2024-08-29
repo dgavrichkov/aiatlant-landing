@@ -4,24 +4,29 @@ import PlanList from './PlanList.astro';
 
 const {plans} = content;
 ---
-<section id={plans.id}>
-  <h2>{plans.title}</h2>
-  <div class="content">
+<section class="plans" id={plans.id}>
+  <h2 class="plans__title">{plans.title}</h2>
+  <div class="plans__content">
     <PlanList list={plans.list} />
   </div>
-  <figure class="illustration">
-    <img width="500" src="/images/heroes-3x.png" alt="dnd characters" />
+  <figure class="plans__illustration">
+    <picture>
+      <source srcset="/images/heroes-big-3x.png" media="(min-width: 1200px)">
+      <source srcset="/images/heroes-mid-3x.png" media="(min-width: 768px)">
+      <source srcset="/images/heroes-small-3x.png" media="(max-width: 425px)">
+      <img width="500" src="/images/heroes-big-3x.png" alt="dnd characters">
+    </picture>
   </figure>
 </section>
 
 <style>
-  section {
+  .plans {
     position: relative;
     z-index: 2;
     margin-top: var(--gap-l);
     color: var(--text);
   }
-  h2 {
+  .plans__title {
     font-size: 80px;
     line-height: 86px;
     color: var(--text);
@@ -29,61 +34,37 @@ const {plans} = content;
     margin-left: 101px;
     margin-top: 136px;
   }
-  
-  .plan__list {
-    width: 530px;
-    margin: 0;
-    padding: 0;
-    padding-left: calc(7px + 22px + 22px + 62px);
-    counter-reset: list-counter;
-    list-style: none;
-    position: relative;
-    margin-left: 183px;
-  }
 
-  .plan__list::before {
-    content: '';
-    width: 7px;
-    height: 100%;
-    position: absolute;
-    left: calc(62px + 22px - 7px);
-    top: 0;
-    background: linear-gradient(to bottom, #DBFC5400, #DBFC54, #DBFC54, #DBFC5400);
-  }
-
-  .plan__item {
-    margin-bottom: 62px;
-    counter-increment: list-counter;
-    position: relative;
-  }
-  .plan__item:before {
-    content: counter(list-counter, decimal-leading-zero);
-    position: absolute;
-    left: calc(-62px - 22px - 22px - 7px);
-    top: 10px;
-    color: var(--text);
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 21px;
-  }
-
-  .plan__name {
-    color: var(--accent-2-secondary);
-    margin-bottom: var(--gap-xxl);
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 21px;
-  }
-
-  .plan__description {
-    font-size: 16px;
-    line-height: 21px;
-    font-weight: 400;
-  }
-
-  .illustration {
+  .plans__illustration {
     position: absolute;
     right: 5%;
     top: 15%;
+  }
+
+  @media (max-width: 667px) {
+    section {
+      /* display: none; */
+    }
+  }
+
+  @media (max-width: 425px) {
+    .plans {
+      padding: 40px 16px 0;
+    }
+    .plans__title {
+      margin: 0;
+      font-size: 51px;
+      line-height: 86px;
+      margin-bottom: 28px;
+    }
+
+    .plans__illustration {
+      position: static;
+      margin-bottom: -60%;
+    }
+
+    .plans__illustration img {
+      width: 100%;
+    }
   }
 </style>
