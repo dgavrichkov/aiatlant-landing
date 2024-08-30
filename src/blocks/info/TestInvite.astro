@@ -22,23 +22,66 @@ const {info: {testInvite}} = content;
     min-height: 208px;
     height: 100%;
     position: relative;
+    padding: 27px;
+    padding-bottom: 40px;
   }
   .testInvite__wrap::after {
     content: '';
     display: block;
-    bottom: 0;
-    right: 0;
-    width: 69px;
-    height: 20px;
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    width: 80px;
+    height: 30px;
     background-image: url('/arrow.svg');
     background-repeat: no-repeat;
     background-size: contain;
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg);
+    
   }
   .testInvite__text {
+    display: block;
     color: var(--primary);
     font-size: var(--h3-size);
     line-height: var(--h3-lh);
     font-weight: 800;
+  }
+  @media (max-width: 1550px) {
+    .testInvite__wrap {
+      padding: 28px 8px 28px 24px;
+    }
+    .testInvite__text {
+      font-size: 30px;
+      line-height: 35px;
+    }
+  }
+
+  @media (max-width: 1194px) {
+    .testInvite__text {
+      font-size: 26px;
+      line-height: 29px;
+    }
+
+    .testInvite__wrap::after {
+      right: 16px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .testInvite__text {
+      width: 70%;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+  }
+
+  @media (max-width: 425px) {
+    .testInvite__text {
+      font-size: 32px;
+      line-height: 29px;
+      width: 80%;
+    }
   }
 </style>

@@ -23,6 +23,7 @@ const {info} = content;
     margin-top: var(--gap-l);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 208px;
     gap: var(--gap-l);
     grid-template-areas:
       'hero hero info info'
@@ -35,10 +36,18 @@ const {info} = content;
 
   @media (max-width: 1024px) {
     .info {
+      grid-template-rows: auto;
       grid-template-areas:
       'hero hero hero hero'
       'info info info info'
       'tg tg test test';
+    }
+  }
+
+  @media (max-width: 768px) {
+    .info {
+      padding-bottom: 32px;
+      outline: 1px solid red;
     }
   }
 

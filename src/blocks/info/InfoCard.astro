@@ -1,40 +1,83 @@
 ---
+import { marked } from 'marked';
 import content from '../../content/atlant.json';
 const {info: {infoCard}} = content;
-// TODO - parse text to transform symbols to tag. Or build another method to 
 ---
-<article class="infocard">
-  {infoCard.text.map((textItem) => (
-    <p>{textItem}</p>
-  ))}
-</article>
+<article class="infocard" set:html={marked.parse(infoCard.text)}></article>
 
 <style>
   .infocard {
+    --bg-x-pos: -12%;
+    --lh-gap: 32px;
+    --text-w: 70%;
     grid-area: info;
     border-radius: var(--radius-l);
     padding: 48px 41px;
-    background-color: var(--secondary-2);
+    background-color: var(--primary-2);
     color: var(--text);
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: var(--lh-gap);
 
     background-image: url('/images/logo-3x.png');
     background-size: auto 481px;
     background-repeat: no-repeat;
-    background-position: center right -20%;
+    background-position: center right var(--bg-x-pos);
   }
 
-  p {
-    font-size: 24px;
+  :global(.infocard p) {
     font-weight: 400;
-    line-height: 32px;
-
-    width: 70%;
+    font-size: 24px;
+    line-height: var(--lh-gap);
+    width: var(--text-w);
   }
 
-  p b {
+  :global(.infocard p strong),
+  :global(.infocard p b) {
     font-weight: 900;
+  }
+
+  @media (max-width: 1550px) {
+    .infocard {
+      --bg-x-pos: -38%;
+      max-height: 368px;
+    }
+  }
+
+  @media (max-width: 1194px) {
+    .infocard {
+      --bg-x-pos: -55%;
+      --text-w: 74%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .infocard {
+      --bg-x-pos: -20%;
+      min-height: 329px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .infocard {
+      --lh-gap: 32px;
+      --bg-x-pos: -50%;
+      --text-w: 80%;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .infocard {
+      --lh-gap: 20px;
+      --bg-x-pos: -66%;
+      --text-w: 70%;
+      padding: 32px 16px;
+      background-size: auto 150%;
+      min-height: 239px;
+    }
+
+    :global(.infocard p) {
+      font-size: 18px;
+    }
   }
 </style>
