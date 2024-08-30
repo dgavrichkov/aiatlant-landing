@@ -101,7 +101,29 @@ const date = '2024'
     justify-self: end;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 1024px) {
+    .footer {
+      padding: 48px 4px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 45px 32px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+        'meta meta soc soc'
+        'navi menu menu .';
+      row-gap: 80px;
+    }
+
+    .footer__soc {
+      justify-self: end;
+    }
+  }
+
+  /* footer mobile size */
+  @media (max-width: 590px) {
     .footer {
       grid-template-columns: 1fr;
       padding: 48px 32px 56px;
@@ -118,6 +140,7 @@ const date = '2024'
 
     .footer__soc {
       justify-self: start;
+      align-self: start;
     }
 
     .logo {
