@@ -57,8 +57,9 @@ const {game, utils, class: className, ...rest} = Astro.props;
     background: var(--primary-1);
     border-radius: 32px;
     width: 674px;
-    max-height: 753px;
-    height: 70vh;
+    max-width: calc(100vw - 74px);
+    max-height: 90vh;
+    max-height: 90dvh;
 
     display: grid;
     grid-template-columns: 1fr;
@@ -66,6 +67,8 @@ const {game, utils, class: className, ...rest} = Astro.props;
     gap: 32px;
 
     padding-bottom: 16px;
+
+    aspect-ratio: 9 / 10;
   }
 
   .modal__hero {
@@ -139,5 +142,11 @@ const {game, utils, class: className, ...rest} = Astro.props;
 
   :global(.modal__description > * + *) {
     margin-top: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .modal__body {
+      aspect-ratio: 6 / 10;
+    }
   }
 </style>
