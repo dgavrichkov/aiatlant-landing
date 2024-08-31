@@ -13,16 +13,13 @@ const {list} = Astro.props;
 <style>
   .plan {
     --gutter: 22px;
-    width: 530px;
-    max-width: 100%;
-    margin: 0;
+
     padding-top: 48px;
     padding-bottom: 48px;
     padding-left: calc(7px + var(--gutter) + var(--gutter) + 62px);
     counter-reset: list-counter;
     list-style: none;
     position: relative;
-    margin-left: 183px;
   }
 
   .plan::before {

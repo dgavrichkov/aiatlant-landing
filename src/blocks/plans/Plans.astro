@@ -25,6 +25,12 @@ const {plans} = content;
     z-index: 2;
     margin-top: var(--gap-l);
     color: var(--text);
+    overflow: hidden;
+    --plan-width: 530px;
+    --plan-left: 183px;
+    --bg-x-pos: 5%;
+    --bg-y-pos: 50%;
+    --bg-width: 43%;
   }
   .plans__title {
     font-size: 80px;
@@ -35,21 +41,93 @@ const {plans} = content;
     margin-top: 136px;
   }
 
-  .plans__illustration {
-    position: absolute;
-    right: 5%;
-    top: 15%;
+  .plans__content {
+    position: relative;
+    z-index: 2;
+    width: var( --plan-width);
+    max-width: 100%;
+    margin: 0;
+    margin-left: var(--plan-left);
   }
 
-  @media (max-width: 667px) {
-    section {
-      /* display: none; */
+  .plans__illustration {
+    z-index: 1;
+    position: absolute;
+    right: var(--bg-x-pos);
+    top: var(--bg-y-pos);
+    max-width: 814px;
+    width: var(--bg-width);
+    transform: translateY(-50%);
+  }
+
+  .plans__illustration img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 1728px) {
+    .plans {
+    --plan-width: 490px;
+    --bg-x-pos: 2%;
+    }
+  }
+
+  @media (max-width: 1440px) {
+    .plans {
+      --bg-x-pos: 0%;
+      --bg-y-pos: 60%;
+      --bg-width: 52%;
+      --plan-left: 155px;
+    }
+  }
+
+  @media (max-width: 1260px) {
+    .plans {
+      --bg-y-pos: 56%;
+      --bg-width: 48%;
+      --plan-left: 46px;
+    }
+  }
+
+  @media (max-width: 1260px) {
+    .plans {
+      margin: 0 -16px;
+      --bg-x-pos: -5%;
+      --bg-y-pos: 60%;
+      --bg-width: 50%;
+      --plan-left: 46px;
+    }
+  }
+
+  @media (max-width: 920px) {
+    .plans {
+      --bg-width: 100%;
+      padding-top: 64px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .plans__title {
+      margin: 0;
+      margin-bottom: 65px;
+    }
+
+    .plans__content {
+      margin: 0;
+    }
+
+    .plans__illustration {
+      position: static;
+      transform: none;
     }
   }
 
   @media (max-width: 425px) {
     .plans {
       padding: 40px 16px 0;
+      --bg-width: 100%;
     }
     .plans__title {
       margin: 0;
@@ -59,7 +137,6 @@ const {plans} = content;
     }
 
     .plans__illustration {
-      position: static;
       margin-bottom: -60%;
     }
 
