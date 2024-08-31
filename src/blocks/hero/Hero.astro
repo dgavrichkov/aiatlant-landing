@@ -1,13 +1,16 @@
 ---
+import { marked } from 'marked';
 import content from '../../content/atlant.json';
 import Button from '../../ui/Button.astro';
 
 const {hero} = content;
 ---
 <section class="hero" id={hero.id}>
-  <h2 class="hero__title">{hero.title}</h2>
-  <p class="hero__text">{hero.text}</p>
-  <div class="hero__btn-wrap">
+  <div class="hero__content">
+    <h2 class="hero__title" set:html={marked.parse(hero.title)}></h2>
+    <p class="hero__text">{hero.text}</p>
+  </div>
+  <div class="hero__btn">
     <Button tag="a" href={hero.button.href} class="hero__action">{hero.button.label}</Button>
   </div>
 </section>
@@ -17,15 +20,11 @@ const {hero} = content;
     position: relative;
     z-index: 2;
     margin-top: var(--gap-l);
-    border-radius: var(--radius-m);
+    border-radius: 24px;
     padding: 60px 48px;
     background-color: var(--secondary-1);
-
-    box-shadow: 0px 1px 3px 1px rgba(217,217,217,0.75) inset;
-                -webkit-box-shadow: 0px 1px 3px 1px rgba(217,217,217,0.75) inset;
-                -moz-box-shadow: 0px 1px 3px 1px rgba(217,217,217,0.75) inset;
-
     color: var(--text);
+    min-height: 448px;
   }
 
   .hero__title {
@@ -38,25 +37,90 @@ const {hero} = content;
   .hero__text {
     font-size: 32px;
     line-height: 40px;
+
+    max-width: 50%;
   }
 
-  .hero__btn-wrap {
+  .hero__btn {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 16px;
+    bottom: 16px;
   }
+
   .hero__action {
     display: inline-block;
-    font-size: 47px;
-    font-weight: bold;
+    font-size: 46px;
+    line-height: 33px;
+    font-weight: 600;
     padding: 38px 50px;
+    border-radius: 24px;
+  }
+
+  @media (max-width: 1728px) {
+    .hero__title {
+      max-width: 100%;
+    }
+
+    .hero__text {
+      max-width: 60%;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .hero__title {
+      font-size: 64px;
+      line-height: 1;
+      max-width: 80%;
+    }
+
+    .hero__text {
+      max-width: 56%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 16px 16px 24px;
+      min-height: initial;
+    }
+
+    .hero__content {
+      padding: 16px 16px 35px;
+      min-height: 266px;
+      border-radius: 32px;
+      margin-bottom: 8px;
+    }
+
+    .hero__title {
+      max-width: 100%;
+      margin-bottom: 24px;
+      font-size: 40px;
+      line-height: 45px;
+    }
+
+    .hero__text {
+      max-width: 100%;
+      font-size: 16px;
+      line-height: 21px;
+    }
+
+    .hero__btn {
+      position: static;
+    }
+
+    .hero__action {
+      font-size: 32px;
+      line-height: 22px;
+      padding: 28px;
+      width: 100%;
+      text-align: center;
+    }
   }
 
   @media (max-width: 425px) {
     .hero__title {
       font-size: 40px;
       line-height: 45px;
-      max-width: 100%;
     }
   }
 </style>
