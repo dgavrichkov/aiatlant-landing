@@ -23,23 +23,28 @@ const LANG = 'en';
 		<title>{TITLE}</title>
 	</head>
 	<body>
-		<Header />
-    <Hero />
-    <Info />
-    <Games />
-    <Plans />
-    <Footer />
-		<!-- <Ellipses /> -->
+		<div class="container">
+			<Header />
+			<Hero />
+			<Info />
+			<Games />
+			<Plans />
+			<Footer />
+			<Ellipses />
+		</div>
 	</body>
 </html>
 
 <style>
 	body {
-		padding: var(--gap-xl);
 		background: var(--primary-1);
 		font-family: "Jost";
+	}
 
+	.container {
+		padding: var(--gap-xl);
 		position: relative;
+		overflow-x: hidden;
 	}
 
 	@media (max-width: 768px) {

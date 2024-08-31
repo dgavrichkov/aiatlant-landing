@@ -6,6 +6,7 @@ import Button from '../../ui/Button.astro';
 const {hero} = content;
 ---
 <section class="hero" id={hero.id}>
+  <div class="hero__ellipse"></div>
   <div class="hero__content">
     <h2 class="hero__title" set:html={marked.parse(hero.title)}></h2>
     <p class="hero__text">{hero.text}</p>
@@ -17,6 +18,10 @@ const {hero} = content;
 
 <style>
   .hero {
+    --ellips-width: 876px;
+    --ellips-height: 835px;
+    --ellips-left: 93px;
+    --ellips-top: -193px;
     position: relative;
     z-index: 2;
     margin-top: var(--gap-l);
@@ -25,6 +30,11 @@ const {hero} = content;
     background-color: var(--secondary-1);
     color: var(--text);
     min-height: 448px;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
   }
 
   .hero__title {
@@ -43,6 +53,7 @@ const {hero} = content;
 
   .hero__btn {
     position: absolute;
+    z-index: 2;
     right: 16px;
     bottom: 16px;
   }
@@ -54,6 +65,20 @@ const {hero} = content;
     font-weight: 600;
     padding: 38px 50px;
     border-radius: 24px;
+  }
+
+  .hero__ellipse {
+    position: absolute;
+    width: var(--ellips-width);
+    height: var(--ellips-height);
+    border-radius: 50%;
+    left: var(--ellips-left);
+    top: var(--ellips-top);
+    filter: blur(700px);
+    background: rgb(0, 122, 255);
+    opacity: 0.52;
+    z-index: 0;
+    /* display: none; */
   }
 
   @media (max-width: 1728px) {
