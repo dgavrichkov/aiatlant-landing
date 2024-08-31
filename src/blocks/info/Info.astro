@@ -1,19 +1,17 @@
 ---
-import content from '../../content/atlant.json';
 import HeroCard from './HeroCard.astro';
 import InfoCard from './InfoCard.astro';
 import TgInvite from './TgInvite.astro';
 import TestInvite from './TestInvite.astro';
 
-const {info} = content;
-
+const { data: info } = Astro.props;
 ---
 <section class="info" id={info.id}>
   <h2 class="visually-hidden">{info.title}</h2>
-  <HeroCard />
-  <InfoCard />
-  <TgInvite />
-  <TestInvite />
+  <HeroCard data={info.heroCard} />
+  <InfoCard data={info.infoCard} />
+  <TgInvite data={info.tgInvite} />
+  <TestInvite data={info.testInvite} />
 </section>
 
 <style>

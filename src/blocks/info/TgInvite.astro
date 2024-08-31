@@ -1,6 +1,5 @@
 ---
-import content from '../../content/atlant.json';
-const {info: {tgInvite}} = content;
+const { data: tgInvite } = Astro.props;
 ---
 <a class="tgInvite" href={tgInvite.href}>
   <article class="tgInvite__wrap">

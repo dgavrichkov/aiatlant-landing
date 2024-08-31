@@ -1,6 +1,5 @@
 ---
-import content from '../../content/atlant.json';
-const {info: {testInvite}} = content;
+const { data: testInvite } = Astro.props;
 ---
 
 <a class="testInvite" href={testInvite.href}>

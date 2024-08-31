@@ -1,7 +1,6 @@
 ---
 import { marked } from 'marked';
-import content from '../../content/atlant.json';
-const {info: {infoCard}} = content;
+const { data: infoCard } = Astro.props;
 ---
 <article class="infocard" set:html={marked.parse(infoCard.text)}></article>
 

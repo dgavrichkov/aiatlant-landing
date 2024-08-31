@@ -1,9 +1,8 @@
 ---
 import { marked } from 'marked';
-import content from '../../content/atlant.json';
 import Button from '../../ui/Button.astro';
 
-const {hero} = content;
+const { data: hero } = Astro.props;
 ---
 <section class="hero" id={hero.id}>
   <div class="hero__ellipse"></div>

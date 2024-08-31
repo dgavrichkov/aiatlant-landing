@@ -1,10 +1,9 @@
 ---
-import content from '../../content/atlant.json';
 import Link from '../../ui/Link.astro';
 import HeaderActions from './HeaderActions.astro';
 import ModalMenu from './ModalMenu.astro';
 
-const { menu } = content;
+const { menu, headerButtons } = Astro.props;
 
 ---
 <header class="header">
@@ -15,12 +14,12 @@ const { menu } = content;
     ))}
   </nav>
   <div class="header__actions">
-    <HeaderActions />
+    <HeaderActions headerButtons={headerButtons} />
   </div>
   <button class="header__burger" data-menu-burger>
     <span class="visually-hidden">Открыть меню</span>
   </button>
-  <ModalMenu />
+  <ModalMenu menu={menu} headerButtons={headerButtons} />
 </header>
 
 <script>
@@ -64,7 +63,7 @@ const { menu } = content;
         link.classList.add('active');
         return
       }
-      
+
       if (link.getAttribute('href') === currentHash) {
         link.classList.add('active');
       } else {

@@ -1,14 +1,11 @@
 ---
-import content from '../../content/atlant.json';
 import Badge from '../../ui/Badge.astro';
 import Button from '../../ui/Button.astro';
 
-const {game} = Astro.props;
-const {games} = content;
-
+const { game, utils, statuses } = Astro.props;
 ---
 <article class="game">
-  {game.isConcept && <Badge class="game__badge">{games.strings.concept}</Badge>}  
+  {game.isConcept && <Badge class="game__badge">{utils.concept}</Badge>}  
   <picture class="game__pic">
     {/* todo sources */}
     <img width="200" src={`images/${game.pic}-1x.png`} alt="TODO alttext">
@@ -20,14 +17,14 @@ const {games} = content;
     ))}
     <br>
     <p class="traits game__textItem">
-      {games.strings.traits}:<br>
+      {utils.traits}:<br>
       {game.traits}
     </p>
   </div>
   <div class="game__actions">
-    <Button tag="button" view="secondary" class="game__button game__moar" data-moar-id={game.id}>{games.strings.moar}</Button>
+    <Button tag="button" view="secondary" class="game__button game__moar" data-moar-id={game.id}>{utils.moar}</Button>
     <Button tag="a" href={game.link.href} class="game__button game__link">
-      {games.statuses[game.status]}
+      {statuses[game.status]}
     </Button>
   </div>
 </article>

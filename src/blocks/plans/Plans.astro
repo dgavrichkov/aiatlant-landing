@@ -1,8 +1,7 @@
 ---
-import content from '../../content/atlant.json';
 import PlanList from './PlanList.astro';
 
-const {plans} = content;
+const { data: plans } = Astro.props;
 ---
 <section class="plans" id={plans.id}>
   <h2 class="plans__title">{plans.title}</h2>

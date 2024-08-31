@@ -1,11 +1,8 @@
 ---
 import { marked } from 'marked';
 import Badge from '../../ui/Badge.astro';
-import content from '../../content/atlant.json';
 
-const {game, class: className, ...rest} = Astro.props;
-
-const { games } = content;
+const {game, utils, class: className, ...rest} = Astro.props;
 ---
 
 <div class:list={[className, 'modal', 'hidden']} data-modal-id={game.id} {...rest}>
@@ -15,7 +12,7 @@ const { games } = content;
       <button class="modal__close" data-modal-close>
         <span class="visually-hidden">Закрыть</span>
       </button>
-      {game.isConcept && <Badge class="modal__badge">{games.strings.concept}</Badge>} 
+      {game.isConcept && <Badge class="modal__badge">{utils.concept}</Badge>} 
       <figure class="modal__illustration">
         <img width="200" src={`images/${game.pic}-3x.png`} alt="TODO alttext" />
       </figure>

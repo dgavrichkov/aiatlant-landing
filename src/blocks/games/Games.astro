@@ -1,10 +1,9 @@
 ---
-import content from '../../content/atlant.json';
 import Card from './Card.astro';
 import Modal from './Modal.astro';
 import Search from './Search.astro';
 
-const { games } = content;
+const { data: games } = Astro.props;
 ---
 <section class="games" id={games.id}>
   <header class="games__header">
@@ -15,8 +14,8 @@ const { games } = content;
     <ul class="gamelist carousel">
       {games.list.map((game) => (
         <li class="gamelist__item carousel__item" data-name={game.title}>
-          <Card game={game} />
-          <Modal game={game} />
+          <Card game={game} utils={games.strings} statuses={games.statuses} />
+          <Modal game={game} utils={games.strings} />
         </li>
       ))}
     </ul>
@@ -51,7 +50,7 @@ const { games } = content;
   .games__container {
     max-height: 1114px;
     overflow-y: auto;
-    margin-right: -48px;
+    margin-right: -40px;
     padding-right: 24px;
   }
 

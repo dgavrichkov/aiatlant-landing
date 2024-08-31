@@ -50,6 +50,16 @@
   --radius-xl: 32px;
 }
 
+body {
+  background: var(--primary-1);
+  font-family: "Jost";
+}
+
+/* Блокировка прокрутки */
+body.no-scroll {
+  overflow: hidden;
+}
+
 /* TODO */
 .visually-hidden {
   display: none;
@@ -70,7 +80,14 @@
   border-radius: 37px;
 }
 
-/* Блокировка прокрутки */
-body.no-scroll {
-  overflow: hidden;
+.container {
+  padding: var(--gap-xl);
+  position: relative;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
 }

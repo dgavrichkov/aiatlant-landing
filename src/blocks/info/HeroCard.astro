@@ -1,7 +1,6 @@
 ---
 import { marked } from 'marked';
-import content from '../../content/atlant.json';
-const {info: {heroCard}} = content;
+const { data: heroCard } = Astro.props;
 ---
 <article class="herocard">
   <div class="herocard__logo">AI Atlant</div>

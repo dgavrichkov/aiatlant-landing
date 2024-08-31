@@ -1,13 +1,12 @@
 ---
-import content from '../../content/atlant.json';
 import Link from '../../ui/Link.astro';
 import HeaderActions from './HeaderActions.astro';
-const { menu } = content;
+const { menu, headerButtons } = Astro.props;
 ---
 
 <div class="menu-modal" data-menu-modal>
   <div class="menu-modal__actions">
-    <HeaderActions />
+    <HeaderActions headerButtons={headerButtons} />
   </div>
   <nav class="menu-modal__nav">
     {menu.map((item) => (
