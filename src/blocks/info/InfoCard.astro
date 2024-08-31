@@ -10,7 +10,7 @@ const { data: infoCard } = Astro.props;
     --lh-gap: 32px;
     --text-w: 70%;
     grid-area: info;
-    border-radius: var(--radius-l);
+    border-radius: 24px;
     padding: 48px 41px;
     background-color: var(--primary-2);
     color: var(--text);
@@ -60,7 +60,7 @@ const { data: infoCard } = Astro.props;
   @media (max-width: 768px) {
     .infocard {
       --lh-gap: 32px;
-      --bg-x-pos: -50%;
+      --bg-x-pos: -70%;
       --text-w: 80%;
     }
   }
@@ -68,7 +68,7 @@ const { data: infoCard } = Astro.props;
   @media (max-width: 425px) {
     .infocard {
       --lh-gap: 20px;
-      --bg-x-pos: -66%;
+      --bg-x-pos: -80%;
       --text-w: 70%;
       padding: 32px 16px;
       background-size: auto 150%;
@@ -77,6 +77,12 @@ const { data: infoCard } = Astro.props;
 
     :global(.infocard p) {
       font-size: 18px;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .infocard {
+      --bg-x-pos: -160%;
     }
   }
 </style>

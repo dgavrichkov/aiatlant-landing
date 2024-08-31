@@ -19,35 +19,10 @@
   --error: #ff2775;
   --success: #69d467;
 
-  --logo-weight: 400;
-  --h1-weight: 900;
-  --h1-size: 90px;
-  --h2-weight: 900;
-  --h2-size: 56px;
-  --h3-weight: bold;
-  --h3-size: 32px;
-  --h3-lh: 35px;
-  --h4-weight: 400;
-  --h4-size: 32px;
-  --text-regular-weight: 400;
-  --text-bold-weight: 700;
-  --text-size: 16px;
-  --button-weight: semibold;
-  --button-size: 16px;
-  --size-xl: 32px;
-  --size-l: 24px;
-  --size-m: 16px;
-  --size-s: 10px;
-
   /* gaps */
   --gap-xxl: 32px;
   --gap-xl: 16px;
   --gap-l: 8px;
-
-  /* radius */
-  --radius-m: 16px;
-  --radius-l: 24px;
-  --radius-xl: 32px;
 }
 
 body {
@@ -55,14 +30,22 @@ body {
   font-family: "Jost";
 }
 
-/* Блокировка прокрутки */
 body.no-scroll {
   overflow: hidden;
 }
 
-/* TODO */
 .visually-hidden {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 .scroll-container::-webkit-scrollbar {
