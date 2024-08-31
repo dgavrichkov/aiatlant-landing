@@ -11,7 +11,7 @@ const { menu } = content;
   </div>
   <nav class="menu-modal__nav">
     {menu.map((item) => (
-      <Link href={item.href} class="menu-item" data-menu-closer>{item.title}</Link>
+      <Link data-menu-item href={item.href} class="menu-item" data-menu-closer>{item.title}</Link>
     ))}
   </nav>
 </div>

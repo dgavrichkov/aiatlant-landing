@@ -11,7 +11,7 @@ const { menu } = content;
   <h2 class="header__logo">AI Atlant</h2>
   <nav class="header__navigation">
     {menu.map((item) => (
-      <Link href={item.href} class="menu-item">{item.title}</Link>
+      <Link data-menu-item href={item.href} class="menu-item">{item.title}</Link>
     ))}
   </nav>
   <div class="header__actions">
@@ -52,7 +52,30 @@ const { menu } = content;
         body.classList.remove('no-scroll');
       }
     })
-  })
+  });
+
+  function updateActiveLink() {
+    const links = document.querySelectorAll('[data-menu-item]');
+    const currentHash = window.location.hash;
+
+
+    links.forEach((link, idx) => {
+      if(idx === 0 && currentHash === '') {
+        link.classList.add('active');
+        return
+      }
+      
+      if (link.getAttribute('href') === currentHash) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('load', updateActiveLink);
+
+  window.addEventListener('hashchange', updateActiveLink);
 </script>
 
 <style>
@@ -120,9 +143,6 @@ const { menu } = content;
     .header {
       display: flex;
       gap: 28px;
-    }
-
-    .header__logo {
     }
 
     .header__navigation {

@@ -16,7 +16,7 @@ const date = '2024'
 
   <nav class="footer__nav navigation">
     {menu.map((item) => (
-      <Link href={item.href} class="navigation__item" >{item.title}</Link>
+      <Link data-menu-item href={item.href} class="navigation__item" >{item.title}</Link>
     ))}
   </nav>
 
@@ -87,7 +87,9 @@ const date = '2024'
     gap: 32px;
   }
 
-  .navigation__item {}
+  .navigation__item.active {
+    color: var(--accent-2-secondary);
+  }
 
   .sources {
     display: flex;
