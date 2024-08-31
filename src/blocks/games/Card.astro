@@ -51,7 +51,7 @@ const { game, utils, statuses } = Astro.props;
 
   .game__pic {
     max-width: initial;
-    height: 213px;
+    aspect-ratio: 16 / 10;
     border-radius: 24px;
     overflow: hidden;
     margin-left: -16px;
@@ -63,8 +63,9 @@ const { game, utils, statuses } = Astro.props;
     display: block;
     max-width: initial;
     width: 120%;
+    height: 100%;
     object-fit: cover;
-    object-position: 0 -85px;
+    object-position: 0 15%;
   }
 
   .game__title {

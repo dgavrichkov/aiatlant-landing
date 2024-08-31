@@ -13,13 +13,11 @@ const {game, utils, class: className, ...rest} = Astro.props;
         <span class="visually-hidden">Закрыть</span>
       </button>
       {game.isConcept && <Badge class="modal__badge">{utils.concept}</Badge>} 
-      <figure class="modal__illustration">
-        <picture>
+        <picture class="modal__illustration">
           <source srcset={`images/${game.pic}-1x.webp 1x, images/${game.pic}-3x.webp 2x`} type="image/webp">
           <source srcset={`images/${game.pic}-1x.jpg 1x, images/${game.pic}-3x.jpg 2x`} type="image/jpeg">
           <img width="200" src={`images/${game.pic}-1x.jpg`} alt={game?.alttext || ''}>
         </picture>
-      </figure>
     </div>
     <div class="modal__content scroll-container">
       <div class="modal__title">{game.title}</div>
@@ -114,7 +112,8 @@ const {game, utils, class: className, ...rest} = Astro.props;
   }
 
   .modal__illustration {
-    max-height: 100%;
+    aspect-ratio: 674 / 272;
+    overflow: hidden;
     z-index: 2;
   }
 
@@ -123,7 +122,7 @@ const {game, utils, class: className, ...rest} = Astro.props;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 0 -70px;
+    object-position: 0 15%;
   }
 
   .modal__content {
@@ -151,6 +150,13 @@ const {game, utils, class: className, ...rest} = Astro.props;
   @media (max-width: 768px) {
     .modal__body {
       aspect-ratio: 6 / 10;
+    }
+
+    .modal__illustration {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      height: 100%;
+      max-height: initial;
     }
   }
 </style>
