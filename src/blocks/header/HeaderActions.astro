@@ -1,0 +1,22 @@
+---
+import Button from '../../ui/Button.astro';
+import content from '../../content/atlant.json';
+const {headerButtons} = content;
+---
+
+<Fragment>
+  {headerButtons.map((item) => (
+    <Button tag="a" href={item.href} class="action-item">{item.label}</Button>
+  ))}
+</Fragment>
+
+<style>
+  .action-item {
+    font-size: var(--size-m);
+    font-weight: 600;
+    padding: 12px 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+  }
+</style>

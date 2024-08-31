@@ -69,3 +69,8 @@
   background-color: rgba(98, 44, 188, 0.43);
   border-radius: 37px;
 }
+
+/* Блокировка прокрутки */
+body.no-scroll {
+  overflow: hidden;
+}
