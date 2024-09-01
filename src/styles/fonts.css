@@ -1,41 +1,41 @@
 @font-face {
   font-family: "Jost";
-  src: url("fonts/Jost-Regular.ttf");
+  src: url("/fonts/Jost-Regular.ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Jost";
-  src: url("fonts/Jost-Bold.ttf");
+  src: url("/fonts/Jost-Bold.ttf");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Jost";
-  src: url("fonts/Jost-SemiBold.ttf");
+  src: url("/fonts/Jost-SemiBold.ttf");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Jost";
-  src: url("fonts/Jost-ExtraBold.ttf");
+  src: url("/fonts/Jost-ExtraBold.ttf");
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Jost";
-  src: url("fonts/Jost-Black.ttf");
+  src: url("/fonts/Jost-Black.ttf");
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Jomhuria";
-  src: url("fonts/Jomhuria-Regular.ttf");
+  src: url("/fonts/Jomhuria-Regular.ttf");
   font-weight: 400;
   font-style: normal;
 }
