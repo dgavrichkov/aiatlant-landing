@@ -7,9 +7,9 @@ const { game, utils, statuses } = Astro.props;
 <article class="game">
   {game.isConcept && <Badge class="game__badge">{utils.concept}</Badge>}  
   <picture class="game__pic">
-    <source srcset={`images/${game.pic}-1x.webp 1x, images/${game.pic}-3x.webp 2x`} type="image/webp">
-    <source srcset={`images/${game.pic}-1x.jpg 1x, images/${game.pic}-3x.jpg 2x`} type="image/jpeg">
-    <img width="200" src={`images/${game.pic}-1x.jpg`} alt={game?.alttext || ''}>
+    <source srcset={`./images/${game.pic}-1x.webp 1x, ./images/${game.pic}-3x.webp 2x`} type="image/webp">
+    <source srcset={`./images/${game.pic}-1x.jpg 1x, ./images/${game.pic}-3x.jpg 2x`} type="image/jpeg">
+    <img width="200" src={`./images/${game.pic}-1x.jpg`} alt={game?.alttext || ''}>
   </picture>
   <h3 class="game__title">{game.title}</h3>
   <div class="game__text">
