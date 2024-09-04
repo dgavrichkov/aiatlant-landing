@@ -70,7 +70,7 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
-  body {
+  .container {
     padding: 0;
   }
 }

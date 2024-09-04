@@ -13,6 +13,7 @@ const { data: hero } = Astro.props;
   <div class="hero__btn">
     <Button tag="a" href={hero.button.href} class="hero__action">{hero.button.label}</Button>
   </div>
+  <div class="hero__decor"></div>
 </section>
 
 <style>
@@ -21,14 +22,42 @@ const { data: hero } = Astro.props;
     --ellips-height: 835px;
     --ellips-left: 93px;
     --ellips-top: -193px;
+    --btn-slot-width: 386px;
+    --btn-slot-height: 109px;
+    --btn-padding: 16px;
     position: relative;
     z-index: 2;
     margin-top: var(--gap-l);
     border-radius: 24px;
     padding: 60px 48px;
-    background-color: var(--secondary-1);
     color: var(--text);
     min-height: 448px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - (var(--btn-padding) * 2) - var(--btn-slot-height));
+    border-radius: 24px;
+    border-bottom-left-radius: 0;
+    background-color: var(--secondary-1);
+    z-index: 0;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: calc(100% - (var(--btn-padding) * 2) - var(--btn-slot-width) + 1px);
+    height: calc((var(--btn-padding) * 2) + var(--btn-slot-height));
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-1);
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    z-index: 0;
   }
 
   .hero__content {
@@ -47,14 +76,34 @@ const { data: hero } = Astro.props;
     font-size: 32px;
     line-height: 40px;
 
-    max-width: 50%;
+    max-width: calc(100% - var(--btn-slot-width));
   }
 
   .hero__btn {
     position: absolute;
+    overflow: hidden;
+    padding: var(--btn-padding);
+    right: 0;
+    bottom: 0;
+  }
+
+  .hero__btn::before {
+    content: "";
+    display: block;
+    width: 48px;
+    aspect-ratio: 1;
+    position: absolute;
+    border-radius: 50%;
+    top: 0px;
+    left: 0px;
+    box-shadow: -24px -24px 0 0 var(--secondary-1);
+    z-index: 1;
+  }
+
+  .hero__btn > * {
+    position: relative;
     z-index: 2;
-    right: 16px;
-    bottom: 16px;
+    max-width: var(--btn-slot-width);
   }
 
   .hero__action {
@@ -76,17 +125,16 @@ const { data: hero } = Astro.props;
     filter: blur(700px);
     background: rgb(0, 122, 255);
     opacity: 0.52;
-    z-index: 0;
-    /* display: none; */
+    z-index: 2;
+  }
+
+  .hero__decor {
+    display: none;
   }
 
   @media (max-width: 1728px) {
     .hero__title {
       max-width: 100%;
-    }
-
-    .hero__text {
-      max-width: 60%;
     }
   }
   
@@ -96,16 +144,55 @@ const { data: hero } = Astro.props;
       line-height: 1;
       max-width: 80%;
     }
-
-    .hero__text {
-      max-width: 56%;
-    }
   }
 
   @media (max-width: 768px) {
     .hero {
       padding: 16px 16px 24px;
       min-height: initial;
+      padding: 0;
+    }
+
+    .hero::before {
+      height: calc(100% - 107px + 1px);
+      background-color: var(--secondary-1);
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      z-index: 1;
+    }
+
+    .hero::after {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      background-color: var(--secondary-2);
+      z-index: 0;
+      opacity: 0.32;
+    }
+
+    .hero__decor {
+      display: block;
+    }
+
+    .hero__decor::before,
+    .hero__decor::after {
+      content: '';
+      position: absolute;
+      top: calc(100% - 107px);
+      width: calc((100% - 380px) / 2);
+      height: 50px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+      background-color: var(--secondary-1);
+      z-index: 1;
+    }
+
+    .hero__decor::before {
+      left: 0;
+    }
+
+    .hero__decor::after {
+      right: 0;
     }
 
     .hero__content {
@@ -116,6 +203,8 @@ const { data: hero } = Astro.props;
     }
 
     .hero__title {
+      position: relative;
+      z-index: 10;
       max-width: 100%;
       margin-bottom: 24px;
       font-size: 40px;
@@ -132,6 +221,26 @@ const { data: hero } = Astro.props;
       position: relative;
       right: initial;
       bottom: initial;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px;
+      padding-bottom: 8px;
+
+      max-width: 380px;
+      overflow: hidden;
+    }
+
+    .hero__btn::after {
+      content: "";
+      display: block;
+      width: 48px;
+      aspect-ratio: 1;
+      position: absolute;
+      border-radius: 50%;
+      top: 0px;
+      right: 0px;
+      box-shadow: 24px -24px 0 0 var(--secondary-1);
+      z-index: 1;
     }
 
     .hero__action {
@@ -144,6 +253,37 @@ const { data: hero } = Astro.props;
   }
 
   @media (max-width: 425px) {
+    .hero {
+      padding: 8px 16px 24px;
+    }
+
+    .hero::before {
+      background-color: var(--primary-1);
+      width: calc(100% - 32px);
+      left: 16px;
+      top: 8px;
+      height: calc(100% - 8px - 8px - 77px - 24px);
+      border-radius: 24px;
+    }
+
+    .hero::after {
+      background-color: var(--accent-1-primary);
+      opacity: 0.2;
+    }
+
+    .hero__btn {
+      padding: 0;
+    }
+
+    .hero__btn::before,
+    .hero__btn::after {
+      display: none;
+    }
+
+    .hero__decor {
+      display: none;
+    }
+
     .hero__title {
       font-size: 40px;
       line-height: 45px;
