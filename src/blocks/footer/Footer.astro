@@ -26,13 +26,17 @@ const date = '2024'
   </nav>
 
   <div class="footer__soc socials">
-    <a href={socials.Instagram.href}>
-      <IconInsta />
-    </a>
-    <a href={socials.Telegram.href}>
-      <span class="visually-hidden">{socials.Telegram.label}</span>
-      <IconTg />
-    </a>
+    {socials.Instagram && (
+      <a href={socials.Instagram.href}>
+        <IconInsta />
+      </a>
+    )}
+    {socials.Telegram && (
+      <a href={socials.Telegram.href}>
+        <span class="visually-hidden">{socials.Telegram.label}</span>
+        <IconTg />
+      </a>
+    )}
   </div>
 </footer>
 
