@@ -3,6 +3,7 @@ import Badge from '../../ui/Badge.astro';
 import Button from '../../ui/Button.astro';
 
 const { game, utils, statuses } = Astro.props;
+const isDisabled = game.status !== 'ready';
 ---
 <article class="game">
   {game.isConcept && <Badge class="game__badge">{utils.concept}</Badge>}  
@@ -24,7 +25,7 @@ const { game, utils, statuses } = Astro.props;
   </div>
   <div class="game__actions">
     <Button tag="button" view="secondary" class="game__button game__moar" data-moar-id={game.id}>{utils.moar}</Button>
-    <Button tag="a" href={game.link.href} class="game__button game__link">
+    <Button tag="a" href={game.link.href} class="game__button game__link" disabled={isDisabled}>
       {statuses[game.status]}
     </Button>
   </div>
