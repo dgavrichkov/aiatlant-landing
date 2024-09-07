@@ -1,0 +1,65 @@
+---
+import { marked } from "marked";
+
+const { data } = Astro.props;
+---
+
+<section class="who container" id={data.who}>
+  <h2 class="who__title title">{data.title}</h2>
+  <ul class="who__list">
+    {
+      data.list.map((item) => (
+        <li class="who__item pill" set:html={marked.parse(item.text)} />
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .who {
+    color: var(--text);
+    margin: 82px 0;
+  }
+
+  .who__title {
+    margin-bottom: 62px;
+  }
+
+  .who__list {
+    list-style: none;
+    display: flex;
+    gap: 16px 32px;
+    padding: 20px 0;
+  }
+
+  .who__item {
+    width: calc(100% / 3);
+  }
+
+  .pill {
+    padding: 62px 16px;
+    background: var(--pill-bg);
+    color: var(--text);
+    border-radius: 1000px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  .pill:nth-child(1) {
+    --pill-bg: var(--lemon);
+    color: var(--button-secondary);
+    transform: rotate(-6.7deg);
+  }
+
+  .pill:nth-child(2) {
+    --pill-bg: var(--accent);
+    transform: rotate(6.5deg);
+  }
+
+  .pill:nth-child(3) {
+    --pill-bg: var(--success);
+    transform: rotate(-5.64deg);
+  }
+</style>
