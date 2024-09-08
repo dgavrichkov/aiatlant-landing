@@ -23,8 +23,8 @@ jobs:
       - name: Trying access to secret
         run: echo "TEST_ENVIRONMENT=${{ env.TEST_ENVIRONMENT }}" > .env
       - name: Install, build, and upload your site
-        # env:
-        #   TEST_ENVIRONMENT: ${{ env.TEST_ENVIRONMENT }}
+        env:
+          TEST_ENVIRONMENT: ${{ env.TEST_ENVIRONMENT }}
         uses: withastro/action@v3
         # with:
         # path: . # The root location of your Astro project inside the repository. (optional)
