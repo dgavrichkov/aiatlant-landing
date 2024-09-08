@@ -25,6 +25,8 @@ const {
 
 const TITLE = "Ai Atlant";
 const LANG = "ru";
+
+const testVar = import.meta.env.TEST_ENVIRONMENT;
 ---
 
 <html lang={LANG}>
@@ -52,3 +54,7 @@ const LANG = "ru";
     </div>
   </body>
 </html>
+
+<script define:vars={{ testVar }}>
+  console.log("Test:", testVar);
+</script>
