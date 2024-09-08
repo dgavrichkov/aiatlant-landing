@@ -1,0 +1,153 @@
+:root {
+  --success: #69d467;
+  --error: #cc2b3d;
+  --text-primary: #202020;
+  --text-secondary: #434657;
+  --background-primary: #24202f;
+  --background-secondary: #3b3d8a;
+  --button-primary: #5763d3;
+  --button-secondary: #628dfe;
+  --text: #ffffff;
+  --accent: #ce6f53;
+  --lemon: #dbfc54;
+
+  background: var(--button-secondary);
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/Jost-Regular.eot");
+  src: local("Jost Regular"), local("Jost-Regular"),
+    url("/fonts/Jost-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jost-Regular.woff2") format("woff2"),
+    url("/fonts/Jost-Regular.woff") format("woff"),
+    url("/fonts/Jost-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/Jost-Bold.eot");
+  src: local("Jost Bold"), local("Jost-Bold"),
+    url("/fonts/Jost-Bold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jost-Bold.woff2") format("woff2"),
+    url("/fonts/Jost-Bold.woff") format("woff"),
+    url("/fonts/Jost-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/Jost-SemiBold.eot");
+  src: local("Jost SemiBold"), local("Jost-SemiBold"),
+    url("/fonts/Jost-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jost-SemiBold.woff2") format("woff2"),
+    url("/fonts/Jost-SemiBold.woff") format("woff"),
+    url("/fonts/Jost-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/Jost-ExtraBold.eot");
+  src: local("Jost ExtraBold"), local("Jost-ExtraBold"),
+    url("/fonts/Jost-ExtraBold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jost-ExtraBold.woff2") format("woff2"),
+    url("/fonts/Jost-ExtraBold.woff") format("woff"),
+    url("/fonts/Jost-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/Jost-Black.eot");
+  src: local("Jost Black"), local("Jost-Black"),
+    url("/fonts/Jost-Black.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jost-Black.woff2") format("woff2"),
+    url("/fonts/Jost-Black.woff") format("woff"),
+    url("/fonts/Jost-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Dela Gothic One";
+  src: url("/fonts/DelaGothicOne-Regular.eot");
+  src: local("Dela Gothic One Regular"), local("DelaGothicOne-Regular"),
+    url("/fonts/DelaGothicOne-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/DelaGothicOne-Regular.woff2") format("woff2"),
+    url("/fonts/DelaGothicOne-Regular.woff") format("woff"),
+    url("/fonts/DelaGothicOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: Jost, sans-serif;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  padding: 0 100px;
+}
+
+.title {
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 120px;
+}
+
+a.uiButton,
+button.uiButton {
+  font-weight: 700;
+  font-size: 32px;
+  border-radius: 32px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 13px 24px;
+}
+
+.uiButton.default {
+  color: var(--text);
+  background: var(--success);
+}
+
+.uiButton.default[disabled] {
+  pointer-events: none;
+  background-color: var(--button-primary);
+  color: var(--button-secondary);
+}
+.uiButton.secondary[disabled] {
+  pointer-events: none;
+}
+
+.uiButton.default:hover {
+  background-color: var(--accent);
+}

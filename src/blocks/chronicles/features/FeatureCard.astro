@@ -1,0 +1,42 @@
+---
+// import type { ImageMetadata } from "astro";
+// import { Image } from "astro:assets";
+
+// const images = import.meta.glob<{ default: ImageMetadata }>(
+//   "/src/assets/chronicles/features/*.{jpeg,jpg,png,gif}"
+// );
+
+interface Props {
+  data: {
+    id: number;
+    image: string;
+    name: string;
+    text: string;
+    alttext?: string;
+  };
+}
+
+const { data: item } = Astro.props;
+
+// const imagePath = `/src/assets/chronicles/features/${item.image}-1x.jpg`;
+---
+
+<article>
+  <picture class="feature__pic">
+    <source
+      srcset={`/images/chronicles/${item.image}-1x.webp 1x, /images/chronicles/${item.image}-2x.webp 2x`}
+      type="image/webp"
+    />
+    <source
+      srcset={`/images/chronicles/${item.image}-1x.jpg 1x, /images/chronicles/${item.image}-2x.jpg 2x`}
+      type="image/jpeg"
+    />
+    <img
+      width="200"
+      src={`/images/chronicles/${item.image}-1x.jpg`}
+      alt={item?.alttext || ""}
+    />
+  </picture>
+  <div>{item.name}</div>
+  <div set:html={item.text} />
+</article>

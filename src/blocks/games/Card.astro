@@ -1,31 +1,50 @@
 ---
-import Badge from '../../ui/Badge.astro';
-import Button from '../../ui/Button.astro';
+import Badge from "../../ui/Badge.astro";
+import Button from "../../ui/Button.astro";
 
 const { game, utils, statuses } = Astro.props;
-const isDisabled = game.status !== 'ready';
+const isDisabled = game.status !== "ready";
 ---
+
 <article class="game">
-  {game.isConcept && <Badge class="game__badge">{utils.concept}</Badge>}  
+  {game.isConcept && <Badge class="game__badge">{utils.concept}</Badge>}
   <picture class="game__pic">
-    <source srcset={`./images/${game.pic}-1x.webp 1x, ./images/${game.pic}-3x.webp 2x`} type="image/webp">
-    <source srcset={`./images/${game.pic}-1x.jpg 1x, ./images/${game.pic}-3x.jpg 2x`} type="image/jpeg">
-    <img width="200" src={`./images/${game.pic}-1x.jpg`} alt={game?.alttext || ''}>
+    <source
+      srcset={`/images/${game.pic}-1x.webp 1x, /images/${game.pic}-3x.webp 2x`}
+      type="image/webp"
+    />
+    <source
+      srcset={`/images/${game.pic}-1x.jpg 1x, /images/${game.pic}-3x.jpg 2x`}
+      type="image/jpeg"
+    />
+    <img
+      width="200"
+      src={`/images/${game.pic}-1x.jpg`}
+      alt={game?.alttext || ""}
+    />
   </picture>
   <h3 class="game__title">{game.title}</h3>
   <div class="game__text">
-    {game.description.map((item) => (
-      <p class="game__textItem">{item}</p>
-    ))}
-    <br>
+    {game.description.map((item) => <p class="game__textItem">{item}</p>)}
+    <br />
     <p class="traits game__textItem">
-      {utils.traits}:<br>
+      {utils.traits}:<br />
       {game.traits}
     </p>
   </div>
   <div class="game__actions">
-    <Button tag="button" view="secondary" class="game__button game__moar" data-moar-id={game.id}>{utils.moar}</Button>
-    <Button tag="a" href={game.link.href} class="game__button game__link" disabled={isDisabled}>
+    <Button
+      tag="button"
+      view="secondary"
+      class="game__button game__moar"
+      data-moar-id={game.id}>{utils.moar}</Button
+    >
+    <Button
+      tag="a"
+      href={game.link.href}
+      class="game__button game__link"
+      disabled={isDisabled}
+    >
       {statuses[game.status]}
     </Button>
   </div>

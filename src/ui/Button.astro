@@ -1,72 +1,23 @@
 ---
-const {tag, class: className, view = "default", size = "m", ...rest} = Astro.props;
+// Универсальная кнопка. Компонент задает только поведение. Всю стилизацию размещать в css конкретной страницы.
 
+const { tag, class: className, view = "default", ...rest } = Astro.props;
 
-const sizes={
-  s: 's',
-  m: 'm',
-  l: 'l'
-}
-
-const buttonClassName = `${className} ${view}`
+const buttonClassName = `uiButton ${className} ${view}`;
 ---
 
-{tag === 'a' && (
-  <a class={buttonClassName} {...rest}>
-    <slot />
-  </a>
-)}
+{
+  tag === "a" && (
+    <a class={buttonClassName} {...rest}>
+      <slot />
+    </a>
+  )
+}
 
-{tag === 'button' && (
-  <button class={buttonClassName} {...rest}>
-    <slot />
-  </button>
-)}
-
-<style>
-  a, button {
-    font-weight: 600;
-    font-size: 16px;
-    border: none;
-    border-radius: 16px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .default {
-    color: var(--primary-1);
-    background: var(--accent-2-secondary);
-  }
-
-  .secondary {
-    background-color: transparent;
-    border: 2px solid var(--accent-2-secondary);
-    color: var(--accent-2-secondary);
-  }
-
-  .default[disabled] {
-    pointer-events: none;
-    background-color: var(--accent-1-secondary);
-    color: var(--accent-1-primary);
-  }
-  .secondary[disabled] {
-    pointer-events: none;
-    color: var(--accent-1-secondary);
-    border-color: var(--accent-1-secondary);
-  }
-
-  .default:hover {
-    color: var(--primary-2);
-    border-color: var(--accent-2-primary);
-    background-color: var(--accent-2-primary);
-  }
-  .secondary:hover {
-    background-color: var(--primary-2);
-    color: var(--accent-2-primary);
-    border-color: var(--accent-2-primary);
-  }
-</style>
+{
+  tag === "button" && (
+    <button class={buttonClassName} {...rest}>
+      <slot />
+    </button>
+  )
+}
