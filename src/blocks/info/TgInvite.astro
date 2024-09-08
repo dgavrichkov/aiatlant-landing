@@ -1,6 +1,7 @@
 ---
 const { data: tgInvite } = Astro.props;
 ---
+
 <a class="tgInvite" href={tgInvite.href}>
   <article class="tgInvite__wrap">
     <b>{tgInvite.title}</b>
@@ -34,7 +35,7 @@ const { data: tgInvite } = Astro.props;
   }
 
   .tgInvite__wrap::before {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     top: 0;
@@ -42,21 +43,21 @@ const { data: tgInvite } = Astro.props;
     width: 240px;
     height: 100%;
     width: 100cqh;
-    background-image: url('/images/gnomes.png');
+    background-image: url("/images/gnomes.png");
     background-repeat: no-repeat;
     background-size: contain;
     z-index: 0;
   }
 
   .tgInvite__wrap::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     bottom: 20px;
     right: 60px;
     width: 80px;
     height: 30px;
-    background-image: url('/arrow.svg');
+    background-image: url("/arrow.svg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
@@ -113,6 +114,14 @@ const { data: tgInvite } = Astro.props;
     p {
       font-size: 24px;
       line-height: 28px;
+    }
+
+    .tgInvite__wrap {
+      padding-bottom: 55px;
+    }
+
+    .tgInvite__wrap::after {
+      bottom: 15px;
     }
   }
 

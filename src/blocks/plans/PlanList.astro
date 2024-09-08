@@ -1,13 +1,16 @@
 ---
-const {list} = Astro.props;
+const { list } = Astro.props;
 ---
+
 <ol class="plan">
-  {list.map((item) => (
-    <li class="plan__item">
-      <p class="plan__name">{item.title}</p>
-      <p class="plan__description">{item.text}</p>
-    </li>
-  ))}
+  {
+    list.map((item) => (
+      <li class="plan__item">
+        <p class="plan__name">{item.title}</p>
+        <p class="plan__description">{item.text}</p>
+      </li>
+    ))
+  }
 </ol>
 
 <style>
@@ -23,13 +26,19 @@ const {list} = Astro.props;
   }
 
   .plan::before {
-    content: '';
+    content: "";
     width: 7px;
     height: 100%;
     position: absolute;
     left: calc(62px + var(--gutter) - 7px);
     top: 0;
-    background: linear-gradient(to bottom, #DBFC5400, #DBFC54, #DBFC54, #DBFC5400);
+    background: linear-gradient(
+      to bottom,
+      #dbfc5400,
+      #dbfc54,
+      #dbfc54,
+      #dbfc5400
+    );
   }
 
   .plan__item {
@@ -57,7 +66,7 @@ const {list} = Astro.props;
     margin-bottom: var(--gap-xxl);
     font-weight: 400;
     font-size: 32px;
-    line-height: 21px;
+    line-height: 1;
   }
 
   .plan__description {

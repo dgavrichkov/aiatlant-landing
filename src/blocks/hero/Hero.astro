@@ -1,17 +1,20 @@
 ---
-import { marked } from 'marked';
-import Button from '../../ui/Button.astro';
+import { marked } from "marked";
+import Button from "../../ui/Button.astro";
 
 const { data: hero } = Astro.props;
 ---
+
 <section class="hero" id={hero.id}>
   <div class="hero__ellipse"></div>
   <div class="hero__content">
-    <h2 class="hero__title" set:html={marked.parse(hero.title)}></h2>
+    <h2 class="hero__title" set:html={marked.parse(hero.title)} />
     <p class="hero__text">{hero.text}</p>
   </div>
   <div class="hero__btn">
-    <Button tag="a" href={hero.button.href} class="hero__action">{hero.button.label}</Button>
+    <Button tag="a" href={hero.button.href} class="hero__action"
+      >{hero.button.label}</Button
+    >
   </div>
   <div class="hero__decor"></div>
 </section>
@@ -35,7 +38,7 @@ const { data: hero } = Astro.props;
   }
 
   .hero::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -48,7 +51,7 @@ const { data: hero } = Astro.props;
   }
 
   .hero::after {
-    content: '';
+    content: "";
     position: absolute;
     width: calc(100% - (var(--btn-padding) * 2) - var(--btn-slot-width) + 1px);
     height: calc((var(--btn-padding) * 2) + var(--btn-slot-height));
@@ -139,7 +142,7 @@ const { data: hero } = Astro.props;
       max-width: 100%;
     }
   }
-  
+
   @media (max-width: 1024px) {
     .hero__title {
       font-size: 64px;
@@ -150,7 +153,6 @@ const { data: hero } = Astro.props;
 
   @media (max-width: 768px) {
     .hero {
-      padding: 16px 16px 24px;
       min-height: initial;
       padding: 0;
     }
@@ -178,7 +180,7 @@ const { data: hero } = Astro.props;
 
     .hero__decor::before,
     .hero__decor::after {
-      content: '';
+      content: "";
       position: absolute;
       top: calc(100% - 107px);
       width: calc((100% - 380px) / 2);
@@ -198,7 +200,7 @@ const { data: hero } = Astro.props;
     }
 
     .hero__content {
-      padding: 16px 16px 35px;
+      padding: 16px 24px 35px;
       min-height: 266px;
       border-radius: 32px;
       margin-bottom: 8px;
@@ -209,14 +211,14 @@ const { data: hero } = Astro.props;
       z-index: 10;
       max-width: 100%;
       margin-bottom: 24px;
-      font-size: 40px;
-      line-height: 45px;
+      font-size: 48px;
+      line-height: 1;
     }
 
     .hero__text {
       max-width: 100%;
-      font-size: 16px;
-      line-height: 21px;
+      font-size: 24px;
+      line-height: 32px;
     }
 
     .hero__btn {
