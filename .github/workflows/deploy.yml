@@ -17,7 +17,6 @@ permissions:
 jobs:
   build:
     env:
-      PUBLIC_TEST: ${{ secrets.PUBLIC_TEST }}
       TEST_ENVIRONMENT: ${{ secrets.TEST_ENVIRONMENT }}
     runs-on: ubuntu-latest
     steps:
@@ -26,8 +25,10 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Trying access to secret
-        run: echo "TEST_ENVIRONMENT=${{ secrets.TEST_ENVIRONMENT }}" > .env
+        run: echo "TEST_ENVIRONMENT=${{ env.TEST_ENVIRONMENT }}" > .env
       - name: Install, build, and upload your site
+        env:
+          TEST_ENVIRONMENT: ${{ env.TEST_ENVIRONMENT }}
         uses: withastro/action@v3
         # with:
         # path: . # The root location of your Astro project inside the repository. (optional)
