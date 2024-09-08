@@ -16,16 +16,12 @@ permissions:
 
 jobs:
   build:
-    env:
-      TEST_ENVIRONMENT: ${{ secrets.TEST_ENVIRONMENT }}
     runs-on: ubuntu-latest
     steps:
-      - name: Print environment variables
-        run: env
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Trying access to secret
-        run: echo "TEST_ENVIRONMENT=${{ env.TEST_ENVIRONMENT }}" > .env
+      # - name: Trying access to secret
+      #   run: echo "TEST_ENVIRONMENT=${{ env.TEST_ENVIRONMENT }}" > .env
       - name: Install, build, and upload your site
         env:
           TEST_ENVIRONMENT: ${{ env.TEST_ENVIRONMENT }}
