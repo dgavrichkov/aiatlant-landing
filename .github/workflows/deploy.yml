@@ -16,12 +16,12 @@ permissions:
 
 jobs:
   build:
+    env:
+      TEST_ENVIRONMENT: ${{ secrets.TEST_ENVIRONMENT }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Create .env file
-        run: echo "TEST_ENVIRONMENT=${{ secrets.TEST_ENVIRONMENT }}" > .env
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         # with:
