@@ -7,6 +7,8 @@ import Hero from "../../blocks/hero/Hero.astro";
 import Info from "../../blocks/info/Info.astro";
 import Plans from "../../blocks/plans/Plans.astro";
 import Ellipses from "../../components/Ellipses.astro";
+import YandexMetric from "../../components/analytics/YandexMetric.astro";
+import GoogleAnalytics from "../../components/analytics/GoogleAnalytics.astro";
 import "../../styles/reset.css";
 import "../../styles/fonts.css";
 import "../../styles/main.css";
@@ -34,6 +36,8 @@ const LANG = "ru";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{TITLE}</title>
+    <GoogleAnalytics />
+    <YandexMetric />
   </head>
   <body>
     <div class="container">
