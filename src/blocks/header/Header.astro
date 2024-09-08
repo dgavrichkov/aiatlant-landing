@@ -1,17 +1,21 @@
 ---
-import Link from '../../ui/Link.astro';
-import HeaderActions from './HeaderActions.astro';
-import ModalMenu from './ModalMenu.astro';
+import Link from "../../ui/Link.astro";
+import HeaderActions from "./HeaderActions.astro";
+import ModalMenu from "./ModalMenu.astro";
 
 const { menu, headerButtons } = Astro.props;
-
 ---
+
 <header class="header">
   <h2 class="header__logo">AI Atlant</h2>
   <nav class="header__navigation">
-    {menu.map((item) => (
-      <Link data-menu-item href={item.href} class="menu-item">{item.title}</Link>
-    ))}
+    {
+      menu.map((item) => (
+        <Link data-menu-item href={item.href} class="menu-item">
+          {item.title}
+        </Link>
+      ))
+    }
   </nav>
   <div class="header__actions">
     <HeaderActions headerButtons={headerButtons} />
@@ -25,56 +29,64 @@ const { menu, headerButtons } = Astro.props;
 <script>
   let isMenuOpen = false;
   const body = document.body;
-  const burger = document.querySelector('[data-menu-burger]');
-  const menumodal = document.querySelector('[data-menu-modal');
-  const closers = document.querySelectorAll('[data-menu-closer]');
+  const burger = document.querySelector("[data-menu-burger]");
+  const menumodal = document.querySelector("[data-menu-modal");
+  const closers = document.querySelectorAll("[data-menu-closer]");
 
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('active');
+  burger.addEventListener("click", () => {
+    burger.classList.toggle("active");
     isMenuOpen = !isMenuOpen;
-    
-    if(isMenuOpen) {
-      menumodal.classList.add('active');
-      body.classList.add('no-scroll');
+
+    if (isMenuOpen) {
+      menumodal.classList.add("active");
+      body.classList.add("no-scroll");
     } else {
-      menumodal.classList.remove('active');
-      body.classList.remove('no-scroll');
+      menumodal.classList.remove("active");
+      body.classList.remove("no-scroll");
     }
   });
 
   closers.forEach((closerEl) => {
-    closerEl.addEventListener('click', () => {
-      if(isMenuOpen) {
+    closerEl.addEventListener("click", () => {
+      if (isMenuOpen) {
         isMenuOpen = false;
-        menumodal.classList.remove('active');
-        burger.classList.remove('active');
-        body.classList.remove('no-scroll');
+        menumodal.classList.remove("active");
+        burger.classList.remove("active");
+        body.classList.remove("no-scroll");
       }
-    })
+    });
   });
 
   function updateActiveLink() {
-    const links = document.querySelectorAll('[data-menu-item]');
+    const links = document.querySelectorAll("[data-menu-item]");
     const currentHash = window.location.hash;
 
-
     links.forEach((link, idx) => {
-      if(idx === 0 && currentHash === '') {
-        link.classList.add('active');
-        return
+      if (idx === 0 && currentHash === "") {
+        link.classList.add("active");
+        return;
       }
 
-      if (link.getAttribute('href') === currentHash) {
-        link.classList.add('active');
+      if (link.getAttribute("href") === currentHash) {
+        link.classList.add("active");
       } else {
-        link.classList.remove('active');
+        link.classList.remove("active");
       }
     });
   }
 
-  window.addEventListener('load', updateActiveLink);
+  function resetModalMenu() {
+    isMenuOpen = false;
+    body.classList.remove("no-scroll");
+    menumodal.classList.remove("active");
+    burger.classList.remove("active");
+  }
 
-  window.addEventListener('hashchange', updateActiveLink);
+  window.addEventListener("resize", resetModalMenu);
+
+  window.addEventListener("load", updateActiveLink);
+
+  window.addEventListener("hashchange", updateActiveLink);
 </script>
 
 <style>
@@ -83,7 +95,8 @@ const { menu, headerButtons } = Astro.props;
     z-index: 100;
     border-radius: 24px;
     background: var(--primary-1);
-    padding: 12px var(--gap-xl);
+    padding-left: 24px;
+    padding-right: 24px;
     height: 80px;
     display: flex;
     justify-content: space-between;
@@ -114,14 +127,14 @@ const { menu, headerButtons } = Astro.props;
     cursor: pointer;
     border: none;
     background-color: transparent;
-    background-image: url('./burger.svg');
+    background-image: url("./burger.svg");
     background-repeat: no-repeat;
     background-position: center center;
     transition: all 0.3s ease-in;
   }
 
   .header__burger.active {
-    background-image: url('./close.svg');
+    background-image: url("./close.svg");
   }
 
   .header__actions {
@@ -138,10 +151,13 @@ const { menu, headerButtons } = Astro.props;
     color: var(--accent-2-secondary);
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1025px) {
     .header {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
       gap: 28px;
+      padding: 12px 48px;
+      padding-right: 16px;
     }
 
     .header__navigation {
@@ -159,13 +175,6 @@ const { menu, headerButtons } = Astro.props;
 
     .header__burger {
       display: none;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .header {
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
     }
   }
 
