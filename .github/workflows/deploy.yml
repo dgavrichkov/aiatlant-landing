@@ -18,6 +18,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Print environment variables
+        run: env
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Trying access to secret
