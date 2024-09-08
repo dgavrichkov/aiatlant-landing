@@ -1,10 +1,11 @@
 ---
-import { marked } from 'marked';
+import { marked } from "marked";
 const { data: heroCard } = Astro.props;
 ---
+
 <article class="herocard">
   <div class="herocard__logo">AI Atlant</div>
-  <div class="herocard__title" set:html={marked(heroCard.title)}></div>
+  <div class="herocard__title" set:html={marked(heroCard.title)} />
   <div class="herocard__text">{heroCard.text}</div>
 </article>
 
@@ -14,7 +15,7 @@ const { data: heroCard } = Astro.props;
     grid-area: hero;
     padding: 60px 48px 56px;
     border-radius: 24px;
-    background-image: url('/images/card-hero.jpg');
+    background-image: url("/images/card-hero.jpg");
     background-position-x: var(--bg-x-pos);
     background-size: cover;
     background-repeat: no-repeat;
@@ -24,7 +25,7 @@ const { data: heroCard } = Astro.props;
   }
 
   .herocard::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -52,8 +53,8 @@ const { data: heroCard } = Astro.props;
 
   .herocard__title {
     font-weight: 900;
-    font-size: 56px;
-    line-height: 65px;
+    font-size: 52px;
+    line-height: 62px;
     margin-bottom: 41px;
   }
 
@@ -66,8 +67,7 @@ const { data: heroCard } = Astro.props;
 
   @media (max-width: 1550px) {
     .herocard {
-      padding: 60px 30px 56px 48px ;
-
+      padding: 60px 30px 56px 48px;
     }
     .herocard__text {
       max-width: 100%;
@@ -87,6 +87,17 @@ const { data: heroCard } = Astro.props;
     }
   }
 
+  @media (max-width: 768px) {
+    .herocard {
+      padding: 32px 24px;
+    }
+
+    .herocard__title {
+      font-size: 38px;
+      line-height: 1;
+    }
+  }
+
   @media (max-width: 425px) {
     .herocard {
       padding: 32px 16px;
@@ -101,13 +112,19 @@ const { data: heroCard } = Astro.props;
 
     .herocard__title {
       font-size: 38px;
-      line-height: 38px;
+      line-height: 1;
       margin-bottom: 28px;
     }
 
     .herocard__text {
       font-size: 16px;
       line-height: 17px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .herocard__title {
+      font-size: 30px;
     }
   }
 </style>

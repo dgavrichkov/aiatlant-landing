@@ -1,0 +1,39 @@
+---
+import { marked } from "marked";
+
+const { data } = Astro.props;
+---
+
+<section class="reviews container" id={data.id}>
+  <h2 class="reviews__title title">{data.title}</h2>
+  <div class="reviews__controls">
+    <!-- todo: internationalize srings -->
+    <button class="reviews__arrowbtn reviews__prev">
+      <span class="visually-hidden">Прокрутить назад</span>
+    </button>
+    <button class="reviews__arrowbtn reviews__next">
+      <span class="visually-hidden">Прокрутить вперед</span>
+    </button>
+  </div>
+  <ul class="reviews__list">
+    {
+      data.list.map((item) => (
+        <li class="reviews__item">
+          <card>
+            <rate>{item.rate}</rate>
+            <text set:html={marked.parse(item.text)} />
+          </card>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .reviews {
+    position: relative;
+    z-index: 2;
+    color: var(--text);
+    background-color: var(--button-primary);
+  }
+</style>
