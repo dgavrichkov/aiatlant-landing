@@ -12,26 +12,30 @@ const { data: plans } = Astro.props;
   <figure class="plans__illustration">
     <picture>
       <source
-        srcset="aiatlant-landing/images/heroes-big.webp"
+        srcset="/aiatlant-landing/images/heroes-big.webp"
         media="(min-width: 1200px)"
         type="image/webp"
       />
       <source
-        srcset="aiatlant-landing/images/heroes-big.png"
+        srcset="/aiatlant-landing/images/heroes-big.png"
         media="(min-width: 1200px)"
         type="image/png"
       />
       <source
-        srcset="aiatlant-landing/images/heroes-mid.webp"
+        srcset="/aiatlant-landing/images/heroes-mid.webp"
         media="(min-width: 667px)"
         type="image/webp"
       />
       <source
-        srcset="aiatlant-landing/images/heroes-mid.png"
+        srcset="/aiatlant-landing/images/heroes-mid.png"
         media="(min-width: 667px)"
         type="image/png"
       />
-      <img width="500" src="/images/heroes-small.png" alt="dnd characters" />
+      <img
+        width="500"
+        src="/aiatlant-landing/images/heroes-small.png"
+        alt="dnd characters"
+      />
     </picture>
   </figure>
 </section>
