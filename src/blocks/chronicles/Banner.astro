@@ -17,24 +17,22 @@ const IMAGE_NAME = "gamers";
         >{actionBtn.text}</Button
       >
     </div>
-    <figure class="banner-card__illustration">
-      <picture>
-        <source
-          srcset={`/images/chronicles/${IMAGE_NAME}-1x.webp 1x, /images/chronicles/${IMAGE_NAME}-2x.webp 2x`}
-          type="image/webp"
-        />
-        <source
-          srcset={`/images/chronicles/${IMAGE_NAME}-1x.jpg 1x, /images/chronicles/${IMAGE_NAME}-2x.jpg 2x`}
-          type="image/jpeg"
-        />
-        <!-- TODO - i18n alt? -->
-        <img
-          width="200"
-          src={`/images/chronicles/${IMAGE_NAME}-1x.jpg`}
-          alt={""}
-        />
-      </picture>
-    </figure>
+    <picture class="banner-card__illustration">
+      <source
+        srcset={`/images/chronicles/${IMAGE_NAME}-1x.webp 1x, /images/chronicles/${IMAGE_NAME}-2x.webp 2x`}
+        type="image/webp"
+      />
+      <source
+        srcset={`/images/chronicles/${IMAGE_NAME}-1x.jpg 1x, /images/chronicles/${IMAGE_NAME}-2x.jpg 2x`}
+        type="image/jpeg"
+      />
+      <!-- TODO - i18n alt? -->
+      <img
+        width="200"
+        src={`/images/chronicles/${IMAGE_NAME}-1x.jpg`}
+        alt={""}
+      />
+    </picture>
   </article>
 </section>
 
@@ -44,6 +42,7 @@ const IMAGE_NAME = "gamers";
     z-index: 2;
     color: var(--text);
     background-color: var(--background-secondary);
+    padding-top: 82px;
     padding-bottom: 115px;
     border-bottom-left-radius: 32px;
     border-bottom-right-radius: 32px;
@@ -54,13 +53,49 @@ const IMAGE_NAME = "gamers";
     background-color: var(--background-primary);
     display: grid;
     grid-template-columns: 1fr 1fr;
+    overflow: hidden;
   }
 
   .banner-card__content {
     padding: 95px 72px;
+    padding-right: 42px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .banner-card__title {
+    font-size: 100px;
+    line-height: 120px;
+    font-family: var(--ff-dela);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .banner-card__text {
+    font-size: 36px;
+    line-height: 45px;
+    margin-top: 56px;
+  }
+
+  .banner-card__call {
+    font-size: 64px;
+    line-height: 68px;
+    font-weight: 400;
+    font-family: var(--ff-dela);
+    margin-bottom: 80px;
+    margin-top: 56px;
+  }
+
+  .banner-card__action {
+    margin-top: auto;
+    align-self: start;
+    min-width: 362px;
+    max-width: 100%;
   }
 
   .banner-card__illustration {
+    width: 100%;
+    height: 100%;
   }
 
   .banner-card__illustration img {

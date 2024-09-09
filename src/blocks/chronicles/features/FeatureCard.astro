@@ -21,7 +21,7 @@ const { data: item } = Astro.props;
 // const imagePath = `/src/assets/chronicles/features/${item.image}-1x.jpg`;
 ---
 
-<article>
+<article class="feature">
   <picture class="feature__pic">
     <source
       srcset={`/images/chronicles/${item.image}-1x.webp 1x, /images/chronicles/${item.image}-2x.webp 2x`}
@@ -37,6 +37,43 @@ const { data: item } = Astro.props;
       alt={item?.alttext || ""}
     />
   </picture>
-  <div>{item.name}</div>
-  <div set:html={item.text} />
+  <div class="feature__name">{item.name}</div>
+  <div class="feature__text" set:html={item.text} />
 </article>
+
+<style>
+  .feature {
+    height: 100%;
+    padding: 16px;
+    padding-bottom: 70px;
+    border-radius: 56px;
+    background: var(--text);
+    color: var(--background-primary);
+  }
+
+  .feature__pic {
+    border-radius: 56px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+
+  .feature__pic img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 543 / 393;
+    object-fit: cover;
+  }
+
+  .feature__name {
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 32px;
+    padding: 0 16px;
+  }
+
+  .feature__text {
+    font-size: 24px;
+    line-height: 30px;
+    padding: 0 16px;
+  }
+</style>

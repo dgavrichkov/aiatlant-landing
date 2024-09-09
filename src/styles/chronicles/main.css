@@ -11,6 +11,8 @@
   --accent: #ce6f53;
   --lemon: #dbfc54;
 
+  --ff-dela: "Dela Gothic One", Verdana, sans-serif;
+
   background: var(--button-secondary);
 }
 
@@ -110,7 +112,8 @@ body.no-scroll {
 }
 
 .container {
-  padding: 0 100px;
+  --container-gutter: 100px;
+  padding: 0 var(--container-gutter);
 }
 
 .title {

@@ -1,4 +1,5 @@
 ---
+import { marked } from "marked";
 import Button from "../../ui/Button.astro";
 
 const { data, actionBtn } = Astro.props;
@@ -37,8 +38,8 @@ const { data, actionBtn } = Astro.props;
           fill="#69D467"></path>
       </svg>
     </figure>
-    <h2 class="hero__title">{data.title}</h2>
-    <div class="hero__text">{data.text}</div>
+    <h2 class="hero__title" set:html={marked.parse(data.title)} />
+    <div class="hero__text" set:html={marked.parse(data.text)} />
     <Button class="hero__action" tag="a" href={actionBtn.href}
       >{actionBtn.text}</Button
     >
@@ -47,9 +48,16 @@ const { data, actionBtn } = Astro.props;
 
 <style>
   .hero {
+    --bottom-shift: -100px;
     position: relative;
-    z-index: 2;
+    z-index: 3;
     color: var(--text);
+    margin-bottom: var(--bottom-shift);
+  }
+
+  .hero__content {
+    display: flex;
+    flex-direction: column;
   }
 
   .hero__logo {
@@ -61,11 +69,19 @@ const { data, actionBtn } = Astro.props;
     font-size: 100px;
     font-weight: 400;
     line-height: 111px;
+    margin-bottom: 48px;
   }
 
   .hero__text {
     font-size: 36px;
     font-weight: 400;
     line-height: 44px;
+  }
+
+  .hero__action {
+    margin-top: 56px;
+    align-self: start;
+    min-width: 362px;
+    max-width: 100%;
   }
 </style>
