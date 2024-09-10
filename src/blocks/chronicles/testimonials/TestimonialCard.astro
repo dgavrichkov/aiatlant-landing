@@ -1,5 +1,6 @@
 ---
 import { marked } from "marked";
+import Rating from "./Rating.astro";
 
 const { data } = Astro.props;
 
@@ -7,6 +8,32 @@ const { rate } = data;
 ---
 
 <article class="testimonial-card">
-  <h2 class="testimonial-title">{data.rate}</h2>
-  <div set:html={marked.parse(data.text)} />
+  <figure class="testimonial-card__rate">
+    <Rating rate={data.rate} />
+  </figure>
+  <div class="testimonial-card__text" set:html={marked.parse(data.text)} />
 </article>
+
+<style>
+  .testimonial-card {
+    background-color: var(--text);
+    color: var(--background-primary);
+    border-radius: 100px 32px 32px 32px;
+    padding: 50px 48px;
+
+    height: 100%;
+  }
+
+  .testimonial-card__rate {
+    margin-bottom: 41px;
+  }
+
+  .testimonial-card__text {
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  :global(.testimonial-card__text > * + *) {
+    margin-top: 29px;
+  }
+</style>
