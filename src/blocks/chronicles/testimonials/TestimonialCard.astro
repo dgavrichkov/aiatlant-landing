@@ -1,0 +1,12 @@
+---
+import { marked } from "marked";
+
+const { data } = Astro.props;
+
+const { rate } = data;
+---
+
+<article class="testimonial-card">
+  <h2 class="testimonial-title">{data.rate}</h2>
+  <div set:html={marked.parse(data.text)} />
+</article>

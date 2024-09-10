@@ -1,8 +1,9 @@
 ---
-import PlanList from './PlanList.astro';
+import PlanList from "./PlanList.astro";
 
 const { data: plans } = Astro.props;
 ---
+
 <section class="plans" id={plans.id}>
   <h2 class="plans__title">{plans.title}</h2>
   <div class="plans__content">
@@ -10,13 +11,37 @@ const { data: plans } = Astro.props;
   </div>
   <figure class="plans__illustration">
     <picture>
-      <source srcset="./images/heroes-big.webp" media="(min-width: 1200px)" type="image/webp">
-      <source srcset="./images/heroes-big.png" media="(min-width: 1200px)" type="image/png">
-      <source srcset="./images/heroes-mid.webp" media="(min-width: 768px)" type="image/webp">
-      <source srcset="./images/heroes-mid.png" media="(min-width: 768px)" type="image/png">
-      <source srcset="./images/heroes-small.webp" media="(max-width: 425px)" type="image/webp">
-      <source srcset="./images/heroes-small.png" media="(max-width: 425px)" type="image/png">
-      <img width="500" src="./images/heroes-big.png" alt="dnd characters">
+      <source
+        srcset="/images/heroes-big.webp"
+        media="(min-width: 1200px)"
+        type="image/webp"
+      />
+      <source
+        srcset="/images/heroes-big.png"
+        media="(min-width: 1200px)"
+        type="image/png"
+      />
+      <source
+        srcset="/images/heroes-mid.webp"
+        media="(min-width: 768px)"
+        type="image/webp"
+      />
+      <source
+        srcset="/images/heroes-mid.png"
+        media="(min-width: 768px)"
+        type="image/png"
+      />
+      <source
+        srcset="/images/heroes-small.webp"
+        media="(max-width: 425px)"
+        type="image/webp"
+      />
+      <source
+        srcset="/images/heroes-small.png"
+        media="(max-width: 425px)"
+        type="image/png"
+      />
+      <img width="500" src="/images/heroes-big.png" alt="dnd characters" />
     </picture>
   </figure>
 </section>
@@ -47,7 +72,7 @@ const { data: plans } = Astro.props;
   .plans__content {
     position: relative;
     z-index: 2;
-    width: var( --plan-width);
+    width: var(--plan-width);
     max-width: 100%;
     margin: 0;
     margin-left: var(--plan-left);
@@ -70,8 +95,8 @@ const { data: plans } = Astro.props;
 
   @media (max-width: 1728px) {
     .plans {
-    --plan-width: 490px;
-    --bg-x-pos: 2%;
+      --plan-width: 490px;
+      --bg-x-pos: 2%;
     }
   }
 
@@ -130,7 +155,7 @@ const { data: plans } = Astro.props;
       width: calc(100% + 32px);
     }
   }
-  
+
   @media (max-width: 768px) {
     .plans__illustration {
       margin: 0;
