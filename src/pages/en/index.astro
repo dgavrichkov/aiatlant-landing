@@ -1,40 +1,60 @@
 ---
-import content from '../../content/atlant-en.json';
-import Footer from '../../blocks/footer/Footer.astro';
-import Games from '../../blocks/games/Games.astro';
-import Header from '../../blocks/header/Header.astro';
-import Hero from '../../blocks/hero/Hero.astro';
-import Info from '../../blocks/info/Info.astro';
-import Plans from '../../blocks/plans/Plans.astro';
-import Ellipses from '../../components/Ellipses.astro';
-import '../../styles/reset.css';
-import '../../styles/fonts.css';
-import '../../styles/main.css';
+import content from "../../content/atlant-en.json";
+import Footer from "../../blocks/footer/Footer.astro";
+import Games from "../../blocks/games/Games.astro";
+import Header from "../../blocks/header/Header.astro";
+import Hero from "../../blocks/hero/Hero.astro";
+import Info from "../../blocks/info/Info.astro";
+import Plans from "../../blocks/plans/Plans.astro";
+import Ellipses from "../../components/Ellipses.astro";
+import "../../styles/reset.css";
+import "../../styles/fonts.css";
+import "../../styles/main.css";
 
-const { hero, games, plans, info, copyright, footerLinks, menu, socials, headerButtons } = content;
+const {
+  hero,
+  games,
+  plans,
+  info,
+  copyright,
+  footerLinks,
+  menu,
+  socials,
+  headerButtons,
+} = content;
 
-
-const TITLE = 'Ai Atlant';
-const LANG = 'en';
+const TITLE = "Ai Atlant";
+const LANG = "en";
 ---
 
 <html lang={LANG}>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{TITLE}</title>
-	</head>
-	<body>
-		<div class="container">
-			<Header menu={menu} headerButtons={headerButtons} />
-			<Hero data={hero} />
-			<Info data={info} />
-			<Games data={games} />
-			<Plans data={plans} />
-			<Footer copyright={copyright} footerLinks={footerLinks} menu={menu} socials={socials} />
-			<Ellipses />
-		</div>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.jpeg" type="image/png" />
+    <link rel="shortcut icon" href="/shortcut-favicon.jpeg" type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      href="/apple-touch-favicon.jpeg"
+      type="image/png"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{TITLE}</title>
+  </head>
+  <body>
+    <div class="container">
+      <Header menu={menu} headerButtons={headerButtons} />
+      <Hero data={hero} />
+      <Info data={info} />
+      <Games data={games} />
+      <Plans data={plans} />
+      <Footer
+        copyright={copyright}
+        footerLinks={footerLinks}
+        menu={menu}
+        socials={socials}
+      />
+      <Ellipses />
+    </div>
+  </body>
 </html>
