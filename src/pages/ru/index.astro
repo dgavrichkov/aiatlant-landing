@@ -7,6 +7,8 @@ import Hero from "../../blocks/hero/Hero.astro";
 import Info from "../../blocks/info/Info.astro";
 import Plans from "../../blocks/plans/Plans.astro";
 import Ellipses from "../../components/Ellipses.astro";
+import YandexMetric from "../../components/analytics/YandexMetric.astro";
+import GoogleAnalytics from "../../components/analytics/GoogleAnalytics.astro";
 import "../../styles/reset.css";
 import "../../styles/fonts.css";
 import "../../styles/main.css";
@@ -27,13 +29,22 @@ const TITLE = "Ai Atlant";
 const LANG = "ru";
 ---
 
+<!doctype html>
 <html lang={LANG}>
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.jpeg" type="image/png" />
+    <link rel="shortcut icon" href="/shortcut-favicon.jpeg" type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      href="/apple-touch-favicon.jpeg"
+      type="image/png"
+    />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{TITLE}</title>
+    <GoogleAnalytics />
+    <YandexMetric />
   </head>
   <body>
     <div class="container">

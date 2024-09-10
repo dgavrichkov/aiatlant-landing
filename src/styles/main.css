@@ -25,6 +25,10 @@
   --gap-l: 8px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--primary-1);
   font-family: "Jost", sans-serif;
@@ -117,7 +121,7 @@ button.uiButton {
 }
 
 .uiButton.secondary:hover {
-  background-color: var(--primary-2);
-  color: var(--accent-2-primary);
-  border-color: var(--accent-2-primary);
+  background-color: var(--accent-2-secondary);
+  color: var(--secondary-2);
+  border-color: var(--secondary-2);
 }

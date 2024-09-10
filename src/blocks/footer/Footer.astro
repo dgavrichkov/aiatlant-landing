@@ -1,12 +1,13 @@
 ---
-import IconInsta from '../../ui/IconInsta.astro';
-import IconTg from '../../ui/IconTg.astro';
-import Link from '../../ui/Link.astro';
+import IconInsta from "../../ui/IconInsta.astro";
+import IconTg from "../../ui/IconTg.astro";
+import Link from "../../ui/Link.astro";
 
-const {copyright, footerLinks, menu, socials} = Astro.props;
+const { copyright, footerLinks, menu, socials } = Astro.props;
 
-const date = '2024'
+const date = "2024";
 ---
+
 <footer class="footer">
   <div class="footer__meta">
     <p class="logo">AI Atlant</p>
@@ -14,29 +15,46 @@ const date = '2024'
   </div>
 
   <nav class="footer__nav navigation">
-    {menu.map((item) => (
-      <Link data-menu-item href={item.href} class="navigation__item" >{item.title}</Link>
-    ))}
+    {
+      menu.map((item) => (
+        <Link data-menu-item href={item.href} class="navigation__item">
+          {item.title}
+        </Link>
+      ))
+    }
   </nav>
 
   <nav class="footer__menu sources">
-    {footerLinks.map((item) => (
-      <Link view="accent" href={item.href} class="sources__item" data-disabled={item.isDisabled}>{item.title}</Link>
-    ))}
+    {
+      footerLinks.map((item) => (
+        <Link
+          view="accent"
+          href={item.href}
+          class="sources__item"
+          data-disabled={item.isDisabled}
+        >
+          {item.title}
+        </Link>
+      ))
+    }
   </nav>
 
   <div class="footer__soc socials">
-    {socials.Instagram && (
-      <a href={socials.Instagram.href}>
-        <IconInsta />
-      </a>
-    )}
-    {socials.Telegram && (
-      <a href={socials.Telegram.href}>
-        <span class="visually-hidden">{socials.Telegram.label}</span>
-        <IconTg />
-      </a>
-    )}
+    {
+      socials.Instagram && (
+        <a href={socials.Instagram.href}>
+          <IconInsta />
+        </a>
+      )
+    }
+    {
+      socials.Telegram && (
+        <a href={socials.Telegram.href}>
+          <span class="visually-hidden">{socials.Telegram.label}</span>
+          <IconTg />
+        </a>
+      )
+    }
   </div>
 </footer>
 
@@ -46,7 +64,7 @@ const date = '2024'
     z-index: 2;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas: 'meta navi menu soc';
+    grid-template-areas: "meta navi menu soc";
     gap: var(--gap-l);
     color: var(--text);
     padding: 48px;
@@ -72,10 +90,10 @@ const date = '2024'
 
   .logo {
     color: var(--accent-2-secondary);
-    margin-bottom: 24px;
+    margin-bottom: 4px;
     font-family: "Jomhuria", sans-serif;
     font-size: 56px;
-    line-height: 56px;
+    line-height: 1;
     font-weight: 400;
   }
 
@@ -84,20 +102,15 @@ const date = '2024'
     line-height: 34px;
   }
 
-  .navigation {
+  .navigation,
+  .sources {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
   }
 
   .navigation__item.active {
     color: var(--accent-2-secondary);
-  }
-
-  .sources {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
   }
 
   .socials {
@@ -108,17 +121,18 @@ const date = '2024'
 
   @media (max-width: 1024px) {
     .footer {
+      column-gap: 70px;
       padding: 48px 4px;
+      grid-template-columns: repeat(4, max-content);
     }
   }
 
   @media (max-width: 768px) {
     .footer {
       padding: 45px 32px;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-areas:
-        'meta meta soc soc'
-        'navi menu menu .';
+        "meta meta soc soc"
+        "navi menu menu .";
       row-gap: 80px;
     }
 
@@ -133,10 +147,10 @@ const date = '2024'
       grid-template-columns: 1fr;
       padding: 48px 32px 56px;
       grid-template-areas:
-        'meta'
-        'soc'
-        'navi'
-        'menu';
+        "meta"
+        "soc"
+        "navi"
+        "menu";
       gap: 48px;
       margin: 0;
       border-top-left-radius: 24px;

@@ -60,7 +60,12 @@
 
 @font-face {
   font-family: "Jomhuria";
-  src: url("/fonts/Jomhuria-Regular.ttf");
-  font-weight: 400;
+  src: url("/fonts/Jomhuria-Regular.eot");
+  src: local("Jomhuria"), local("Jomhuria-Regular"),
+    url("/fonts/Jomhuria-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jomhuria-Regular.woff2") format("woff2"),
+    url("/fonts/Jomhuria-Regular.woff") format("woff"),
+    url("/fonts/Jomhuria-Regular.ttf") format("truetype");
+  font-weight: normal;
   font-style: normal;
 }
