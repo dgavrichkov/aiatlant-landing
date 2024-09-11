@@ -1,6 +1,7 @@
 ---
 import SliderButton from "./testimonials/SliderButton.astro";
 import TestimonialCard from "./testimonials/TestimonialCard.astro";
+import "swiper/css";
 
 const { data } = Astro.props;
 ---
@@ -13,26 +14,71 @@ const { data } = Astro.props;
       <SliderButton direction="next" />
     </div>
   </header>
-  <ul class="reviews__list carousel">
-    {
-      data.list.map((item) => (
-        <li class="reviews__item carousel__item">
-          <TestimonialCard data={item} />
-        </li>
-      ))
-    }
-  </ul>
+  <div class="swiper reviews__slider-wrap">
+    <ul class="swiper-wrapper reviews__list">
+      {
+        data.list.map((item) => (
+          <li class="swiper-slide reviews__item">
+            <TestimonialCard data={item} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </section>
 
 <script>
-  const buttons = document.querySelectorAll(".arrowbtn");
+  import Swiper from "swiper";
 
-  console.log(buttons);
+  const swiper = new Swiper(".swiper", {
+    slidesPerView: 3.4,
+    freeMode: true,
+    speed: 400,
+    spaceBetween: 50,
+  });
+
+  const buttons = document.querySelectorAll(
+    ".arrowbtn"
+  ) as NodeListOf<HTMLButtonElement>;
+  const prevBtn = Array.from(buttons).find(
+    (btn) => btn.dataset.direction === "prev"
+  );
+  const nextBtn = Array.from(buttons).find(
+    (btn) => btn.dataset.direction === "next"
+  );
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      console.log("click");
+      const direction = btn.dataset.direction;
+
+      if (direction === "prev") {
+        swiper.slidePrev();
+        nextBtn.disabled = false;
+      }
+
+      if (direction === "next") {
+        swiper.slideNext();
+        prevBtn.disabled = false;
+      }
     });
+  });
+
+  swiper.on("reachBeginning", function () {
+    prevBtn.disabled = true;
+  });
+
+  swiper.on("reachEnd", function () {
+    nextBtn.disabled = true;
+  });
+
+  swiper.on("fromEdge", function () {
+    if (swiper.swipeDirection === "next") {
+      prevBtn.disabled = false;
+    }
+
+    if (swiper.swipeDirection === "prev") {
+      nextBtn.disabled = false;
+    }
   });
 </script>
 
@@ -59,36 +105,18 @@ const { data } = Astro.props;
     gap: 8px;
   }
 
+  .reviews__slider-wrap {
+    margin: 0 calc(var(--container-gutter) * -1);
+    padding-left: var(--container-gutter);
+    padding-right: var(--container-gutter);
+  }
+
   .reviews__list {
     list-style: none;
     padding: 0;
-    margin: 0 calc(var(--container-gutter) * -1);
   }
 
-  .carousel {
-    display: flex;
-    overflow: hidden;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    gap: 32px;
-  }
-
-  .carousel::-webkit-scrollbar {
-    display: none;
-  }
-
-  .carousel__item {
-    flex: 0 0 28%;
-    scroll-snap-align: center;
-  }
-
-  .carousel__item:first-child {
-    margin-left: 48px;
-  }
-
-  .carousel__item:last-child {
-    margin-right: 48px;
+  .reviews__item {
+    height: auto;
   }
 </style>

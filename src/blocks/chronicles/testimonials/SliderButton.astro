@@ -20,7 +20,11 @@ const DIR_MAP = {
 const { direction, ...rest } = Astro.props;
 ---
 
-<button class:list={["arrowbtn", DIR_MAP[direction].className]} {...rest}>
+<button
+  class:list={["arrowbtn", DIR_MAP[direction].className]}
+  data-direction={direction}
+  {...rest}
+>
   <span class="visually-hidden">{DIR_MAP[direction].text}</span>
   <svg
     class="arrowbtn__icon"
@@ -48,6 +52,7 @@ const { direction, ...rest } = Astro.props;
     border: none;
     cursor: pointer;
     color: var(--text);
+    transition: all 0.2s ease;
   }
 
   .arrowbtn:disabled {
