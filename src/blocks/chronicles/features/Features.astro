@@ -6,52 +6,80 @@ const { data } = Astro.props;
 
 <section class="features container" id={data.id}>
   <h2 class="features__title title">{data.title}</h2>
-  <ul class="features__list">
+  <ul class="features__list carousel">
     {
       data.list.map((item) => (
-        <li class="features__item">
+        <li class="features__item carousel__item">
           <FeatureCard data={item} />
         </li>
       ))
     }
   </ul>
-
-  <style>
-    .features {
-      --wave-height: 200px;
-      position: relative;
-      z-index: 2;
-      color: var(--text);
-      background-color: var(--background-secondary);
-      margin-top: var(--wave-height);
-    }
-
-    .features::before {
-      content: "";
-      display: block;
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      width: 100%;
-      height: var(--wave-height);
-      background-image: url("/images/chronicles/wave-desktop.svg");
-      background-repeat: no-repeat;
-      background-position: top center;
-      background-size: 100% auto;
-    }
-
-    .features__title {
-      margin-bottom: 82px;
-    }
-
-    .features__list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px 24px;
-      align-items: stretch;
-    }
-  </style>
 </section>
+
+<style>
+  .features {
+    --wave-height: 200px;
+    position: relative;
+    z-index: 2;
+    color: var(--text);
+    background-color: var(--background-secondary);
+    margin-top: var(--wave-height);
+  }
+
+  .features::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: var(--wave-height);
+    background-image: url("/images/chronicles/wave-desktop.svg");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% auto;
+  }
+
+  .features__title {
+    margin-bottom: 82px;
+  }
+
+  .features__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px 24px;
+    align-items: stretch;
+  }
+
+  @media (max-width: 1024px) {
+    .features__title {
+      font-size: 40px;
+      line-height: 1;
+      margin-bottom: 48px;
+    }
+    .carousel {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel__item {
+      flex: 0 0 42%;
+      scroll-snap-align: center;
+    }
+
+    .carousel__item:last-child {
+      margin-right: 48px;
+    }
+  }
+</style>

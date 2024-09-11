@@ -62,4 +62,16 @@ const { data } = Astro.props;
     --pill-bg: var(--success);
     transform: rotate(-5.64deg);
   }
+
+  @media (max-width: 1024px) {
+    .who__list {
+      flex-direction: column;
+      gap: 16px 32px;
+      padding: 20px 0;
+    }
+
+    .who__item {
+      width: 100%;
+    }
+  }
 </style>

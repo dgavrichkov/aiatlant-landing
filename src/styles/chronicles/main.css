@@ -154,3 +154,12 @@ button.uiButton {
 .uiButton.default:hover {
   background-color: var(--accent);
 }
+
+@media (max-width: 1024px) {
+  .container {
+    --container-gutter: 16px;
+  }
+
+  .title {
+  }
+}
