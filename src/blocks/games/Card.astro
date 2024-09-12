@@ -1,0 +1,112 @@
+---
+import Badge from "../../ui/Badge.astro";
+import Button from "../../ui/Button.astro";
+
+const { game, utils, statuses } = Astro.props;
+const isDisabled = game.status !== "ready";
+---
+
+<article class="game">
+  {game.isConcept && <Badge class="game__badge">{utils.concept}</Badge>}
+  <picture class="game__pic">
+    <source
+      srcset={`/images/${game.pic}-1x.webp 1x, /images/${game.pic}-3x.webp 2x`}
+      type="image/webp"
+    />
+    <source
+      srcset={`/images/${game.pic}-1x.jpg 1x, /images/${game.pic}-3x.jpg 2x`}
+      type="image/jpeg"
+    />
+    <img
+      width="200"
+      src={`/images/${game.pic}-1x.jpg`}
+      alt={game?.alttext || ""}
+    />
+  </picture>
+  <h3 class="game__title">{game.title}</h3>
+  <div class="game__text">
+    {game.description.map((item) => <p class="game__textItem">{item}</p>)}
+    <br />
+    <p class="traits game__textItem">
+      {utils.traits}:<br />
+      {game.traits}
+    </p>
+  </div>
+  <div class="game__actions">
+    <Button
+      tag="button"
+      view="secondary"
+      class="game__button game__moar"
+      data-moar-id={game.id}>{utils.moar}</Button
+    >
+    <Button
+      tag="a"
+      href={game.link.href}
+      class="game__button game__link"
+      disabled={isDisabled}
+    >
+      {statuses[game.status]}
+    </Button>
+  </div>
+</article>
+
+<style>
+  .game {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xxl);
+    color: var(--text);
+    background-color: var(--primary-2);
+    border-radius: 24px;
+    position: relative;
+    height: 100%;
+    padding: 16px;
+  }
+
+  .game__badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  .game__pic {
+    max-width: initial;
+    aspect-ratio: 16 / 10;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-top: -16px;
+  }
+
+  .game__pic img {
+    display: block;
+    max-width: initial;
+    width: 120%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0 15%;
+  }
+
+  .game__title {
+    font-size: 40px;
+    line-height: 34px;
+    font-weight: 900;
+  }
+
+  .game__textItem {
+    line-height: 21px;
+  }
+
+  .game__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: auto;
+  }
+
+  .game__button {
+    padding: 0 24px;
+    height: 64px;
+  }
+</style>

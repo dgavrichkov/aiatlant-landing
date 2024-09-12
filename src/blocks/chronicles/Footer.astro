@@ -1,0 +1,75 @@
+---
+import IconInsta from "../../ui/IconInsta.astro";
+import IconTg from "../../ui/IconTg.astro";
+import Link from "../../ui/Link.astro";
+
+const { socials, footerLinks } = Astro.props;
+
+const date = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__meta">
+    <p class="copyright">AI Atlant | {date}</p>
+  </div>
+
+  <nav class="footer__menu sources">
+    {
+      footerLinks.map((item) => (
+        <Link
+          view="accent"
+          href={item.href}
+          class="sources__item"
+          data-disabled={item.isDisabled}
+        >
+          {item.title}
+        </Link>
+      ))
+    }
+  </nav>
+
+  <div class="footer__soc socials">
+    {
+      socials.Instagram && (
+        <a href={socials.Instagram.href}>
+          <span class="visually-hidden">{socials.Instagram.label}</span>
+          <IconInsta />
+        </a>
+      )
+    }
+    {
+      socials.Telegram && (
+        <a href={socials.Telegram.href}>
+          <span class="visually-hidden">{socials.Telegram.label}</span>
+          <IconTg />
+        </a>
+      )
+    }
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "meta menu . soc";
+    gap: var(--gap-l);
+    color: var(--text);
+    padding: 48px;
+    padding-right: 65px;
+  }
+
+  .footer__meta {
+    grid-area: meta;
+  }
+
+  .footer__menu {
+    grid-area: menu;
+  }
+
+  .footer__soc {
+    grid-area: soc;
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+const { data: testInvite } = Astro.props;
+---
+
+<a class="testInvite" href={testInvite.href}>
+  <article class="testInvite__wrap">
+    <b class="testInvite__text">{testInvite.text}</b>
+  </article>
+</a>
+
+<style>
+  .testInvite {
+    grid-area: test;
+    color: initial;
+    text-decoration: none;
+    height: 100%;
+  }
+  .testInvite__wrap {
+    border-radius: 24px;
+    background-color: var(--accent-2-secondary);
+    min-height: 208px;
+    height: 100%;
+    position: relative;
+    padding: 27px;
+    padding-bottom: 70px;
+  }
+  .testInvite__wrap::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    width: 80px;
+    height: 30px;
+    background-image: url("/arrow.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg);
+  }
+  .testInvite__text {
+    display: block;
+    color: var(--primary);
+    font-size: 32px;
+    line-height: 35px;
+    font-weight: 800;
+  }
+
+  @media (max-width: 1550px) {
+    .testInvite__wrap {
+      padding: 40px 8px 70px 24px;
+    }
+
+    .testInvite__text {
+      font-size: 28px;
+      line-height: 1;
+    }
+  }
+
+  @media (max-width: 1194px) {
+    .testInvite__text {
+      font-size: 26px;
+      line-height: 29px;
+    }
+
+    .testInvite__wrap::after {
+      right: 16px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .testInvite__text {
+      width: 70%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .testInvite__wrap::after {
+      bottom: 15px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .testInvite__text {
+      font-size: 32px;
+      line-height: 29px;
+      width: 100%;
+    }
+  }
+</style>

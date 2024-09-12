@@ -1,0 +1,262 @@
+---
+import Card from './Card.astro';
+import Modal from './Modal.astro';
+import Search from './Search.astro';
+
+const { data: games } = Astro.props;
+---
+<section class="games" id={games.id}>
+  <header class="games__header">
+    <h2 class="games__title">{games.title}</h2>
+    <Search />
+  </header>
+  <div class="games__container scroll-container">
+    <ul class="gamelist carousel">
+      {games.list.map((game) => (
+        <li class="gamelist__item carousel__item" data-name={game.title}>
+          <Card game={game} utils={games.strings} statuses={games.statuses} />
+          <Modal game={game} utils={games.strings} />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .games {
+    position: relative;
+    z-index: 3;
+    margin-top: var(--gap-l);
+    border-radius: 32px;
+    padding: 68px 48px 42px;
+    background-color: var(--primary-1);
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  .games__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+
+  .games__title {
+    font-size: 80px;
+    line-height: 86px;
+    color: var(--text);
+  }
+
+  .games__container {
+    max-height: 1114px;
+    overflow-y: auto;
+    margin-right: -40px;
+    padding-right: 24px;
+  }
+
+  .gamelist {
+    --columns: 4;
+    --colgap: var(--gap-xl);
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 42px var(--colgap);
+    list-style: none;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 50px;
+  }
+
+  .games:after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 384px;
+    background: linear-gradient(0.00deg, rgb(0, 0, 0) 14.848%,rgba(0, 0, 0, 0) 88.707%);
+  }
+
+  .gamelist__item {
+    transition: 0.3s ease;
+    transition-property: opacity, transform;
+  }
+
+  .gamelist__item.hidden {
+    opacity: 0;
+    translate: 0 -100%;
+    order: 1000;
+  }
+
+  @media (max-width: 1440px) {
+    .gamelist {
+      --columns: 3;
+      --colgap: 74px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .gamelist {
+      --columns: 2;
+      --colgap: 72px;
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .gamelist {
+      --colgap: 32px;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+
+  /* tablet vertical - games slider */
+  @media (max-width: 834px) {
+    .games {
+      max-height: initial;
+      overflow: initial;
+      padding-top: 48px;
+      padding-bottom: 64px;
+      background-color: var(--primary-1);
+    }
+    .games:after {
+      display: none;
+    }
+
+    .games__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 56px;
+    }
+
+    .games__container {
+      margin: 0 calc(-48px - 16px);
+      padding: 0;
+    }
+
+    .gamelist {
+      --colgap: 32px;
+      padding: 0;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel__item {
+      flex: 0 0 70%;
+      scroll-snap-align: center;
+    }
+
+    .carousel__item:first-child {
+      margin-left: 48px;
+    }
+
+    .carousel__item:last-child {
+      margin-right: 48px;
+    }
+  }
+
+  @media (max-width: 667px) {
+    .games {
+      padding-bottom: 48px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .games {
+      padding: 32px 16px 40px;
+    }
+
+    .games__header {
+      gap: 24px;
+    }
+
+    .games__title {
+      font-size: 51px;
+      line-height: 86px;
+    }
+
+    .games__container {
+      margin: 0;
+    }
+    .gamelist {
+      --colgap: 16px;
+    }
+
+    .gamelist__item.hidden {
+      display: none;
+    }
+
+    .carousel__item {
+      flex-basis: 85%;
+    }
+
+    .carousel__item:first-child {
+      margin-left: var(--colgap);
+    }
+
+    .carousel__item:last-child {
+      margin-right: var(--colgap);
+    }
+  }
+</style>
+
+<script>
+  const wrap = document.querySelector('.games') as HTMLElement;
+  const searchInput = document.querySelector('.search__input') as HTMLInputElement;
+  const list = wrap.querySelectorAll('.gamelist__item');
+  const body = document.body;
+
+  searchInput.addEventListener('input', (event) => {
+    const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
+    
+    list.forEach(listItem => {
+      const cardName = (listItem as HTMLElement).dataset.name?.toLowerCase() || '';
+      
+      if (cardName.includes(filterValue)) {
+        listItem.classList.remove('hidden');
+      } else {
+        listItem.classList.add('hidden');
+      }
+    });
+  });
+
+  const cards = document.querySelectorAll('.game');
+  const modals = document.querySelectorAll('.modal') as NodeListOf<HTMLDivElement>;
+
+  cards.forEach((card) => {
+    const moar = card.querySelector('.game__moar') as HTMLButtonElement;
+    const modalId = moar.dataset.moarId;
+
+    moar.addEventListener('click', () => {
+      const modalToShow = Array.from(modals).find((modal) => modal.dataset.modalId === modalId);
+        body.classList.add('no-scroll');
+        modalToShow.classList.remove('hidden');
+    });
+  });
+
+  modals.forEach((modal) => {
+    const closeEls = modal.querySelectorAll('[data-modal-close]');
+
+    closeEls.forEach((closer) => {
+      closer.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        body.classList.remove('no-scroll');
+      });
+    })
+  });
+</script>

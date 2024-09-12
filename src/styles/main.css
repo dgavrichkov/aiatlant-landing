@@ -1,0 +1,127 @@
+:root {
+  /* violet dark */
+  --primary-1: #201d30;
+  /* violet dark second */
+  --secondary-1: #251d35;
+  /* violet light */
+  --primary-2: #622cbc;
+  /* violet light second */
+  --secondary-2: #6d2ae9;
+  /* blue */
+  --accent-1-primary: #007aff;
+  /* blue light */
+  --accent-1-secondary: #69bcff;
+  /* yellow */
+  --accent-2-primary: #dfdd3f;
+  /* lemon */
+  --accent-2-secondary: #dbfc54;
+  --text: #ffffff;
+  --error: #ff2775;
+  --success: #69d467;
+
+  /* gaps */
+  --gap-xxl: 32px;
+  --gap-xl: 16px;
+  --gap-l: 8px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--primary-1);
+  font-family: "Jost", sans-serif;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.16); /* Цвет ползунка */
+  border-radius: 37px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background-color: rgba(98, 44, 188, 0.43);
+  border-radius: 37px;
+}
+
+.container {
+  padding: var(--gap-xl);
+  position: relative;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+}
+
+a.uiButton,
+button.uiButton {
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.uiButton.default {
+  color: var(--primary-1);
+  background: var(--accent-2-secondary);
+}
+
+.uiButton.secondary {
+  background-color: transparent;
+  border: 2px solid var(--accent-2-secondary);
+  color: var(--accent-2-secondary);
+}
+
+.uiButton.default[disabled] {
+  pointer-events: none;
+  background-color: var(--accent-1-secondary);
+  color: var(--accent-1-primary);
+}
+.uiButton.secondary[disabled] {
+  pointer-events: none;
+  color: var(--accent-1-secondary);
+  border-color: var(--accent-1-secondary);
+}
+
+.uiButton.default:hover {
+  color: var(--primary-2);
+  border-color: var(--accent-2-primary);
+  background-color: var(--accent-2-primary);
+}
+
+.uiButton.secondary:hover {
+  background-color: var(--accent-2-secondary);
+  color: var(--secondary-2);
+  border-color: var(--secondary-2);
+}

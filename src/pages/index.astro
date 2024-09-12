@@ -1,16 +1,82 @@
 ---
+import "../styles/reset.css";
+import "../styles/fonts.css";
+import "../styles/main.css";
 
+const TITLE = "Ai Atlant";
 ---
 
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.jpeg" type="image/png" />
+    <link rel="shortcut icon" href="/shortcut-favicon.jpeg" type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      href="/apple-touch-favicon.jpeg"
+      type="image/png"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{TITLE}</title>
+  </head>
+  <body>
+    <h1 class="loader">Ai Atlant</h1>
+  </body>
 </html>
+
+<style>
+  body {
+    background-color: #201d30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .loader {
+    margin: auto;
+    color: var(--text);
+    animation: blink 2s infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+</style>
+
+<script>
+  setTimeout(() => {
+    lang =
+      lang ||
+      window.navigator.language ||
+      // @ts-ignore
+      window.navigator.browserLanguage ||
+      // @ts-ignore
+      window.navigator.userLanguage;
+
+    let shortLang = lang;
+
+    if (shortLang.indexOf("-") !== -1) {
+      shortLang = shortLang.split("-")[0];
+    }
+
+    if (shortLang.indexOf("_") !== -1) {
+      shortLang = shortLang.split("_")[0];
+    }
+
+    if (shortLang === "ru") {
+      window.location.replace("./" + shortLang + "/");
+    }
+
+    if (shortLang === "en") {
+      window.location.replace("./" + shortLang + "/");
+    }
+  }, 2000);
+  let lang = window.navigator.languages ? window.navigator.languages[0] : null;
+</script>

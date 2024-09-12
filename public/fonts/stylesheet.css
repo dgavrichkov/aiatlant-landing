@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Jomhuria';
+    src: url('Jomhuria-Regular.eot');
+    src: local('Jomhuria'), local('Jomhuria-Regular'),
+        url('Jomhuria-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Jomhuria-Regular.woff2') format('woff2'),
+        url('Jomhuria-Regular.woff') format('woff'),
+        url('Jomhuria-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

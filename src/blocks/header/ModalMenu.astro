@@ -1,0 +1,79 @@
+---
+import Link from '../../ui/Link.astro';
+import HeaderActions from './HeaderActions.astro';
+const { menu, headerButtons } = Astro.props;
+---
+
+<div class="menu-modal" data-menu-modal>
+  <div class="menu-modal__actions">
+    <HeaderActions headerButtons={headerButtons} />
+  </div>
+  <nav class="menu-modal__nav">
+    {menu.map((item) => (
+      <Link data-menu-item href={item.href} class="menu-item" data-menu-closer>{item.title}</Link>
+    ))}
+  </nav>
+</div>
+
+<style>
+  .menu-modal {
+    z-index: 200;
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--primary-1);
+    padding: 24px 43px;
+    padding-top: calc(16px + 80px + 40px);
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .menu-modal.active {
+    opacity: 1;
+    pointer-events: initial;
+  }
+
+  .menu-modal__nav {
+    justify-self: center;
+    align-self: start;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .menu-modal__nav a {
+    line-height: 1;
+  }
+
+  .menu-modal__actions {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  @media (max-width: 425px) {
+    .menu-modal {
+      grid-template-columns: 1fr;
+    }
+
+    .menu-modal__actions {
+      order: 2;
+      align-self: center;
+    }
+
+    .menu-modal__nav {
+      order: 1;
+      gap: 56px;
+      align-self: center;
+    }
+  }
+</style>

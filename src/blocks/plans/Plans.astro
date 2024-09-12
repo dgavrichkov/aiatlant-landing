@@ -1,0 +1,158 @@
+---
+import PlanList from "./PlanList.astro";
+
+const { data: plans } = Astro.props;
+---
+
+<section class="plans" id={plans.id}>
+  <h2 class="plans__title">{plans.title}</h2>
+  <div class="plans__content">
+    <PlanList list={plans.list} />
+  </div>
+  <figure class="plans__illustration">
+    <picture>
+      <source
+        srcset="/images/heroes-big.webp"
+        media="(min-width: 1200px)"
+        type="image/webp"
+      />
+      <source
+        srcset="/images/heroes-big.png"
+        media="(min-width: 1200px)"
+        type="image/png"
+      />
+      <source
+        srcset="/images/heroes-mid.webp"
+        media="(min-width: 667px)"
+        type="image/webp"
+      />
+      <source
+        srcset="/images/heroes-mid.png"
+        media="(min-width: 667px)"
+        type="image/png"
+      />
+      <img width="500" src="/images/heroes-small.png" alt="dnd characters" />
+    </picture>
+  </figure>
+</section>
+
+<style>
+  .plans {
+    position: relative;
+    z-index: 2;
+    color: var(--text);
+    overflow: hidden;
+    --plan-width: 530px;
+    --plan-left: 0px;
+    --bg-x-pos: 5%;
+    --bg-y-pos: 50%;
+    --bg-width: 100%;
+
+    padding: 40px 16px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .plans__title {
+    color: var(--text);
+    margin: 0;
+    font-size: 51px;
+    line-height: 36px;
+    margin-bottom: 28px;
+  }
+
+  .plans__content {
+    position: relative;
+    z-index: 2;
+    width: var(--plan-width);
+    max-width: 100%;
+    margin-left: var(--plan-left);
+  }
+
+  .plans__illustration {
+    right: var(--bg-x-pos);
+    top: var(--bg-y-pos);
+    margin: 0 -16px;
+    margin-bottom: -60%;
+    width: calc(100% + 32px);
+  }
+
+  .plans__illustration img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 426px) {
+    .plans__illustration {
+      margin-bottom: -30%;
+    }
+  }
+
+  @media (min-width: 667px) {
+    .plans {
+      padding-top: 64px;
+    }
+
+    .plans__title {
+      font-size: 80px;
+      line-height: 86px;
+      margin-bottom: 64px;
+    }
+
+    .plans__illustration {
+      margin: 0;
+      margin-bottom: -3%;
+      width: var(--bg-width);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .plans {
+      --bg-width: 57%;
+      --bg-x-pos: -10%;
+      --bg-y-pos: calc(50% + 64px);
+      --plan-left: 42px;
+      display: block;
+      padding-top: 120px;
+      padding-bottom: 120px;
+      margin-right: -16px;
+    }
+
+    .plans__title {
+      text-align-last: left;
+      margin-left: 42px;
+    }
+
+    .plans__illustration {
+      z-index: 1;
+      position: absolute;
+      transform: translateY(-50%);
+    }
+  }
+  @media (min-width: 1200px) {
+    .plans {
+      --bg-width: 70%;
+      --bg-x-pos: -12%;
+      --bg-y-pos: 56%;
+    }
+  }
+  @media (min-width: 1440px) {
+    .plans {
+      --bg-width: 62%;
+      --bg-x-pos: -5%;
+      --bg-y-pos: 56%;
+      --plan-left: 117px;
+      padding-left: 48px;
+      padding-right: 48px;
+      margin-right: -48px;
+    }
+  }
+
+  @media (min-width: 1800px) {
+    .plans {
+      --bg-width: 50%;
+      --bg-x-pos: 5%;
+    }
+  }
+</style>

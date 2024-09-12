@@ -1,0 +1,192 @@
+---
+import Link from "../../ui/Link.astro";
+import HeaderActions from "./HeaderActions.astro";
+import ModalMenu from "./ModalMenu.astro";
+
+const { menu, headerButtons } = Astro.props;
+---
+
+<header class="header">
+  <h2 class="header__logo">AI Atlant</h2>
+  <nav class="header__navigation">
+    {
+      menu.map((item) => (
+        <Link data-menu-item href={item.href} class="menu-item">
+          {item.title}
+        </Link>
+      ))
+    }
+  </nav>
+  <div class="header__actions">
+    <HeaderActions headerButtons={headerButtons} />
+  </div>
+  <button class="header__burger" data-menu-burger>
+    <span class="visually-hidden">Открыть меню</span>
+  </button>
+  <ModalMenu menu={menu} headerButtons={headerButtons} />
+</header>
+
+<script>
+  let isMenuOpen = false;
+  const body = document.body;
+  const burger = document.querySelector("[data-menu-burger]");
+  const menumodal = document.querySelector("[data-menu-modal");
+  const closers = document.querySelectorAll("[data-menu-closer]");
+
+  burger.addEventListener("click", () => {
+    burger.classList.toggle("active");
+    isMenuOpen = !isMenuOpen;
+
+    if (isMenuOpen) {
+      menumodal.classList.add("active");
+      body.classList.add("no-scroll");
+    } else {
+      menumodal.classList.remove("active");
+      body.classList.remove("no-scroll");
+    }
+  });
+
+  closers.forEach((closerEl) => {
+    closerEl.addEventListener("click", () => {
+      if (isMenuOpen) {
+        isMenuOpen = false;
+        menumodal.classList.remove("active");
+        burger.classList.remove("active");
+        body.classList.remove("no-scroll");
+      }
+    });
+  });
+
+  function updateActiveLink() {
+    const links = document.querySelectorAll("[data-menu-item]");
+    const currentHash = window.location.hash;
+
+    links.forEach((link, idx) => {
+      if (idx === 0 && currentHash === "") {
+        link.classList.add("active");
+        return;
+      }
+
+      if (link.getAttribute("href") === currentHash) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  }
+
+  function resetModalMenu() {
+    isMenuOpen = false;
+    body.classList.remove("no-scroll");
+    menumodal.classList.remove("active");
+    burger.classList.remove("active");
+  }
+
+  window.addEventListener("resize", resetModalMenu);
+
+  window.addEventListener("load", updateActiveLink);
+
+  window.addEventListener("hashchange", updateActiveLink);
+</script>
+
+<style>
+  .header {
+    position: relative;
+    z-index: 100;
+    border-radius: 24px;
+    background: var(--primary-1);
+    padding-left: 24px;
+    padding-right: 24px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .header__logo {
+    position: relative;
+    z-index: 210;
+    color: var(--text);
+    font-family: "Jomhuria", sans-serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 56px;
+    translate: 0 10%;
+  }
+
+  .header__navigation {
+    display: none;
+  }
+
+  .header__burger {
+    position: relative;
+    z-index: 210;
+    width: 40px;
+    height: 42px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    background-image: url("/burger.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all 0.3s ease-in;
+  }
+
+  .header__burger.active {
+    background-image: url("/close.svg");
+  }
+
+  .header__actions {
+    display: none;
+  }
+
+  .menu-item {
+    color: var(--text);
+    font-size: 24px;
+    text-decoration: none;
+  }
+
+  .menu-item.active {
+    color: var(--accent-2-secondary);
+  }
+
+  @media (min-width: 1025px) {
+    .header {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 28px;
+      padding: 12px 48px;
+      padding-right: 16px;
+    }
+
+    .header__navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 24px;
+    }
+
+    .header__actions {
+      display: flex;
+      gap: var(--gap-xl);
+      justify-self: end;
+    }
+
+    .header__burger {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1240px) {
+    .header__navigation {
+      column-gap: 64px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .header__navigation {
+      column-gap: 113px;
+    }
+  }
+</style>

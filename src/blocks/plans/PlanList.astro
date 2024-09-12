@@ -1,0 +1,84 @@
+---
+const { list } = Astro.props;
+---
+
+<ol class="plan">
+  {
+    list.map((item) => (
+      <li class="plan__item">
+        <p class="plan__name">{item.title}</p>
+        <p class="plan__description">{item.text}</p>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .plan {
+    --gutter: 22px;
+
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: calc(7px + var(--gutter) + var(--gutter) + 62px);
+    counter-reset: list-counter;
+    list-style: none;
+    position: relative;
+  }
+
+  .plan::before {
+    content: "";
+    width: 7px;
+    height: 100%;
+    position: absolute;
+    left: calc(62px + var(--gutter) - 7px);
+    top: 0;
+    background: linear-gradient(
+      to bottom,
+      #dbfc5400,
+      #dbfc54,
+      #dbfc54,
+      #dbfc5400
+    );
+  }
+
+  .plan__item {
+    margin-bottom: 62px;
+    counter-increment: list-counter;
+    position: relative;
+  }
+  .plan__item:last-child {
+    margin-bottom: 0;
+  }
+
+  .plan__item:before {
+    content: counter(list-counter, decimal-leading-zero);
+    position: absolute;
+    left: calc(-62px - var(--gutter) - var(--gutter) - 7px);
+    top: 10px;
+    color: var(--text);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 21px;
+  }
+
+  .plan__name {
+    color: var(--accent-2-secondary);
+    margin-bottom: var(--gap-xxl);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .plan__description {
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 400;
+  }
+
+  @media (max-width: 425px) {
+    .plan {
+      --gutter: 16px;
+      margin: 0;
+    }
+  }
+</style>

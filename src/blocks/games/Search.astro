@@ -1,0 +1,90 @@
+---
+---
+<div class="search">
+  <input class="search__input" type="text" id="game-search" placeholder=" ">
+  <label class="search__label" for="game-search">Найти</label>
+</div>
+
+<style>
+  .search {
+    position: relative;
+    height: 68px;
+    min-width: 300px;
+    border-radius: 37px;
+    background-color: #622CBC42;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    gap: 16px;
+  }
+
+  .search:focus-within {
+    outline: 1px solid var(--accent-2-secondary);
+  }
+
+  .search:after {
+    content: '';
+    width: 32px;
+    height: 32px;
+    background-image: url('/search.svg');
+    background-repeat: no-repeat;
+    background-size: calc(100% - 2px);
+  }
+
+  .search__label {
+    position: absolute;
+    left: 32px;
+    color: rgba(255, 255, 255, 0.5);
+    top: 50%;
+    translate: 0 -50%;
+    z-index: 2;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .search__input {
+    border: none;
+    background: transparent;
+    caret-color: currentcolor;
+    color: var(--text);
+    width: calc(100% - 16px - 32px);
+  }
+
+  .search__input:focus {
+    outline: none;
+  }
+
+  .search__input:disabled {
+    pointer-events: none;
+  }
+
+  .search__input:focus + .search__label {
+    top: 10px;
+    opacity: 0;
+  }
+
+  .search:has(input:disabled) {
+    background: var(--accent-1-secondary);
+    opacity: 0.26;
+  }
+
+  .search:has(input:not(:placeholder-shown)) .search__label {
+    top: 10px;
+    opacity: 0;
+  }
+
+  .search:has(input:disabled)::after {
+    background-image: url('/search-blue.svg');
+  }
+
+  .search:has(input:disabled) .search__label {
+    color: var(--accent-1-primary);
+  }
+
+  @media (max-width: 834px) {
+    .search {
+      width: 100%;
+    }
+  }
+</style>

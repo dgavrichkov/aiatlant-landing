@@ -1,0 +1,62 @@
+---
+import HeroCard from "./HeroCard.astro";
+import InfoCard from "./InfoCard.astro";
+import TgInvite from "./TgInvite.astro";
+import TestInvite from "./TestInvite.astro";
+
+const { data: info } = Astro.props;
+---
+
+<section class="info" id={info.id}>
+  <h2 class="visually-hidden">{info.title}</h2>
+  <HeroCard data={info.heroCard} />
+  <InfoCard data={info.infoCard} />
+  <TgInvite data={info.tgInvite} />
+  <TestInvite data={info.testInvite} />
+</section>
+
+<style>
+  .info {
+    position: relative;
+    z-index: 2;
+    margin-top: var(--gap-l);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    gap: var(--gap-l);
+    grid-template-areas:
+      "hero hero info info"
+      "hero hero tg test";
+  }
+
+  .info > * {
+    height: 100%;
+  }
+
+  @media (max-width: 1024px) {
+    .info {
+      grid-template-rows: auto;
+      grid-template-areas:
+        "hero hero hero hero"
+        "info info info info"
+        "tg tg test test";
+    }
+  }
+
+  @media (max-width: 768px) {
+    .info {
+      padding-bottom: 32px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .info {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "hero"
+        "info"
+        "tg"
+        "test";
+    }
+  }
+</style>

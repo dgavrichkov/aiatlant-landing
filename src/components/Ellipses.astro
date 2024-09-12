@@ -1,0 +1,97 @@
+---
+
+---
+
+<div class="ellipse ellipse-1"></div>
+<div class="ellipse ellipse-2"></div>
+<div class="ellipse ellipse-3"></div>
+<div class="ellipse ellipse-4"></div>
+
+<style>
+  .ellipse {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .ellipse-1 {
+    background-color: var(--accent-1-primary);
+    width: 1450px;
+    height: 1384px;
+    left: -94px;
+    top: -462px;
+    filter: blur(1000px);
+    background: rgb(0, 122, 255);
+    opacity: 0.52;
+  }
+  .ellipse-2 {
+    background-color: var(--primary-2);
+    filter: blur(700px);
+    background: rgb(98, 44, 188);
+    opacity: 0.52;
+    width: 1342px;
+    height: 1281px;
+    left: -74px;
+    top: 115px;
+  }
+
+  .ellipse-3 {
+    width: 1450px;
+    height: 1384px;
+    left: 321px;
+    top: 1520px;
+    filter: blur(1000px);
+    background: rgb(0, 122, 255);
+    opacity: 0.52;
+  }
+
+  .ellipse-4 {
+    filter: blur(700px);
+    background: rgb(98, 44, 188);
+    opacity: 0.52;
+    width: 1342px;
+    height: 1281px;
+    left: 581px;
+    top: 1978px;
+  }
+
+  @media (max-width: 834px) {
+    .ellipse-1 {
+      left: -94px;
+      top: -478px;
+    }
+    .ellipse-2 {
+      left: -74px;
+      top: 99px;
+    }
+    .ellipse-3 {
+      left: 321px;
+      top: 1504px;
+    }
+    .ellipse-4 {
+      left: 581px;
+      top: 1962px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .ellipse-1 {
+      left: -94px;
+      top: -456px;
+    }
+    .ellipse-2 {
+      display: none;
+    }
+    .ellipse-3 {
+      top: 1401px;
+      top: initial;
+      left: -285px;
+      bottom: 2400px;
+    }
+    .ellipse-4 {
+      top: initial;
+      left: 15px;
+      bottom: 630px;
+    }
+  }
+</style>

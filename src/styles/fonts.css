@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/Jost-Regular.eot");
+  src: local("Jost Regular"), local("Jost-Regular"),
+    url("/fonts/Jost-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jost-Regular.woff2") format("woff2"),
+    url("/fonts/Jost-Regular.woff") format("woff"),
+    url("/fonts/Jost-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/Jost-Bold.eot");
+  src: local("Jost Bold"), local("Jost-Bold"),
+    url("/fonts/Jost-Bold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jost-Bold.woff2") format("woff2"),
+    url("/fonts/Jost-Bold.woff") format("woff"),
+    url("/fonts/Jost-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/Jost-SemiBold.eot");
+  src: local("Jost SemiBold"), local("Jost-SemiBold"),
+    url("/fonts/Jost-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jost-SemiBold.woff2") format("woff2"),
+    url("/fonts/Jost-SemiBold.woff") format("woff"),
+    url("/fonts/Jost-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/Jost-ExtraBold.eot");
+  src: local("Jost ExtraBold"), local("Jost-ExtraBold"),
+    url("/fonts/Jost-ExtraBold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jost-ExtraBold.woff2") format("woff2"),
+    url("/fonts/Jost-ExtraBold.woff") format("woff"),
+    url("/fonts/Jost-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/Jost-Black.eot");
+  src: local("Jost Black"), local("Jost-Black"),
+    url("/fonts/Jost-Black.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jost-Black.woff2") format("woff2"),
+    url("/fonts/Jost-Black.woff") format("woff"),
+    url("/fonts/Jost-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jomhuria";
+  src: url("/fonts/Jomhuria-Regular.eot");
+  src: local("Jomhuria"), local("Jomhuria-Regular"),
+    url("/fonts/Jomhuria-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Jomhuria-Regular.woff2") format("woff2"),
+    url("/fonts/Jomhuria-Regular.woff") format("woff"),
+    url("/fonts/Jomhuria-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

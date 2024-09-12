@@ -1,0 +1,23 @@
+---
+// Универсальная кнопка. Компонент задает только поведение. Всю стилизацию размещать в css конкретной страницы.
+
+const { tag, class: className, view = "default", ...rest } = Astro.props;
+
+const buttonClassName = `uiButton ${className} ${view}`;
+---
+
+{
+  tag === "a" && (
+    <a class={buttonClassName} {...rest}>
+      <slot />
+    </a>
+  )
+}
+
+{
+  tag === "button" && (
+    <button class={buttonClassName} {...rest}>
+      <slot />
+    </button>
+  )
+}
