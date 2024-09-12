@@ -91,6 +91,8 @@
 
 body {
   font-family: Jost, sans-serif;
+  position: relative;
+  overflow-x: hidden;
 }
 
 body.no-scroll {
@@ -161,5 +163,16 @@ button.uiButton {
   }
 
   .title {
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    --container-gutter: 16px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 36px;
   }
 }

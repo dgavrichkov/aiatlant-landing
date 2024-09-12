@@ -19,21 +19,36 @@ const { rate } = data;
     background-color: var(--text);
     color: var(--background-primary);
     border-radius: 100px 32px 32px 32px;
-    padding: 50px 48px;
+    padding: 42px 24px;
 
     height: 100%;
   }
 
   .testimonial-card__rate {
-    margin-bottom: 41px;
+    margin-bottom: 32px;
   }
 
   .testimonial-card__text {
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 16px;
+    line-height: 25px;
   }
 
   :global(.testimonial-card__text > * + *) {
     margin-top: 29px;
+  }
+
+  @media (min-width: 768px) {
+    .testimonial-card {
+      padding: 50px 48px;
+    }
+
+    .testimonial-card__text {
+      font-size: 24px;
+      line-height: 29px;
+    }
+
+    .testimonial-card__rate {
+      margin-bottom: 41px;
+    }
   }
 </style>

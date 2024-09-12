@@ -7,24 +7,27 @@ const { data } = Astro.props;
 ---
 
 <section class="reviews container" id={data.id}>
-  <header class="reviews__header">
-    <h2 class="reviews__title title">{data.title}</h2>
-    <div class="reviews__controls">
-      <SliderButton direction="prev" disabled />
-      <SliderButton direction="next" />
+  <div class="reviews__wrap">
+    <header class="reviews__header">
+      <h2 class="reviews__title title">{data.title}</h2>
+      <div class="reviews__controls">
+        <SliderButton direction="prev" disabled />
+        <SliderButton direction="next" />
+      </div>
+    </header>
+    <div class="swiper reviews__slider-wrap">
+      <ul class="swiper-wrapper reviews__list">
+        {
+          data.list.map((item) => (
+            <li class="swiper-slide reviews__item">
+              <TestimonialCard data={item} />
+            </li>
+          ))
+        }
+      </ul>
     </div>
-  </header>
-  <div class="swiper reviews__slider-wrap">
-    <ul class="swiper-wrapper reviews__list">
-      {
-        data.list.map((item) => (
-          <li class="swiper-slide reviews__item">
-            <TestimonialCard data={item} />
-          </li>
-        ))
-      }
-    </ul>
   </div>
+  <div class="clouds"></div>
 </section>
 
 <script>
@@ -34,7 +37,33 @@ const { data } = Astro.props;
     slidesPerView: 3.4,
     freeMode: true,
     speed: 400,
-    spaceBetween: 50,
+    spaceBetween: 15,
+    breakpoints: {
+      320: {
+        slidesPerView: 1.1,
+      },
+      425: {
+        slidesPerView: 1.2,
+      },
+      768: {
+        slidesPerView: 1.4,
+      },
+      1024: {
+        slidesPerView: 2.1,
+      },
+      1200: {
+        slidesPerView: 2.2,
+      },
+      1440: {
+        slidesPerView: 2.3,
+      },
+      1920: {
+        slidesPerView: 3.2,
+      },
+      2560: {
+        slidesPerView: 4.2,
+      },
+    },
   });
 
   const buttons = document.querySelectorAll(
@@ -88,16 +117,25 @@ const { data } = Astro.props;
     z-index: 2;
     color: var(--text);
     background-color: var(--button-primary);
+    border-radius: 56px 56px 0 0;
+    /* overflow: hidden; */
+  }
+
+  .reviews__wrap {
     padding-top: 33px;
     padding-bottom: 87px;
-    border-radius: 56px 56px 0 0;
   }
 
   .reviews__header {
     display: flex;
-    align-items: end;
-    justify-content: space-between;
-    margin-bottom: 53px;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+
+  .reviews__title {
+    text-align: center;
   }
 
   .reviews__controls {
@@ -120,9 +158,44 @@ const { data } = Astro.props;
     height: auto;
   }
 
-  @media (max-width: 1024px) {
+  .clouds {
+    width: 324px;
+    height: 268px;
+    background-image: url("/images/chronicles/clouds-7.png");
+    background-repeat: no-repeat;
+    background-size: 125%;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateY(-50%);
+  }
+
+  @media (min-width: 769px) {
+    .reviews__header {
+      /* flex-direction: row; */
+      align-items: start;
+    }
+  }
+
+  @media (min-width: 1024px) {
     .reviews {
-      display: none;
+      /* display: none; */
+    }
+
+    .reviews__header {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .reviews__header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 53px;
     }
   }
 </style>

@@ -58,30 +58,100 @@ const { data, actionBtn } = Astro.props;
   .hero__content {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 27px;
   }
 
   .hero__logo {
-    margin-bottom: 48px;
+    max-width: 224px;
   }
 
   .hero__title {
     font-family: "Dela Gothic One", sans-serif;
-    font-size: 100px;
+    text-transform: uppercase;
+    font-size: 32px;
+    line-height: 36px;
     font-weight: 400;
-    line-height: 111px;
-    margin-bottom: 48px;
+    text-align: center;
   }
 
   .hero__text {
-    font-size: 36px;
+    font-size: 20px;
+    line-height: 26px;
     font-weight: 400;
-    line-height: 44px;
+    text-align: center;
   }
 
   .hero__action {
-    margin-top: 56px;
-    align-self: start;
-    min-width: 362px;
+    width: 362px;
     max-width: 100%;
+
+    font-size: 24px;
+  }
+
+  @media (min-width: 320px) {
+    .hero {
+      /* display: none; */
+    }
+  }
+  @media (min-width: 375px) {
+    .hero__title {
+      font-size: 40px;
+      line-height: 43px;
+    }
+  }
+  @media (min-width: 425px) {
+  }
+  @media (min-width: 768px) {
+    .hero__content {
+      align-items: start;
+      gap: 32px;
+    }
+
+    .hero__logo {
+      max-width: 263px;
+    }
+
+    .hero__title {
+      text-align: left;
+      font-size: 72px;
+      line-height: 78px;
+    }
+
+    .hero__text {
+      text-align: left;
+      font-size: 32px;
+      line-height: 36px;
+    }
+
+    .hero__action {
+      font-size: 32px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero__logo {
+      max-width: 420px;
+    }
+  }
+  @media (min-width: 1440px) {
+    .hero__content {
+      gap: 48px;
+    }
+
+    .hero__title {
+      font-size: 100px;
+      line-height: 102px;
+    }
+  }
+  @media (min-width: 1920px) {
+    .hero__title {
+      font-size: 100px;
+      line-height: 111px;
+    }
+
+    .hero__text {
+      font-size: 36px;
+      line-height: 44px;
+    }
   }
 </style>

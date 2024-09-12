@@ -41,12 +41,22 @@ const {
     <title>{TITLE}</title>
   </head>
   <body>
-    <Header />
-    <Hero data={hero} actionBtn={callToAction} />
-    <Features data={features} />
-    <Banner data={banner} actionBtn={callToAction} />
-    <Who data={who} />
-    <Reviews data={reviews} />
-    <Footer footerLinks={footerLinks} socials={socials} />
+    <div class="page">
+      <Header />
+      <Hero data={hero} actionBtn={callToAction} />
+      <Features data={features} />
+      <Banner data={banner} actionBtn={callToAction} />
+      <Who data={who} />
+      <Reviews data={reviews} />
+      <Footer footerLinks={footerLinks} socials={socials} />
+    </div>
   </body>
 </html>
+
+<style>
+  .page {
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+  }
+</style>

@@ -5,20 +5,26 @@ const { data } = Astro.props;
 ---
 
 <section class="who container" id={data.who}>
-  <h2 class="who__title title">{data.title}</h2>
-  <ul class="who__list">
-    {
-      data.list.map((item) => (
-        <li class="who__item pill" set:html={marked.parse(item.text)} />
-      ))
-    }
-  </ul>
+  <div class="who__wrap">
+    <h2 class="who__title title">{data.title}</h2>
+    <ul class="who__list">
+      {
+        data.list.map((item) => (
+          <li class="who__item pill" set:html={marked.parse(item.text)} />
+        ))
+      }
+    </ul>
+  </div>
 </section>
 
 <style>
   .who {
     color: var(--text);
     margin: 82px 0;
+  }
+
+  .who__wrap {
+    overflow: hidden;
   }
 
   .who__title {
@@ -29,7 +35,7 @@ const { data } = Astro.props;
     list-style: none;
     display: flex;
     gap: 16px 32px;
-    padding: 20px 0;
+    padding: 2% 0;
   }
 
   .who__item {
@@ -45,6 +51,9 @@ const { data } = Astro.props;
     font-weight: 700;
     font-size: 30px;
     line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .pill:nth-child(1) {
@@ -63,15 +72,63 @@ const { data } = Astro.props;
     transform: rotate(-5.64deg);
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1440px) {
+    .pill {
+      padding: 32px 16px;
+    }
+  }
+
+  @media (max-width: 1200px) {
     .who__list {
       flex-direction: column;
-      gap: 16px 32px;
-      padding: 20px 0;
+      gap: 44px 32px;
+      padding: 48px 0;
     }
 
     .who__item {
       width: 100%;
+    }
+
+    .pill {
+      padding-left: 20%;
+      padding-right: 20%;
+      min-height: 124px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .who__list {
+      gap: 32px 32px;
+      padding: 48px 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .who__title {
+      text-align: center;
+      font-size: 32px;
+      line-height: 36px;
+    }
+    .pill {
+      padding: 32px 16px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .who {
+      padding: 0;
+    }
+
+    .who__title {
+      padding: 0 15%;
+    }
+
+    .who__list {
+      margin: 0 -16px;
+    }
+
+    .who__item {
+      width: calc(100%);
     }
   }
 </style>
