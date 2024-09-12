@@ -52,15 +52,10 @@
     {
       "id": 4,
       "title": "Contact Us",
-      "href": "https://t.me/AIAtlant"
+      "href": "mailto:info@aiatlant.com"
     }
   ],
   "socials": {
-    "Instagram": {
-      "label": "Instagram",
-      "href": "/inst",
-      "icon": "iconInst"
-    },
     "Telegram": {
       "label": "Telegram",
       "href": "https://t.me/AIAtlant",

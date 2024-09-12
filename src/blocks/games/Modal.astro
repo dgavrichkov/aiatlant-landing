@@ -1,27 +1,44 @@
 ---
-import { marked } from 'marked';
-import Badge from '../../ui/Badge.astro';
+import { marked } from "marked";
+import Badge from "../../ui/Badge.astro";
 
-const {game, utils, class: className, ...rest} = Astro.props;
+const { game, utils, class: className, ...rest } = Astro.props;
 ---
 
-<div class:list={[className, 'modal', 'hidden']} data-modal-id={game.id} {...rest}>
+<div
+  class:list={[className, "modal", "hidden"]}
+  data-modal-id={game.id}
+  {...rest}
+>
   <div class="modal__overlay" data-modal-close></div>
   <article class="modal__body">
     <div class="modal__hero">
       <button class="modal__close" data-modal-close>
         <span class="visually-hidden">Закрыть</span>
       </button>
-      {game.isConcept && <Badge class="modal__badge">{utils.concept}</Badge>} 
-        <picture class="modal__illustration">
-          <source srcset={`./images/${game.pic}-1x.webp 1x, ./images/${game.pic}-3x.webp 2x`} type="image/webp">
-          <source srcset={`./images/${game.pic}-1x.jpg 1x, ./images/${game.pic}-3x.jpg 2x`} type="image/jpeg">
-          <img width="200" src={`./images/${game.pic}-1x.jpg`} alt={game?.alttext || ''}>
-        </picture>
+      {game.isConcept && <Badge class="modal__badge">{utils.concept}</Badge>}
+      <picture class="modal__illustration">
+        <source
+          srcset={`/images/${game.pic}-1x.webp 1x, /images/${game.pic}-3x.webp 2x`}
+          type="image/webp"
+        />
+        <source
+          srcset={`/images/${game.pic}-1x.jpg 1x, /images/${game.pic}-3x.jpg 2x`}
+          type="image/jpeg"
+        />
+        <img
+          width="200"
+          src={`/images/${game.pic}-1x.jpg`}
+          alt={game?.alttext || ""}
+        />
+      </picture>
     </div>
     <div class="modal__content scroll-container">
       <div class="modal__title">{game.title}</div>
-      <div class="modal__description" set:html={marked.parse(game.fullDescription || '')}></div>
+      <div
+        class="modal__description"
+        set:html={marked.parse(game.fullDescription || "")}
+      />
     </div>
   </article>
 </div>
@@ -96,8 +113,8 @@ const {game, utils, class: className, ...rest} = Astro.props;
   }
 
   .modal__close::after {
-    content: '';
-    background-image: url('/close.svg');
+    content: "";
+    background-image: url("/close.svg");
     background-repeat: no-repeat;
     background-size: contain;
     width: 32px;
