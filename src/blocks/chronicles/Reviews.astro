@@ -114,11 +114,10 @@ const { data } = Astro.props;
 <style>
   .reviews {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     color: var(--text);
     background-color: var(--button-primary);
     border-radius: 56px 56px 0 0;
-    /* overflow: hidden; */
   }
 
   .reviews__wrap {
@@ -168,25 +167,31 @@ const { data } = Astro.props;
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-60%);
   }
 
   @media (min-width: 769px) {
     .reviews__header {
-      /* flex-direction: row; */
       align-items: start;
+    }
+
+    .clouds {
+      transform: translateY(-40%);
     }
   }
 
   @media (min-width: 1024px) {
     .reviews {
-      /* display: none; */
     }
 
     .reviews__header {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .clouds {
+      left: 30%;
     }
   }
 

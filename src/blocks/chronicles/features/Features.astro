@@ -20,7 +20,7 @@ const { data } = Astro.props;
 <style>
   .features {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     color: var(--text);
     background-color: var(--background-secondary);
     padding-bottom: 82px;
@@ -28,12 +28,15 @@ const { data } = Astro.props;
   }
 
   .features__title {
+    position: relative;
+    z-index: 2;
     margin-bottom: 82px;
   }
 
   .features__list {
     list-style: none;
     position: relative;
+    z-index: 2;
     margin: 0;
     padding: 0;
     display: grid;
