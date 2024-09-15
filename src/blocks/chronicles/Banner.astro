@@ -53,8 +53,8 @@ const IMAGE_NAME = "gamers";
     display: grid;
     overflow: hidden;
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
   }
+
   .banner-card__content {
     padding: 56px 16px;
     display: flex;
@@ -65,18 +65,18 @@ const IMAGE_NAME = "gamers";
 
   .banner-card__title {
     font-family: var(--ff-dela);
-    font-weight: 400;
     text-transform: uppercase;
-    font-size: 40px;
-    line-height: 51px;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1;
     text-align: center;
   }
 
   .banner-card__call {
     font-weight: 400;
     font-family: var(--ff-dela);
-    font-size: 32px;
-    line-height: 36px;
+    font-size: 24px;
+    line-height: 1.2;
     margin-top: 32px;
     margin-bottom: 48px;
     text-align: center;
@@ -84,8 +84,8 @@ const IMAGE_NAME = "gamers";
 
   .banner-card__text {
     color: var(--button-secondary);
-    font-size: 24px;
-    line-height: 27px;
+    font-size: 16px;
+    line-height: 1.5;
     margin-top: 32px;
     text-align: center;
   }
@@ -105,6 +105,28 @@ const IMAGE_NAME = "gamers";
   .banner-card__action {
     width: 100%;
     max-width: 362px;
+    font-size: 24px;
+  }
+
+  @media (min-width: 375px) {
+    .banner-card__title {
+      font-size: 40px;
+      line-height: 51px;
+    }
+
+    .banner-card__text {
+      font-size: 24px;
+      line-height: 27px;
+    }
+
+    .banner-card__call {
+      font-size: 32px;
+      line-height: 36px;
+    }
+
+    .banner-card__action {
+      font-size: 32px;
+    }
   }
 
   @media (min-width: 769px) {
@@ -123,7 +145,7 @@ const IMAGE_NAME = "gamers";
 
   @media (min-width: 1024px) {
     .banner-card {
-      grid-template-columns: calc(55%) 1fr;
+      grid-template-columns: calc(50% + 44px) 1fr;
     }
 
     .banner-card__content {
@@ -162,12 +184,14 @@ const IMAGE_NAME = "gamers";
       padding: 95px 72px;
       padding-right: 42px;
     }
+
+    .banner-card__title {
+      font-size: 42px;
+      line-height: 1.2;
+    }
   }
 
   @media (min-width: 1440px) {
-    .banner {
-    }
-
     .banner-card__content {
       align-items: start;
       overflow: hidden;
@@ -197,7 +221,7 @@ const IMAGE_NAME = "gamers";
 
   @media (min-width: 1920px) {
     .banner-card {
-      grid-template-columns: calc(50% + 44px) auto;
+      /* grid-template-columns: calc(50% + 44px) auto; */
     }
     .banner-card__title {
       font-size: 100px;

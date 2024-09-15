@@ -43,16 +43,18 @@ const { data: item } = Astro.props;
 
 <style>
   .feature {
+    --b-rad: 56px;
+    width: 100%;
     height: 100%;
     padding: 16px;
     padding-bottom: 70px;
-    border-radius: 56px;
+    border-radius: var(--b-rad);
     background: var(--text);
     color: var(--background-primary);
   }
 
   .feature__pic {
-    border-radius: 56px;
+    border-radius: var(--b-rad);
     overflow: hidden;
     margin-bottom: 32px;
   }
@@ -70,11 +72,35 @@ const { data: item } = Astro.props;
     line-height: 1;
     margin-bottom: 32px;
     padding: 0 16px;
+    min-height: 2lh;
   }
 
   .feature__text {
     font-size: 24px;
     line-height: 30px;
     padding: 0 16px;
+  }
+
+  @media (max-width: 768px) {
+    .feature {
+      --b-rad: 32px;
+    }
+    .feature__name {
+      font-size: 32px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .feature__text {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .feature__name {
+      font-size: 24px;
+      line-height: 1;
+    }
   }
 </style>

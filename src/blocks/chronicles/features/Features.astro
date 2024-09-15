@@ -19,26 +19,12 @@ const { data } = Astro.props;
 
 <style>
   .features {
-    --wave-height: 200px;
     position: relative;
     z-index: 2;
     color: var(--text);
     background-color: var(--background-secondary);
-    margin-top: var(--wave-height);
-  }
-
-  .features::before {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    width: 100%;
-    height: var(--wave-height);
-    background-image: url("/images/chronicles/wave-desktop.svg");
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: 100% auto;
+    padding-bottom: 82px;
+    padding-top: 20px;
   }
 
   .features__title {
@@ -47,6 +33,7 @@ const { data } = Astro.props;
 
   .features__list {
     list-style: none;
+    position: relative;
     margin: 0;
     padding: 0;
     display: grid;
@@ -55,12 +42,27 @@ const { data } = Astro.props;
     align-items: stretch;
   }
 
+  @media (max-width: 1440px) {
+    .features {
+      padding-bottom: 64px;
+    }
+  }
+
   @media (max-width: 1024px) {
+    .features {
+      padding-bottom: 48px;
+    }
+
     .features__title {
       font-size: 40px;
       line-height: 1;
       margin-bottom: 48px;
     }
+
+    .features__list {
+      gap: 8px;
+    }
+
     .carousel {
       display: flex;
       overflow-x: scroll;
@@ -75,11 +77,39 @@ const { data } = Astro.props;
 
     .carousel__item {
       flex: 0 0 42%;
+      flex-shrink: 0;
       scroll-snap-align: center;
     }
 
     .carousel__item:last-child {
       margin-right: 48px;
     }
+  }
+
+  @media (max-width: 768px) {
+    .features {
+      padding-bottom:;
+    }
+
+    .features__title {
+      text-align: center;
+      font-size: 32px;
+      line-height: 42px;
+      margin-bottom: 46px;
+    }
+
+    .carousel__item {
+      flex: 0 0 70%;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .carousel__item {
+      flex-basis: 90%;
+    }
+  }
+
+  @media (max-width: 320px) {
+    /*  */
   }
 </style>
