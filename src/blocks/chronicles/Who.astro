@@ -4,17 +4,20 @@ import { marked } from "marked";
 const { data } = Astro.props;
 ---
 
-<section class="who container" id={data.who}>
-  <div class="who__wrap">
-    <h2 class="who__title title">{data.title}</h2>
-    <ul class="who__list">
-      {
-        data.list.map((item) => (
-          <li class="who__item pill" set:html={marked.parse(item.text)} />
-        ))
-      }
-    </ul>
+<section class="who" id={data.who}>
+  <div class="container who__container">
+    <div class="who__wrap">
+      <h2 class="who__title title">{data.title}</h2>
+      <ul class="who__list">
+        {
+          data.list.map((item) => (
+            <li class="who__item pill" set:html={marked.parse(item.text)} />
+          ))
+        }
+      </ul>
+    </div>
   </div>
+  <div class="cloud"></div>
 </section>
 
 <style>
@@ -74,9 +77,24 @@ const { data } = Astro.props;
     transform: rotate(-5.64deg);
   }
 
+  .cloud {
+    background-image: url("/images/chronicles/clouds-3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 514px;
+    height: 334px;
+    top: -166px;
+    right: -30px;
+  }
+
   @media (max-width: 1440px) {
     .pill {
       padding: 32px 16px;
+    }
+
+    .cloud {
+      display: none;
     }
   }
 
@@ -117,7 +135,7 @@ const { data } = Astro.props;
   }
 
   @media (max-width: 425px) {
-    .who {
+    .who__container {
       padding: 0;
     }
 

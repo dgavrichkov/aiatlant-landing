@@ -116,6 +116,9 @@ body.no-scroll {
 .container {
   --container-gutter: 100px;
   padding: 0 var(--container-gutter);
+
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 .title {
