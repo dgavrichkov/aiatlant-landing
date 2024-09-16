@@ -49,7 +49,7 @@ const { data, actionBtn } = Astro.props;
       <picture>
         <source srcset={`/images/chronicles/table.webp`} type="image/webp" />
         <source srcset={`/images/chronicles/table.png`} type="image/webp" />
-        <img src="/images/chronicles/table.png" alt={"TODO i18n alt"} />
+        <img src="/images/chronicles/table.png" alt={data.imgAlt} />
       </picture>
       <div class="cloud-3"></div>
       <div class="cloud-4"></div>

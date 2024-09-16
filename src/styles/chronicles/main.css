@@ -113,6 +113,12 @@ body.no-scroll {
   overflow: hidden;
 }
 
+.page {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
 .container {
   --container-gutter: 100px;
   padding: 0 var(--container-gutter);

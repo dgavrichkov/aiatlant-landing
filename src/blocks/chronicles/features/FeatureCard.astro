@@ -5,7 +5,7 @@ interface Props {
     image: string;
     name: string;
     text: string;
-    alttext?: string;
+    imgAlt?: string;
   };
 }
 
@@ -25,7 +25,7 @@ const { data: item } = Astro.props;
     <img
       width="200"
       src={`/images/chronicles/${item.image}-1x.jpg`}
-      alt={item?.alttext || ""}
+      alt={item?.imgAlt || ""}
     />
   </picture>
   <div class="feature__name">{item.name}</div>

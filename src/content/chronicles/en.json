@@ -1,0 +1,124 @@
+{
+  "callToAction": {
+    "text": "Play",
+    "href": "https://t.me/AIAtlant_bot"
+  },
+  "footerLinks": [
+    {
+      "id": 1,
+      "title": "Play",
+      "href": "https://t.me/AIAtlant_bot"
+    },
+    {
+      "id": 2,
+      "title": "Telegram Community",
+      "href": "https://t.me/AIAtlant"
+    },
+    {
+      "id": 3,
+      "title": "Become a Tester",
+      "href": "https://t.me/AIAtlant"
+    },
+    {
+      "id": 4,
+      "title": "Contact Us",
+      "href": "mailto:info@aiatlant.com"
+    }
+  ],
+  "socials": {
+    "Telegram": {
+      "label": "Telegram",
+      "href": "https://t.me/AIAtlant",
+      "icon": "iconTg"
+    }
+  },
+  "hero": {
+    "id": "hero",
+    "title": "Dive into the Chronicles",
+    "text": "Create your own legend in an entirely open world",
+    "imgAlt": "fantasy party in a board game"
+  },
+  "features": {
+    "id": "features",
+    "title": "What's Special About the Chronicles?",
+    "list": [
+      {
+        "id": 1,
+        "image": "feature-1",
+        "name": "Sandbox Game",
+        "text": "You set your own goals and choose how to achieve them.",
+        "imgAlt": "Dwarves in a sandbox"
+      },
+      {
+        "id": 2,
+        "image": "feature-2",
+        "name": "One Warrior in the Field",
+        "text": "Unite, compete, or avoid friends in the game.",
+        "imgAlt": "elf adventurer"
+      },
+      {
+        "id": 3,
+        "image": "feature-3",
+        "name": "Create Your Story",
+        "text": "Minimum rules - maximum imagination. Use your brain to complete quests better than others.",
+        "imgAlt": "writer at work"
+      }
+    ]
+  },
+  "banner": {
+    "id": "banner",
+    "title": "Outplay the AI!",
+    "text": "A full-fledged artificial intelligence serves as the game master.",
+    "call": "Can you defeat the machine?",
+    "imgAlt": "creatures playing on a console"
+  },
+  "who": {
+    "id": "who",
+    "title": "This game is for those who",
+    "list": [
+      {
+        "id": 1,
+        "text": "Love challenges and do not shy away from them"
+      },
+      {
+        "id": 2,
+        "text": "Are capable of unexpected moves and non-trivial solutions"
+      },
+      {
+        "id": 3,
+        "text": "Prefer to choose their own destiny"
+      }
+    ]
+  },
+  "reviews": {
+    "id": "reviews",
+    "title": "Reviews",
+    "list": [
+      {
+        "id": 1,
+        "rate": 4,
+        "text": "The pros are that the freedom of action allows you to use your imagination to the fullest. It’s even more fun with friends.\n\nThe cons, as my friends mentioned, are that it lacks arcade elements and sometimes the AI seems stuck in one place.\n\nOverall, I really like it 👍"
+      },
+      {
+        "id": 2,
+        "rate": 5,
+        "text": "I played both alone and with friends. I really enjoyed how we solved complex tasks and improvised on the go.\nI recommend everyone to try it! 10/10"
+      },
+      {
+        "id": 3,
+        "rate": 5,
+        "text": "The game is entertaining, but sometimes it confuses cities, characters, and locations. Sometimes you can just say \"I do this\" and it happens; other times it goes in circles. But overall, it's still cool."
+      },
+      {
+        "id": 4,
+        "rate": 5,
+        "text": "I managed to play a little, I sent a dragon after myself and died. + I couldn't cheat, but I couldn't kill the dragon with a rabbit body 😄. It's actually quite amusing."
+      },
+      {
+        "id": 5,
+        "rate": 5,
+        "text": "The most interesting thing is that you can ask the bot for a team command and you will play with a team that will have points at the end. He gave me a sharpshooter, a technician, and a MEDIC as teammates!"
+      }
+    ]
+  }
+}

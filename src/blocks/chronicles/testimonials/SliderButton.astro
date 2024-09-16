@@ -1,18 +1,21 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 interface Props extends HTMLAttributes<"button"> {
   direction: "prev" | "next";
 }
 
-// todo: internationalize srings
 const DIR_MAP = {
   prev: {
-    text: "Прокрутить назад",
+    text: t("sliderPrev"),
     className: "arrowbtn--prev",
   },
   next: {
-    text: "Прокрутить вперед",
+    text: t("sliderNext"),
     className: "arrowbtn--next",
   },
 };
