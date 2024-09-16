@@ -91,6 +91,8 @@
 
 body {
   font-family: Jost, sans-serif;
+  position: relative;
+  overflow-x: hidden;
 }
 
 body.no-scroll {
@@ -111,9 +113,18 @@ body.no-scroll {
   overflow: hidden;
 }
 
+.page {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
 .container {
   --container-gutter: 100px;
   padding: 0 var(--container-gutter);
+
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 .title {
@@ -153,4 +164,24 @@ button.uiButton {
 
 .uiButton.default:hover {
   background-color: var(--accent);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    --container-gutter: 16px;
+  }
+
+  .title {
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    --container-gutter: 16px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 36px;
+  }
 }

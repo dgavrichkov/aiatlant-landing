@@ -1,0 +1,46 @@
+---
+import RatingStar from "./RatingStar.astro";
+
+const { rate } = Astro.props;
+
+let stars = [];
+for (let i = 0; i < 5; i++) {
+  let isActive = false;
+
+  if (stars.length < rate) {
+    isActive = true;
+  }
+
+  stars.push({
+    isActive,
+  });
+}
+---
+
+<ul class="rating">
+  {
+    stars.map((star) => (
+      <li class="rating__item">
+        <RatingStar isActive={star.isActive} />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .rating {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rating__item {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

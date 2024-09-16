@@ -5,83 +5,348 @@ import Button from "../../ui/Button.astro";
 const { data, actionBtn } = Astro.props;
 ---
 
-<section class="hero container" id={data.id}>
-  <div class="hero__content">
-    <figure class="hero__logo">
-      <svg
-        width="422"
-        height="34"
-        viewBox="0 0 422 34"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+<section class="hero" id={data.id}>
+  <div class="container">
+    <div class="hero__content">
+      <figure class="hero__logo">
+        <svg
+          width="422"
+          height="34"
+          viewBox="0 0 422 34"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M364.8 34V0.399994H377.328V20.272L402.144 9.376V0.399994H414.672V3.856L421.824 0.735995V9.71199L414.672 12.832V34H402.144V18.352L377.328 29.248V34H364.8Z"
+            fill="#69D467"></path>
+          <path
+            d="M299.625 27.52V18.928L306.777 17.008V0.399994H319.305V13.6L343.833 6.976V0.399994H356.361V12.208L337.017 17.44L348.345 26.8H356.649V34H340.905L325.113 20.608L319.305 22.192V34H306.777V25.6L299.625 27.52Z"
+            fill="#69D467"></path>
+          <path
+            d="M242.597 34V0.399994H255.125V20.272L279.941 9.376V0.399994H292.469V3.856L299.621 0.735995V9.71199L292.469 12.832V34H279.941V18.352L255.125 29.248V34H242.597Z"
+            fill="#69D467"></path>
+          <path
+            d="M176.016 7.21599V0.399994H195.696V13.696H220.464V0.399994H232.992V34H220.464V20.512H195.696V34H183.168V7.21599H176.016Z"
+            fill="#69D467"></path>
+          <path
+            d="M121.331 34V0.399994H171.203V34H121.331ZM133.859 27.184H158.675V7.21599H133.859V27.184Z"
+            fill="#69D467"></path>
+          <path
+            d="M56.625 27.376V19.84L63.777 18.64V0.399994H113.649V17.776L76.305 24.064V34H63.777V26.176L56.625 27.376ZM76.305 16.528L101.121 12.352V7.21599H76.305V16.528Z"
+            fill="#69D467"></path>
+          <path
+            d="M0.959961 7.21599V0.399994H17.28L28.8 10.72L39.84 0.399994H55.44L37.44 17.2L48.48 27.184H55.68V34H39.36L27.84 23.68L16.8 34H1.19996L19.2 17.2L8.15996 7.21599H0.959961Z"
+            fill="#69D467"></path>
+        </svg>
+      </figure>
+      <h2 class="hero__title" set:html={marked.parse(data.title)} />
+      <div class="hero__text" set:html={marked.parse(data.text)} />
+      <Button class="hero__action" tag="a" href={actionBtn.href}
+        >{actionBtn.text}</Button
       >
-        <path
-          d="M364.8 34V0.399994H377.328V20.272L402.144 9.376V0.399994H414.672V3.856L421.824 0.735995V9.71199L414.672 12.832V34H402.144V18.352L377.328 29.248V34H364.8Z"
-          fill="#69D467"></path>
-        <path
-          d="M299.625 27.52V18.928L306.777 17.008V0.399994H319.305V13.6L343.833 6.976V0.399994H356.361V12.208L337.017 17.44L348.345 26.8H356.649V34H340.905L325.113 20.608L319.305 22.192V34H306.777V25.6L299.625 27.52Z"
-          fill="#69D467"></path>
-        <path
-          d="M242.597 34V0.399994H255.125V20.272L279.941 9.376V0.399994H292.469V3.856L299.621 0.735995V9.71199L292.469 12.832V34H279.941V18.352L255.125 29.248V34H242.597Z"
-          fill="#69D467"></path>
-        <path
-          d="M176.016 7.21599V0.399994H195.696V13.696H220.464V0.399994H232.992V34H220.464V20.512H195.696V34H183.168V7.21599H176.016Z"
-          fill="#69D467"></path>
-        <path
-          d="M121.331 34V0.399994H171.203V34H121.331ZM133.859 27.184H158.675V7.21599H133.859V27.184Z"
-          fill="#69D467"></path>
-        <path
-          d="M56.625 27.376V19.84L63.777 18.64V0.399994H113.649V17.776L76.305 24.064V34H63.777V26.176L56.625 27.376ZM76.305 16.528L101.121 12.352V7.21599H76.305V16.528Z"
-          fill="#69D467"></path>
-        <path
-          d="M0.959961 7.21599V0.399994H17.28L28.8 10.72L39.84 0.399994H55.44L37.44 17.2L48.48 27.184H55.68V34H39.36L27.84 23.68L16.8 34H1.19996L19.2 17.2L8.15996 7.21599H0.959961Z"
-          fill="#69D467"></path>
-      </svg>
+    </div>
+    <figure class="hero__illustration">
+      <picture>
+        <source srcset={`/images/chronicles/table.webp`} type="image/webp" />
+        <source srcset={`/images/chronicles/table.png`} type="image/webp" />
+        <img src="/images/chronicles/table.png" alt={data.imgAlt} />
+      </picture>
+      <div class="cloud-3"></div>
+      <div class="cloud-4"></div>
     </figure>
-    <h2 class="hero__title" set:html={marked.parse(data.title)} />
-    <div class="hero__text" set:html={marked.parse(data.text)} />
-    <Button class="hero__action" tag="a" href={actionBtn.href}
-      >{actionBtn.text}</Button
-    >
+    <div class="cloud-5"></div>
+    <div class="cloud-6"></div>
   </div>
 </section>
 
 <style>
   .hero {
-    --bottom-shift: -100px;
+    --wave-height: 95%;
     position: relative;
-    z-index: 3;
+    z-index: 5;
     color: var(--text);
-    margin-bottom: var(--bottom-shift);
+    container-name: hero;
   }
 
   .hero__content {
+    position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 27px;
+    z-index: 3;
   }
 
   .hero__logo {
-    margin-bottom: 48px;
+    max-width: 224px;
   }
 
   .hero__title {
     font-family: "Dela Gothic One", sans-serif;
-    font-size: 100px;
+    text-transform: uppercase;
+    font-size: 32px;
+    line-height: 36px;
     font-weight: 400;
-    line-height: 111px;
-    margin-bottom: 48px;
+    text-align: center;
   }
 
   .hero__text {
-    font-size: 36px;
+    font-size: 20px;
+    line-height: 26px;
     font-weight: 400;
-    line-height: 44px;
+    text-align: center;
   }
 
   .hero__action {
-    margin-top: 56px;
-    align-self: start;
-    min-width: 362px;
+    width: 362px;
     max-width: 100%;
+    font-size: 24px;
+  }
+
+  .hero__illustration {
+    position: relative;
+    z-index: 2;
+    display: block;
+    max-width: initial;
+    margin-left: -24px;
+    margin-right: -24px;
+    margin-top: 16px;
+    display: flex;
+  }
+
+  .hero__illustration img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .hero::after {
+    content: "";
+    z-index: 1;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--wave-height);
+    background-image: url("/images/chronicles/wave-mobile.svg");
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+  }
+
+  .cloud-3,
+  .cloud-4 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: none;
+  }
+
+  .cloud-3 {
+    background-image: url("/images/chronicles/clouds-3.png");
+  }
+  .cloud-4 {
+    background-image: url("/images/chronicles/clouds-4.png");
+  }
+
+  .cloud-5 {
+    display: none;
+    background-repeat: no-repeat;
+    background-image: url("/images/chronicles/clouds-5.png");
+  }
+
+  .cloud-6 {
+    display: none;
+    background-image: url("/images/chronicles/clouds-6.png");
+    background-repeat: no-repeat;
+  }
+
+  @media (min-width: 375px) {
+    .hero__title {
+      font-size: 40px;
+      line-height: 43px;
+    }
+  }
+  @media (min-width: 425px) {
+    .hero::after {
+      background-image: url("/images/chronicles/wave-mid.svg");
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      --wave-height: 38%;
+      padding-bottom: 120px;
+    }
+
+    .hero__content {
+      align-items: start;
+      gap: 32px;
+    }
+
+    .hero__logo {
+      max-width: 263px;
+    }
+
+    .hero__title {
+      text-align: left;
+      font-size: 72px;
+      line-height: 78px;
+    }
+
+    .hero__text {
+      text-align: left;
+      font-size: 32px;
+      line-height: 36px;
+    }
+
+    .hero__action {
+      font-size: 32px;
+    }
+
+    .hero__illustration {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      top: 0;
+      width: 80%;
+      transform: translateX(42%) translateY(-10%);
+      height: 100%;
+    }
+
+    .cloud-4 {
+      display: block;
+      width: 324px;
+      height: 268px;
+      bottom: 0;
+      left: -142px;
+      z-index: -1;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      --wave-height: 40%;
+    }
+    .hero__logo {
+      max-width: 420px;
+    }
+
+    .hero__illustration {
+      width: 55%;
+      transform: translateX(22%) translateY(-10%);
+    }
+
+    .cloud-4 {
+      bottom: 50%;
+      transform: translateY(50%);
+    }
+
+    .cloud-6 {
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -100px;
+      width: 514px;
+      height: 334px;
+      z-index: 2;
+      background-size: contain;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .hero {
+      --wave-height: 40%;
+    }
+
+    .hero::after {
+      background-image: url("/images/chronicles/wave-big.svg");
+    }
+
+    .hero__content {
+      gap: 48px;
+    }
+
+    .hero__title {
+      font-size: 100px;
+      line-height: 102px;
+    }
+
+    .hero__illustration {
+      width: 50%;
+      transform: translateX(24%) translateY(-5%);
+    }
+
+    .cloud-6 {
+      bottom: -190px;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .hero {
+      --wave-height: 30%;
+      padding-bottom: 100px;
+    }
+
+    .hero::after {
+      background-image: url("/images/chronicles/wave-desktop.svg");
+    }
+
+    .hero__illustration {
+      width: 40%;
+      height: 120%;
+      transform: translateY(-15%);
+      top: 0;
+      right: 5%;
+    }
+
+    .cloud-3 {
+      display: block;
+      z-index: -1;
+      width: 514px;
+      height: 334px;
+      right: -180px;
+      top: -50px;
+    }
+
+    .cloud-5 {
+      position: absolute;
+      display: block;
+      width: 506px;
+      height: 384px;
+      z-index: 2;
+      right: 0;
+      bottom: -130px;
+      background-size: contain;
+      background-position: right bottom;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .hero {
+      --wave-height: 40%;
+    }
+
+    .hero__illustration {
+      width: 48%;
+      height: 130%;
+      right: 5%;
+    }
+
+    .hero__title {
+      font-size: 100px;
+      line-height: 111px;
+    }
+
+    .hero__text {
+      font-size: 36px;
+      line-height: 44px;
+    }
+
+    .cloud-5 {
+      bottom: -50px;
+    }
   }
 </style>

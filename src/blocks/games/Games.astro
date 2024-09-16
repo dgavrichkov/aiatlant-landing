@@ -1,10 +1,11 @@
 ---
-import Card from './Card.astro';
-import Modal from './Modal.astro';
-import Search from './Search.astro';
+import Card from "./Card.astro";
+import Modal from "./Modal.astro";
+import Search from "./Search.astro";
 
 const { data: games } = Astro.props;
 ---
+
 <section class="games" id={games.id}>
   <header class="games__header">
     <h2 class="games__title">{games.title}</h2>
@@ -12,12 +13,14 @@ const { data: games } = Astro.props;
   </header>
   <div class="games__container scroll-container">
     <ul class="gamelist carousel">
-      {games.list.map((game) => (
-        <li class="gamelist__item carousel__item" data-name={game.title}>
-          <Card game={game} utils={games.strings} statuses={games.statuses} />
-          <Modal game={game} utils={games.strings} />
-        </li>
-      ))}
+      {
+        games.list.map((game) => (
+          <li class="gamelist__item carousel__item" data-name={game.title}>
+            <Card game={game} utils={games.strings} statuses={games.statuses} />
+            <Modal game={game} utils={games.strings} />
+          </li>
+        ))
+      }
     </ul>
   </div>
 </section>
@@ -68,14 +71,18 @@ const { data: games } = Astro.props;
   }
 
   .games:after {
-    content: '';
+    content: "";
     pointer-events: none;
     position: absolute;
     bottom: -50px;
     left: 0;
     width: 100%;
     height: 384px;
-    background: linear-gradient(0.00deg, rgb(0, 0, 0) 14.848%,rgba(0, 0, 0, 0) 88.707%);
+    background: linear-gradient(
+      0deg,
+      rgb(0, 0, 0) 14.848%,
+      rgba(0, 0, 0, 0) 88.707%
+    );
   }
 
   .gamelist__item {
@@ -216,47 +223,54 @@ const { data: games } = Astro.props;
 </style>
 
 <script>
-  const wrap = document.querySelector('.games') as HTMLElement;
-  const searchInput = document.querySelector('.search__input') as HTMLInputElement;
-  const list = wrap.querySelectorAll('.gamelist__item');
+  const wrap = document.querySelector(".games") as HTMLElement;
+  const searchInput = document.querySelector(
+    ".search__input"
+  ) as HTMLInputElement;
+  const list = wrap.querySelectorAll(".gamelist__item");
   const body = document.body;
 
-  searchInput.addEventListener('input', (event) => {
+  searchInput.addEventListener("input", (event) => {
     const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
-    
-    list.forEach(listItem => {
-      const cardName = (listItem as HTMLElement).dataset.name?.toLowerCase() || '';
-      
+
+    list.forEach((listItem) => {
+      const cardName =
+        (listItem as HTMLElement).dataset.name?.toLowerCase() || "";
+
       if (cardName.includes(filterValue)) {
-        listItem.classList.remove('hidden');
+        listItem.classList.remove("hidden");
       } else {
-        listItem.classList.add('hidden');
+        listItem.classList.add("hidden");
       }
     });
   });
 
-  const cards = document.querySelectorAll('.game');
-  const modals = document.querySelectorAll('.modal') as NodeListOf<HTMLDivElement>;
+  const cards = document.querySelectorAll(".game");
+  const modals = document.querySelectorAll(
+    ".modal"
+  ) as NodeListOf<HTMLDivElement>;
 
   cards.forEach((card) => {
-    const moar = card.querySelector('.game__moar') as HTMLButtonElement;
+    const moar = card.querySelector(".game__moar") as HTMLButtonElement;
     const modalId = moar.dataset.moarId;
 
-    moar.addEventListener('click', () => {
-      const modalToShow = Array.from(modals).find((modal) => modal.dataset.modalId === modalId);
-        body.classList.add('no-scroll');
-        modalToShow.classList.remove('hidden');
+    moar.addEventListener("click", () => {
+      const modalToShow = Array.from(modals).find(
+        (modal) => modal.dataset.modalId === modalId
+      );
+      body.classList.add("no-scroll");
+      modalToShow.classList.remove("hidden");
     });
   });
 
   modals.forEach((modal) => {
-    const closeEls = modal.querySelectorAll('[data-modal-close]');
+    const closeEls = modal.querySelectorAll("[data-modal-close]");
 
     closeEls.forEach((closer) => {
-      closer.addEventListener('click', () => {
-        modal.classList.add('hidden');
-        body.classList.remove('no-scroll');
+      closer.addEventListener("click", () => {
+        modal.classList.add("hidden");
+        body.classList.remove("no-scroll");
       });
-    })
+    });
   });
 </script>

@@ -4,21 +4,32 @@ import { marked } from "marked";
 const { data } = Astro.props;
 ---
 
-<section class="who container" id={data.who}>
-  <h2 class="who__title title">{data.title}</h2>
-  <ul class="who__list">
-    {
-      data.list.map((item) => (
-        <li class="who__item pill" set:html={marked.parse(item.text)} />
-      ))
-    }
-  </ul>
+<section class="who" id={data.who}>
+  <div class="container who__container">
+    <div class="who__wrap">
+      <h2 class="who__title title">{data.title}</h2>
+      <ul class="who__list">
+        {
+          data.list.map((item) => (
+            <li class="who__item pill" set:html={marked.parse(item.text)} />
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="cloud"></div>
 </section>
 
 <style>
   .who {
+    position: relative;
+    z-index: 3;
     color: var(--text);
     margin: 82px 0;
+  }
+
+  .who__wrap {
+    overflow: hidden;
   }
 
   .who__title {
@@ -29,7 +40,7 @@ const { data } = Astro.props;
     list-style: none;
     display: flex;
     gap: 16px 32px;
-    padding: 20px 0;
+    padding: 2% 0;
   }
 
   .who__item {
@@ -45,6 +56,9 @@ const { data } = Astro.props;
     font-weight: 700;
     font-size: 30px;
     line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .pill:nth-child(1) {
@@ -61,5 +75,80 @@ const { data } = Astro.props;
   .pill:nth-child(3) {
     --pill-bg: var(--success);
     transform: rotate(-5.64deg);
+  }
+
+  .cloud {
+    background-image: url("/images/chronicles/clouds-3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 514px;
+    height: 334px;
+    top: -166px;
+    right: -30px;
+  }
+
+  @media (max-width: 1440px) {
+    .pill {
+      padding: 32px 16px;
+    }
+
+    .cloud {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .who__list {
+      flex-direction: column;
+      gap: 44px 32px;
+      padding: 48px 0;
+    }
+
+    .who__item {
+      width: 100%;
+    }
+
+    .pill {
+      padding-left: 20%;
+      padding-right: 20%;
+      min-height: 124px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .who__list {
+      gap: 32px 32px;
+      padding: 48px 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .who__title {
+      text-align: center;
+      font-size: 32px;
+      line-height: 36px;
+    }
+    .pill {
+      padding: 32px 16px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .who__container {
+      padding: 0;
+    }
+
+    .who__title {
+      padding: 0 15%;
+    }
+
+    .who__list {
+      margin: 0 -16px;
+    }
+
+    .who__item {
+      width: calc(100%);
+    }
   }
 </style>

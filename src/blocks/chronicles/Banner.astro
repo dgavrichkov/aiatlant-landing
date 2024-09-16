@@ -7,90 +7,92 @@ const { data, actionBtn } = Astro.props;
 const IMAGE_NAME = "gamers";
 ---
 
-<section class="banner container" id={data.id}>
-  <article class="banner-card">
-    <div class="banner-card__content">
-      <h3 class="banner-card__title">{data.title}</h3>
-      <div class="banner-card__text" set:html={marked.parse(data.text)} />
-      <div class="banner-card__call">{data.call}</div>
-      <Button class="banner-card__action" tag="a" href={actionBtn.href}
-        >{actionBtn.text}</Button
-      >
-    </div>
-    <picture class="banner-card__illustration">
-      <source
-        srcset={`/images/chronicles/${IMAGE_NAME}-1x.webp 1x, /images/chronicles/${IMAGE_NAME}-2x.webp 2x`}
-        type="image/webp"
-      />
-      <source
-        srcset={`/images/chronicles/${IMAGE_NAME}-1x.jpg 1x, /images/chronicles/${IMAGE_NAME}-2x.jpg 2x`}
-        type="image/jpeg"
-      />
-      <!-- TODO - i18n alt? -->
-      <img
-        width="200"
-        src={`/images/chronicles/${IMAGE_NAME}-1x.jpg`}
-        alt={""}
-      />
-    </picture>
-  </article>
+<section class="banner" id={data.id}>
+  <div class="container banner__container">
+    <article class="banner-card">
+      <div class="banner-card__content">
+        <h3 class="banner-card__title">{data.title}</h3>
+        <div class="banner-card__text" set:html={marked.parse(data.text)} />
+        <div class="banner-card__call">{data.call}</div>
+        <Button class="banner-card__action" tag="a" href={actionBtn.href}
+          >{actionBtn.text}</Button
+        >
+      </div>
+      <picture class="banner-card__illustration">
+        <source
+          srcset={`/images/chronicles/${IMAGE_NAME}-1x.webp 1x, /images/chronicles/${IMAGE_NAME}-2x.webp 2x`}
+          type="image/webp"
+        />
+        <source
+          srcset={`/images/chronicles/${IMAGE_NAME}-1x.jpg 1x, /images/chronicles/${IMAGE_NAME}-2x.jpg 2x`}
+          type="image/jpeg"
+        />
+        <img
+          width="200"
+          src={`/images/chronicles/${IMAGE_NAME}-1x.jpg`}
+          alt={data.imgAlt}
+        />
+      </picture>
+    </article>
+  </div>
 </section>
 
 <style>
   .banner {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     color: var(--text);
     background-color: var(--background-secondary);
-    padding-top: 82px;
-    padding-bottom: 115px;
     border-bottom-left-radius: 32px;
     border-bottom-right-radius: 32px;
+    padding: 0;
+  }
+
+  .banner__container {
+    padding: 0;
   }
 
   .banner-card {
-    border-radius: 32px;
+    border-radius: 0 0 32px 32px;
     background-color: var(--background-primary);
     display: grid;
-    grid-template-columns: 1fr 1fr;
     overflow: hidden;
+    grid-template-columns: 1fr;
   }
 
   .banner-card__content {
-    padding: 95px 72px;
-    padding-right: 42px;
+    padding: 56px 16px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    overflow: hidden;
   }
 
   .banner-card__title {
-    font-size: 100px;
-    line-height: 120px;
     font-family: var(--ff-dela);
-    font-weight: 400;
     text-transform: uppercase;
-  }
-
-  .banner-card__text {
-    font-size: 36px;
-    line-height: 45px;
-    margin-top: 56px;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1;
+    text-align: center;
   }
 
   .banner-card__call {
-    font-size: 64px;
-    line-height: 68px;
     font-weight: 400;
     font-family: var(--ff-dela);
-    margin-bottom: 80px;
-    margin-top: 56px;
+    font-size: 24px;
+    line-height: 1.2;
+    margin-top: 32px;
+    margin-bottom: 48px;
+    text-align: center;
   }
 
-  .banner-card__action {
-    margin-top: auto;
-    align-self: start;
-    min-width: 362px;
-    max-width: 100%;
+  .banner-card__text {
+    color: var(--button-secondary);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 32px;
+    text-align: center;
   }
 
   .banner-card__illustration {
@@ -103,5 +105,155 @@ const IMAGE_NAME = "gamers";
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .banner-card__action {
+    width: 100%;
+    max-width: 362px;
+    font-size: 24px;
+  }
+
+  @media (min-width: 375px) {
+    .banner-card__title {
+      font-size: 40px;
+      line-height: 51px;
+    }
+
+    .banner-card__text {
+      font-size: 24px;
+      line-height: 27px;
+    }
+
+    .banner-card__call {
+      font-size: 32px;
+      line-height: 36px;
+    }
+
+    .banner-card__action {
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 425px) {
+  }
+
+  @media (min-width: 769px) {
+    .banner-card__content {
+      padding: 81px 16px 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .banner-card__title {
+      font-size: 65px;
+      line-height: 86px;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .banner {
+      padding-bottom: 56px;
+    }
+    .banner__container {
+      padding: 0 var(--container-gutter);
+    }
+
+    .banner-card {
+      border-radius: 56px;
+      grid-template-columns: calc(50% + 44px) 1fr;
+    }
+
+    .banner-card__content {
+      padding: 40px 16px;
+      align-items: start;
+    }
+
+    .banner-card__title {
+      text-align: start;
+    }
+
+    .banner-card__title {
+      font-size: 42px;
+      line-height: 1.2;
+    }
+
+    .banner-card__text {
+      text-align: start;
+    }
+
+    .banner-card__call {
+      text-align: start;
+    }
+
+    .banner-card__action {
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .banner {
+      padding: 0 var(--container-gutter);
+      padding-bottom: 163px;
+      padding-top: 82px;
+    }
+
+    .banner-card {
+    }
+
+    .banner-card__content {
+      padding: 95px 72px;
+      padding-right: 42px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .banner-card__content {
+      align-items: start;
+      overflow: hidden;
+    }
+
+    .banner-card__title {
+      font-size: 65px;
+      line-height: 86px;
+    }
+
+    .banner-card__text {
+      margin-top: 56px;
+    }
+
+    .banner-card__call {
+      font-size: 40px;
+      line-height: 48px;
+      margin-top: 56px;
+      margin-bottom: 80px;
+    }
+
+    .banner-card__action {
+      margin-top: auto;
+      align-self: start;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .banner-card {
+      /* grid-template-columns: calc(50% + 44px) auto; */
+    }
+    .banner-card__title {
+      font-size: 100px;
+      line-height: 120px;
+    }
+
+    .banner-card__text {
+      font-size: 36px;
+      line-height: 45px;
+      margin-top: 56px;
+    }
+
+    .banner-card__call {
+      font-size: 64px;
+      line-height: 68px;
+      margin-bottom: 80px;
+      margin-top: 56px;
+    }
   }
 </style>

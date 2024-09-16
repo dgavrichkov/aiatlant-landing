@@ -1,0 +1,81 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Props extends HTMLAttributes<"button"> {
+  direction: "prev" | "next";
+}
+
+const DIR_MAP = {
+  prev: {
+    text: t("sliderPrev"),
+    className: "arrowbtn--prev",
+  },
+  next: {
+    text: t("sliderNext"),
+    className: "arrowbtn--next",
+  },
+};
+
+const { direction, ...rest } = Astro.props;
+---
+
+<button
+  class:list={["arrowbtn", DIR_MAP[direction].className]}
+  data-direction={direction}
+  {...rest}
+>
+  <span class="visually-hidden">{DIR_MAP[direction].text}</span>
+  <svg
+    class="arrowbtn__icon"
+    width="55"
+    height="45"
+    viewBox="0 0 55 45"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M3 19.5C1.34315 19.5 1.44847e-07 20.8431 0 22.5C-1.44847e-07 24.1568 1.34315 25.5 3 25.5L3 19.5ZM53.6213 24.6213C54.7929 23.4497 54.7929 21.5503 53.6213 20.3787L34.5294 1.2868C33.3579 0.115221 31.4584 0.115221 30.2868 1.28679C29.1152 2.45837 29.1152 4.35786 30.2868 5.52944L47.2574 22.5L30.2868 39.4706C29.1152 40.6421 29.1152 42.5416 30.2868 43.7132C31.4584 44.8848 33.3579 44.8848 34.5294 43.7132L53.6213 24.6213ZM3 25.5L51.5 25.5L51.5 19.5L3 19.5L3 25.5Z"
+      fill="white"></path>
+  </svg>
+</button>
+
+<style>
+  .arrowbtn {
+    width: 100px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-secondary);
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.2s ease;
+  }
+
+  .arrowbtn:disabled {
+    background-color: var(--button-secondary);
+    color: var(--button-primary);
+    pointer-events: none;
+  }
+
+  .arrowbtn:hover {
+    background: var(--accent);
+  }
+
+  .arrowbtn .arrowbtn__icon path {
+    fill: currentColor;
+  }
+
+  .arrowbtn--prev .arrowbtn__icon {
+    transform: rotate(-180deg);
+  }
+
+  .arrowbtn--next .arrowbtn__icon {
+  }
+</style>

@@ -87,9 +87,10 @@ const { data: plans } = Astro.props;
     height: auto;
   }
 
-  @media (min-width: 426px) {
-    .plans__illustration {
-      margin-bottom: -30%;
+  @media (max-width: 1728px) {
+    .plans {
+      --plan-width: 490px;
+      --bg-x-pos: 2%;
     }
   }
 
