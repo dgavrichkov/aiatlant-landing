@@ -47,9 +47,18 @@ const { data, actionBtn } = Astro.props;
     </div>
     <figure class="hero__illustration">
       <picture>
-        <source srcset={`/images/chronicles/table.webp`} type="image/webp" />
-        <source srcset={`/images/chronicles/table.png`} type="image/webp" />
-        <img src="/images/chronicles/table.png" alt={data.imgAlt} />
+        <source
+          srcset={`/aiatlant-landing/images/chronicles/table.webp`}
+          type="image/webp"
+        />
+        <source
+          srcset={`/aiatlant-landing/images/chronicles/table.png`}
+          type="image/webp"
+        />
+        <img
+          src="/aiatlant-landing/images/chronicles/table.png"
+          alt={data.imgAlt}
+        />
       </picture>
       <div class="cloud-3"></div>
       <div class="cloud-4"></div>
@@ -130,7 +139,7 @@ const { data, actionBtn } = Astro.props;
     left: 0;
     width: 100%;
     height: var(--wave-height);
-    background-image: url("/images/chronicles/wave-mobile.svg");
+    background-image: url("../images/chronicles/wave-mobile.svg");
     background-repeat: no-repeat;
     background-position: top left;
     background-size: cover;
@@ -145,21 +154,21 @@ const { data, actionBtn } = Astro.props;
   }
 
   .cloud-3 {
-    background-image: url("/images/chronicles/clouds-3.png");
+    background-image: url("/aiatlant-landing/images/chronicles/clouds-3.png");
   }
   .cloud-4 {
-    background-image: url("/images/chronicles/clouds-4.png");
+    background-image: url("/aiatlant-landing/images/chronicles/clouds-4.png");
   }
 
   .cloud-5 {
     display: none;
     background-repeat: no-repeat;
-    background-image: url("/images/chronicles/clouds-5.png");
+    background-image: url("/aiatlant-landing/images/chronicles/clouds-5.png");
   }
 
   .cloud-6 {
     display: none;
-    background-image: url("/images/chronicles/clouds-6.png");
+    background-image: url("/aiatlant-landing/images/chronicles/clouds-6.png");
     background-repeat: no-repeat;
   }
 
@@ -171,7 +180,7 @@ const { data, actionBtn } = Astro.props;
   }
   @media (min-width: 425px) {
     .hero::after {
-      background-image: url("/images/chronicles/wave-mid.svg");
+      background-image: url("/aiatlant-landing/images/chronicles/wave-mid.svg");
     }
   }
 
@@ -262,7 +271,7 @@ const { data, actionBtn } = Astro.props;
     }
 
     .hero::after {
-      background-image: url("/images/chronicles/wave-big.svg");
+      background-image: url("/aiatlant-landing/images/chronicles/wave-big.svg");
     }
 
     .hero__content {
@@ -291,7 +300,7 @@ const { data, actionBtn } = Astro.props;
     }
 
     .hero::after {
-      background-image: url("/images/chronicles/wave-desktop.svg");
+      background-image: url("/aiatlant-landing/images/chronicles/wave-desktop.svg");
     }
 
     .hero__illustration {

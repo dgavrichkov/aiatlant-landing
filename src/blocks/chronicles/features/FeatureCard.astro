@@ -15,16 +15,16 @@ const { data: item } = Astro.props;
 <article class="feature">
   <picture class="feature__pic">
     <source
-      srcset={`/images/chronicles/${item.image}-1x.webp 1x, /images/chronicles/${item.image}-2x.webp 2x`}
+      srcset={`/aiatlant-landing/images/chronicles/${item.image}-1x.webp 1x, /aiatlant-landing/images/chronicles/${item.image}-2x.webp 2x`}
       type="image/webp"
     />
     <source
-      srcset={`/images/chronicles/${item.image}-1x.jpg 1x, /images/chronicles/${item.image}-2x.jpg 2x`}
+      srcset={`/aiatlant-landing/images/chronicles/${item.image}-1x.jpg 1x, /aiatlant-landing/images/chronicles/${item.image}-2x.jpg 2x`}
       type="image/jpeg"
     />
     <img
       width="200"
-      src={`/images/chronicles/${item.image}-1x.jpg`}
+      src={`/aiatlant-landing/images/chronicles/${item.image}-1x.jpg`}
       alt={item?.imgAlt || ""}
     />
   </picture>
