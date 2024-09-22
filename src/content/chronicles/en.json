@@ -34,25 +34,25 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Dive into the Chronicles",
+    "title": "Immerse  \nyourself in the Chronicles",
     "text": "Create your own legend in an entirely open world",
     "imgAlt": "fantasy party in a board game"
   },
   "features": {
     "id": "features",
-    "title": "What's Special About the Chronicles?",
+    "title": "What is a chronicle?",
     "list": [
       {
         "id": 1,
         "image": "feature-1",
-        "name": "Sandbox Game",
-        "text": "You set your own goals and choose how to achieve them.",
+        "name": "Sandbox game",
+        "text": "You set your own goals and choose the methods to achieve them.",
         "imgAlt": "Dwarves in a sandbox"
       },
       {
         "id": 2,
         "image": "feature-2",
-        "name": "One Warrior in the Field",
+        "name": "Alone in the field",
         "text": "Unite, compete, or avoid friends in the game.",
         "imgAlt": "elf adventurer"
       },
@@ -60,16 +60,16 @@
         "id": 3,
         "image": "feature-3",
         "name": "Create Your Story",
-        "text": "Minimum rules - maximum imagination. Use your brain to complete quests better than others.",
+        "text": "The smallest rules, the greatest imagination. Use your brain to do the best tasks.",
         "imgAlt": "writer at work"
       }
     ]
   },
   "banner": {
     "id": "banner",
-    "title": "Outplay the AI!",
-    "text": "A full-fledged artificial intelligence serves as the game master.",
-    "call": "Can you defeat the machine?",
+    "title": "Play Neurons!",
+    "text": "The game is dominated by artificial intelligence.",
+    "call": "Can you beat the machine?",
     "imgAlt": "creatures playing on a console"
   },
   "who": {
@@ -78,15 +78,15 @@
     "list": [
       {
         "id": 1,
-        "text": "Love challenges and do not shy away from them"
+        "text": "Love difficulties and never submit to them."
       },
       {
         "id": 2,
-        "text": "Are capable of unexpected moves and non-trivial solutions"
+        "text": "Being able to make unexpected actions and extraordinary decisions"
       },
       {
         "id": 3,
-        "text": "Prefer to choose their own destiny"
+        "text": "Choose your own destiny"
       }
     ]
   },

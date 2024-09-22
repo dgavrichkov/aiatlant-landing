@@ -11,13 +11,17 @@ const { data } = Astro.props;
       <ul class="who__list">
         {
           data.list.map((item) => (
-            <li class="who__item pill" set:html={marked.parse(item.text)} />
+            <li
+              class="who__item pill animate__animated"
+              data-animation="fadeIn"
+              set:html={marked.parse(item.text)}
+            />
           ))
         }
       </ul>
     </div>
   </div>
-  <div class="cloud"></div>
+  <div class="cloud animate__animated" data-animation="fadeInRightBig"></div>
 </section>
 
 <style>
