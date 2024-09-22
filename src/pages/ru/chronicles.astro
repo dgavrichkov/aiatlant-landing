@@ -11,6 +11,8 @@ import "animate.css";
 import "../../styles/reset.css";
 import "../../styles/chronicles/main.css";
 import ChroniclesDecor from "../../components/ChroniclesDecor.astro";
+import GoogleAnalytics from "../../components/analytics/GoogleAnalytics.astro";
+import YandexMetric from "../../components/analytics/YandexMetric.astro";
 
 const TITLE = "Ai Atlant - Хроники";
 const LANG = "ru";
@@ -41,6 +43,8 @@ const {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{TITLE}</title>
+    <GoogleAnalytics />
+    <YandexMetric />
   </head>
   <body>
     <div class="page">
