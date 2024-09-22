@@ -1,0 +1,13 @@
+---
+import { getLangFromUrl } from "../../../i18n/utils";
+import LogoEn from "./LogoEn.astro";
+import LogoRu from "./LogoRu.astro";
+
+const { ...rest } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<figure {...rest}>
+  {lang === "ru" && <LogoRu />}
+  {lang === "en" && <LogoEn />}
+</figure>

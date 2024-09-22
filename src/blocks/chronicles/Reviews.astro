@@ -1,39 +1,210 @@
 ---
-import { marked } from "marked";
+import SliderButton from "./testimonials/SliderButton.astro";
+import TestimonialCard from "./testimonials/TestimonialCard.astro";
+import "swiper/css";
 
 const { data } = Astro.props;
 ---
 
 <section class="reviews container" id={data.id}>
-  <h2 class="reviews__title title">{data.title}</h2>
-  <div class="reviews__controls">
-    <!-- todo: internationalize srings -->
-    <button class="reviews__arrowbtn reviews__prev">
-      <span class="visually-hidden">Прокрутить назад</span>
-    </button>
-    <button class="reviews__arrowbtn reviews__next">
-      <span class="visually-hidden">Прокрутить вперед</span>
-    </button>
+  <div class="reviews__wrap">
+    <header class="reviews__header">
+      <h2 class="reviews__title title">{data.title}</h2>
+      <div class="reviews__controls">
+        <SliderButton direction="prev" disabled />
+        <SliderButton direction="next" />
+      </div>
+    </header>
+    <div class="swiper reviews__slider-wrap">
+      <ul class="swiper-wrapper reviews__list">
+        {
+          data.list.map((item) => (
+            <li class="swiper-slide reviews__item">
+              <TestimonialCard data={item} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
-  <ul class="reviews__list">
-    {
-      data.list.map((item) => (
-        <li class="reviews__item">
-          <card>
-            <rate>{item.rate}</rate>
-            <text set:html={marked.parse(item.text)} />
-          </card>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="clouds animate__animated" data-animation="fadeIn"></div>
 </section>
+
+<script>
+  import Swiper from "swiper";
+
+  const swiper = new Swiper(".swiper", {
+    slidesPerView: 3.4,
+    freeMode: true,
+    speed: 400,
+    spaceBetween: 15,
+    breakpoints: {
+      320: {
+        slidesPerView: 1.1,
+      },
+      425: {
+        slidesPerView: 1.2,
+      },
+      768: {
+        slidesPerView: 1.4,
+      },
+      1024: {
+        slidesPerView: 2.1,
+      },
+      1200: {
+        slidesPerView: 2.2,
+      },
+      1440: {
+        slidesPerView: 2.3,
+      },
+      1920: {
+        slidesPerView: 3.2,
+      },
+      2560: {
+        slidesPerView: 4.2,
+      },
+    },
+  });
+
+  const buttons = document.querySelectorAll(
+    ".arrowbtn"
+  ) as NodeListOf<HTMLButtonElement>;
+  const prevBtn = Array.from(buttons).find(
+    (btn) => btn.dataset.direction === "prev"
+  );
+  const nextBtn = Array.from(buttons).find(
+    (btn) => btn.dataset.direction === "next"
+  );
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const direction = btn.dataset.direction;
+
+      if (direction === "prev") {
+        swiper.slidePrev();
+        nextBtn.disabled = false;
+      }
+
+      if (direction === "next") {
+        swiper.slideNext();
+        prevBtn.disabled = false;
+      }
+    });
+  });
+
+  swiper.on("reachBeginning", function () {
+    prevBtn.disabled = true;
+  });
+
+  swiper.on("reachEnd", function () {
+    nextBtn.disabled = true;
+  });
+
+  swiper.on("fromEdge", function () {
+    if (swiper.swipeDirection === "next") {
+      prevBtn.disabled = false;
+    }
+
+    if (swiper.swipeDirection === "prev") {
+      nextBtn.disabled = false;
+    }
+  });
+</script>
 
 <style>
   .reviews {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     color: var(--text);
     background-color: var(--button-primary);
+    border-radius: 56px 56px 0 0;
+  }
+
+  .reviews__wrap {
+    padding-top: 33px;
+    padding-bottom: 87px;
+  }
+
+  .reviews__header {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+
+  .reviews__title {
+    text-align: center;
+  }
+
+  .reviews__controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  .reviews__slider-wrap {
+    margin: 0 calc(var(--container-gutter) * -1);
+    padding-left: var(--container-gutter);
+    padding-right: var(--container-gutter);
+  }
+
+  .reviews__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .reviews__item {
+    height: auto;
+  }
+
+  .clouds {
+    width: 324px;
+    height: 268px;
+    background-image: url("/images/chronicles/clouds-7.png");
+    background-repeat: no-repeat;
+    background-size: 125%;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateY(-60%);
+  }
+
+  @media (min-width: 769px) {
+    .reviews__header {
+      align-items: start;
+    }
+
+    .clouds {
+      transform: translateY(-40%);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .reviews {
+    }
+
+    .reviews__header {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .clouds {
+      left: 30%;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .reviews {
+      border-radius: 56px;
+    }
+
+    .reviews__header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 53px;
+    }
   }
 </style>
