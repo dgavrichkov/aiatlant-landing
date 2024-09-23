@@ -2,7 +2,12 @@
 const { data: testInvite } = Astro.props;
 ---
 
-<a class="testInvite" href={testInvite.href}>
+<a
+  class="testInvite"
+  href={testInvite.href}
+  target="_blank"
+  rel="noopener noreferrer"
+>
   <article class="testInvite__wrap">
     <b class="testInvite__text">{testInvite.text}</b>
   </article>

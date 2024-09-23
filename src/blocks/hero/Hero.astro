@@ -12,8 +12,12 @@ const { data: hero } = Astro.props;
     <p class="hero__text">{hero.text}</p>
   </div>
   <div class="hero__btn">
-    <Button tag="a" href={hero.button.href} class="hero__action"
-      >{hero.button.label}</Button
+    <Button
+      tag="a"
+      href={hero.button.href}
+      class="hero__action"
+      target="_blank"
+      rel="noopener noreferrer">{hero.button.label}</Button
     >
   </div>
   <div class="hero__decor"></div>

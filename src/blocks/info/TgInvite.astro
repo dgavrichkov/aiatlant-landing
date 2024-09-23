@@ -2,7 +2,12 @@
 const { data: tgInvite } = Astro.props;
 ---
 
-<a class="tgInvite" href={tgInvite.href}>
+<a
+  class="tgInvite"
+  href={tgInvite.href}
+  target="_blank"
+  rel="noopener noreferrer"
+>
   <article class="tgInvite__wrap">
     <b>{tgInvite.title}</b>
     <p>{tgInvite.text}</p>

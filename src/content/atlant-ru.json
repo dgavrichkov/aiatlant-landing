@@ -30,7 +30,7 @@
     {
       "id": 2,
       "label": "Сообщество",
-      "href": "https://t.me/AIAtlant"
+      "href": "https://t.me/AIAtlantRu"
     }
   ],
   "footerLinks": [
@@ -42,12 +42,12 @@
     {
       "id": 2,
       "title": "Telegram сообщество",
-      "href": "https://t.me/AIAtlant"
+      "href": "https://t.me/AIAtlantRu"
     },
     {
       "id": 3,
       "title": "Стать тестировщиком",
-      "href": "https://t.me/AIAtlant"
+      "href": "https://t.me/AIAtlantRu"
     },
     {
       "id": 4,
@@ -58,7 +58,7 @@
   "socials": {
     "Telegram": {
       "label": "Telegram",
-      "href": "https://t.me/AIAtlant",
+      "href": "https://t.me/AIAtlantRu",
       "icon": "iconTg"
     }
   },
@@ -85,11 +85,11 @@
     "tgInvite": {
       "title": "Go",
       "text": "в нашу группу  Telegram",
-      "href": "https://t.me/AIAtlant"
+      "href": "https://t.me/AIAtlantRu"
     },
     "testInvite": {
       "text": "Участвуй в закрытом тестировании наших новых игр!",
-      "href": "https://t.me/AIAtlant"
+      "href": "https://t.me/AIAtlantRu"
     }
   },
   "games": {
