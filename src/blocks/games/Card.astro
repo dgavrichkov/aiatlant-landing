@@ -44,6 +44,8 @@ const isDisabled = game.status !== "ready";
       href={game.link.href}
       class="game__button game__link"
       disabled={isDisabled}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {statuses[game.status]}
     </Button>

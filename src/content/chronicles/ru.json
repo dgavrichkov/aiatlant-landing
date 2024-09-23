@@ -12,12 +12,12 @@
     {
       "id": 2,
       "title": "Telegram сообщество",
-      "href": "https://t.me/AIAtlant"
+      "href": "https://t.me/AIAtlantRu"
     },
     {
       "id": 3,
       "title": "Стать тестировщиком",
-      "href": "https://t.me/AIAtlant"
+      "href": "https://t.me/AIAtlantRu"
     },
     {
       "id": 4,
@@ -28,7 +28,7 @@
   "socials": {
     "Telegram": {
       "label": "Telegram",
-      "href": "https://t.me/AIAtlant",
+      "href": "https://t.me/AIAtlantRu",
       "icon": "iconTg"
     }
   },
