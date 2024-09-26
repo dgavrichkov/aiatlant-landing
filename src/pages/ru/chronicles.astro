@@ -1,15 +1,18 @@
 ---
-import Header from "../../blocks/chronicles/Header.astro";
-import Hero from "../../blocks/chronicles/Hero.astro";
+import Header from "../../blocks/chronicles/header/Header.astro";
+import Hero from "../../blocks/chronicles/Hero/Hero.astro";
 import Features from "../../blocks/chronicles/features/Features.astro";
 import Who from "../../blocks/chronicles/Who.astro";
 import Banner from "../../blocks/chronicles/Banner.astro";
 import Reviews from "../../blocks/chronicles/Reviews.astro";
 import Footer from "../../blocks/chronicles/Footer.astro";
 import content from "../../content/chronicles/ru.json";
+import "animate.css";
 import "../../styles/reset.css";
 import "../../styles/chronicles/main.css";
 import ChroniclesDecor from "../../components/ChroniclesDecor.astro";
+import GoogleAnalytics from "../../components/analytics/GoogleAnalytics.astro";
+import YandexMetric from "../../components/analytics/YandexMetric.astro";
 
 const TITLE = "Ai Atlant - Хроники";
 const LANG = "ru";
@@ -40,6 +43,8 @@ const {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{TITLE}</title>
+    <GoogleAnalytics />
+    <YandexMetric />
   </head>
   <body>
     <div class="page">
@@ -54,3 +59,7 @@ const {
     </div>
   </body>
 </html>
+
+<script>
+  import "../../scripts/animationOnView.js";
+</script>

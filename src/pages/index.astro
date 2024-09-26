@@ -4,6 +4,9 @@ import "../styles/fonts.css";
 import "../styles/main.css";
 
 const TITLE = "Ai Atlant";
+
+const IS_GHPAGES = import.meta.env.IS_GH_PAGES;
+const url_prefix = IS_GHPAGES ? "./aiatlant-landing/" : "./";
 ---
 
 <!doctype html>
@@ -50,7 +53,7 @@ const TITLE = "Ai Atlant";
   }
 </style>
 
-<script>
+<script define:vars={{ url_prefix }}>
   setTimeout(() => {
     lang =
       lang ||
@@ -71,11 +74,11 @@ const TITLE = "Ai Atlant";
     }
 
     if (shortLang === "ru") {
-      window.location.replace("./" + shortLang + "/");
+      window.location.replace(url_prefix + shortLang + "/");
     }
 
     if (shortLang === "en") {
-      window.location.replace("./" + shortLang + "/");
+      window.location.replace(url_prefix + shortLang + "/");
     }
   }, 2000);
   let lang = window.navigator.languages ? window.navigator.languages[0] : null;

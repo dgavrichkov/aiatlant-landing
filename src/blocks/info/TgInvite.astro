@@ -2,7 +2,12 @@
 const { data: tgInvite } = Astro.props;
 ---
 
-<a class="tgInvite" href={tgInvite.href}>
+<a
+  class="tgInvite"
+  href={tgInvite.href}
+  target="_blank"
+  rel="noopener noreferrer"
+>
   <article class="tgInvite__wrap">
     <b>{tgInvite.title}</b>
     <p>{tgInvite.text}</p>
@@ -43,7 +48,7 @@ const { data: tgInvite } = Astro.props;
     width: 240px;
     height: 100%;
     width: 100cqh;
-    background-image: url("/images/gnomes.png");
+    background-image: url("../images/gnomes.png");
     background-repeat: no-repeat;
     background-size: contain;
     z-index: 0;
@@ -57,7 +62,7 @@ const { data: tgInvite } = Astro.props;
     right: 60px;
     width: 80px;
     height: 30px;
-    background-image: url("/arrow.svg");
+    background-image: url("../arrow.svg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }

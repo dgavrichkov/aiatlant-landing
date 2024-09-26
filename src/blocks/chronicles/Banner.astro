@@ -14,8 +14,13 @@ const IMAGE_NAME = "gamers";
         <h3 class="banner-card__title">{data.title}</h3>
         <div class="banner-card__text" set:html={marked.parse(data.text)} />
         <div class="banner-card__call">{data.call}</div>
-        <Button class="banner-card__action" tag="a" href={actionBtn.href}
-          >{actionBtn.text}</Button
+        <Button
+          class="banner-card__action animate__animated"
+          data-animation="headShake"
+          tag="a"
+          href={actionBtn.href}
+          target="_blank"
+          rel="noopener noreferrer">{actionBtn.text}</Button
         >
       </div>
       <picture class="banner-card__illustration">

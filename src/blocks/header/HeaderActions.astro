@@ -1,13 +1,23 @@
 ---
-import Button from '../../ui/Button.astro';
+import Button from "../../ui/Button.astro";
 
 const { headerButtons } = Astro.props;
 ---
 
 <Fragment>
-  {headerButtons.map((item) => (
-    <Button tag="a" href={item.href} class="action-item">{item.label}</Button>
-  ))}
+  {
+    headerButtons.map((item) => (
+      <Button
+        tag="a"
+        href={item.href}
+        class="action-item"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {item.label}
+      </Button>
+    ))
+  }
 </Fragment>
 
 <style>

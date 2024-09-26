@@ -2,7 +2,12 @@
 const { data: testInvite } = Astro.props;
 ---
 
-<a class="testInvite" href={testInvite.href}>
+<a
+  class="testInvite"
+  href={testInvite.href}
+  target="_blank"
+  rel="noopener noreferrer"
+>
   <article class="testInvite__wrap">
     <b class="testInvite__text">{testInvite.text}</b>
   </article>
@@ -32,7 +37,7 @@ const { data: testInvite } = Astro.props;
     right: 60px;
     width: 80px;
     height: 30px;
-    background-image: url("/arrow.svg");
+    background-image: url("../arrow.svg");
     background-repeat: no-repeat;
     background-size: contain;
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg);
