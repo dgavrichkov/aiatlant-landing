@@ -17,7 +17,7 @@ permissions:
 jobs:
   build:
     env:
-      TEST_ENVIRONMENT: ${{ secrets.TEST_ENVIRONMENT }}
+      IS_GH_PAGES: ${{ secrets.IS_GH_PAGES }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
